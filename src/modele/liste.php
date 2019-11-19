@@ -1,5 +1,5 @@
 <?php
-namespace modele;
+namespace wishlist\modele;
 class Liste extends \Illuminate\Database\Eloquent\Model
 {
     protected $table = 'liste';
