@@ -7,7 +7,7 @@ class Liste extends \Illuminate\Database\Eloquent\Model
     public $timestamps = false;
 
     public function item() {
-    	return $this->hasMany('\modele\Liste', 'liste_id');
+    	return $this->hasMany('wishlist\modele\item', 'liste_id');
     }
 
     
@@ -18,8 +18,14 @@ class Liste extends \Illuminate\Database\Eloquent\Model
         user_id $this->user_id |
         titre $this->titre |
         description $this->description |
-        expiration $this->expiration |
-        token $this->token " ;
+        expiration $this->expiration ";/*|
+        token $this->token " ;*/
+
+        $itDedans = $this->item()->get();
+
+        foreach ($itDedans as $key => $value) {
+            $str=$str."<br>$value->nom ";
+        }
         return $str; 
     } 
 }
