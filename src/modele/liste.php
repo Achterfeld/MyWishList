@@ -18,11 +18,10 @@ class Liste extends \Illuminate\Database\Eloquent\Model
     {
         $str = "
         <div class='list'>
-        (no) $this->no |
-        (titre) $this->titre |
+        <div class='num num_liste'>$this->no</div>
+        <h3>$this->titre : $this->description </h3><br>
         (user_id) $this->user_id |
-        (description) $this->description |
-        (expiration) $this->expiration ";/*|
+        expire le $this->expiration <br><br>";/*|
         token $this->token " ;*/
 
         $itDedans = $this->item()->get();

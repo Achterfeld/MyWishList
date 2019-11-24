@@ -11,7 +11,7 @@ $str = '<head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="./img/favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="./style/style.css">
 <title>My Wish List</title>
 </head>';
@@ -23,6 +23,15 @@ $db->addConnection(parse_ini_file("src/conf/conf.ini"));
 
 $db->setAsGlobal();
 $db->bootEloquent();
+
+$maxNo = Liste::max("no");
+
+echo('
+<form action="test.php" method="get">
+Liste à afficher : <input type="number" min="1" max="'.$maxNo.'" name="liste"><br>
+<input type="submit" value="Choisir sa liste"></input>
+</form>
+');
 
 
 // Fonction de création d'un nouvel objet

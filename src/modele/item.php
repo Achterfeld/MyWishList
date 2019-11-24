@@ -16,15 +16,14 @@ class Item extends \Illuminate\Database\Eloquent\Model
     public function __toString()
     {
         $str = "<div class='item'>
-        (id) $this->id |
-        (nom liste) " . $this->liste()->first()['titre'] . " |
-        (liste_id) $this->liste_id |
-        (nom) $this->nom |
-        (descr) $this->descr |
-        (img) $this->img |
-        (url) $this->url |
-        (tarif) $this->tarif
-        </div>";
+        <div class='num num_item'> $this->id </div>
+        <div class='description'>"
+        . $this->liste()->first()['titre'] . " ($this->liste_id) <br>
+        <h3>$this->nom : $this->descr </h3><br>
+        <a href=\"$this->url\" ></a>
+        $this->tarif €
+        </div><div><img src=\"/MyWishList/img/$this->img\"></img> 
+        </div></div>";
         return $str;
     }
 }
