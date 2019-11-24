@@ -8,6 +8,25 @@ body {
     background: linear-gradient(#6464e666, #9198e566);
 }
 
+#navBarre {
+    background: #555;
+    color: #fff;
+    width: calc(100% - 2em);
+    margin: -1em -1em 0 -1em;
+    padding: 2em;
+    display: flex;
+}
+
+#navBarre div {
+    margin: 0 1em;
+    width: max-content;
+}
+
+#navBarre a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .list,
 .item {
     margin: 0 1em;
@@ -66,5 +85,28 @@ input[type="number"] {
 }
 
 input[type="submit"] {
-    width: 200px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    background: #0000;
+    border: 0;
+    border-bottom: 1px solid #0002;
+}
+
+#formulaires {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+form {
+    width: 30vw;
+    background: #0002;
+    margin: 1em auto;
+    padding: 1em;
 }

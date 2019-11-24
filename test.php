@@ -26,11 +26,48 @@ $db->bootEloquent();
 
 $maxNo = Liste::max("no");
 
-echo('
+$maxNoItem = Item::max("id");
+
+echo('<div id="navBarre"> 
+<div>Bonjour, bienvenue dans MyWishList</div>
+<div style="flex:1"></div>
+<div><a href="./" >Se connecter</a></div>
+</div>');
+
+echo ('
+
+<div id = "formulaires">
 <form action="test.php" method="get">
-Liste à afficher : <input type="number" min="1" max="'.$maxNo.'" name="liste"><br>
+
+<h1>Affichage liste</h1>
+<input type="number" placeholder="Numéro de la liste à afficher" min="1" max="' . $maxNo . '" name="liste"><br>
 <input type="submit" value="Choisir sa liste"></input>
+
 </form>
+
+
+<form action="test.php" method="post">
+
+<h1>Création liste</h1>
+<input type="text" placeholder="Titre" name="titreNouvelleListe"><br>
+<input type="text" placeholder="Description" name="descriptionNouvelleListe"><br>
+<input type="text" placeholder="Titre" name="titreNouvelleListe"><br>
+Limite de validité : <input type="date" name="dateLimiteNouvelleListe"><br>
+<input type="submit" value="Ajouter une liste"></input>
+
+</form>
+
+
+<form action="test.php" method="post">
+
+<h1>Ajout dans liste</h1>
+<input type="number" placeholder="Liste dans laquelle ajouter" min="1" max="' . $maxNo . '" name="aAjouterDansListe"><br>
+<input type="number" placeholder="Objet à ajouter" min="1" max="' . $maxNoItem . '" name="itemAAjouter"><br>
+<input type="submit" value="Ajouter dans la liste"></input>
+
+</form>
+
+</div>
 ');
 
 
