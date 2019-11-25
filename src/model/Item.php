@@ -1,6 +1,6 @@
 <?php
 
-namespace wishlist\modele;
+namespace wishlist\model;
 
 class Item extends \Illuminate\Database\Eloquent\Model
 {
@@ -10,7 +10,7 @@ class Item extends \Illuminate\Database\Eloquent\Model
 
     public function liste()
     {
-        return $this->belongsTo('wishlist\modele\Liste', 'liste_id');
+        return $this->belongsTo('wishlist\model\Liste', 'liste_id');
     }
 
     public function __toString()

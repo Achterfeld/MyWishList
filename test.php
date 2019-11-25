@@ -3,8 +3,8 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Illuminate\Database\Capsule\Manager as DB;
-use wishlist\modele\Liste;
-use wishlist\modele\Item;
+use wishlist\model\Liste;
+use wishlist\model\Item;
 
 
 $str = '<head>
