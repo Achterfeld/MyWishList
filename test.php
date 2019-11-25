@@ -32,6 +32,7 @@ echo('<div id="navBarre">
 <div>Bonjour, bienvenue dans MyWishList</div>
 <div style="flex:1"></div>
 <div><a href="./" >Se connecter</a></div>
+<div><a href="./" >S\'inscrire</a></div>
 </div>');
 
 echo ('
