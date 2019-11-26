@@ -7,15 +7,21 @@ use wishlist\model\Liste;
 use wishlist\model\Item;
 
 
+
+$app = new \Slim\Slim ;
+
+
 $str = '<head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="./img/favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<link rel="stylesheet" type="text/css" href="./style/style.css">
+<link rel="stylesheet" type="text/css" href="/MyWishList/style/style.css">
 <title>My Wish List</title>
 </head>';
 echo $str;
+
+
 
 
 $db = new DB();
@@ -24,9 +30,6 @@ $db->addConnection(parse_ini_file("src/conf/conf.ini"));
 $db->setAsGlobal();
 $db->bootEloquent();
 
-$maxNo = Liste::max("no");
-
-$maxNoItem = Item::max("id");
 
 echo('<div id="navBarre"> 
 <div>Bonjour, bienvenue dans MyWishList</div>
@@ -35,8 +38,22 @@ echo('<div id="navBarre">
 <div><a href="./" >S\'inscrire</a></div>
 </div>');
 
-echo ('
+$app->get('/liste',function (){
+    echo "<h1>LISTE</h1>";
+});
 
+$app->get('/item/:id',function ($id){
+    echo "<h1>Item n° $id</h1>";
+});
+
+$app->get('/',function(){
+    
+
+
+$maxNo = Liste::max("no");
+
+$maxNoItem = Item::max("id");
+echo('
 <div id = "formulaires">
 <form action="test.php" method="get">
 
@@ -118,3 +135,7 @@ $items = Item::get();
 foreach ($items as $item) {
     echo $item . "<br><br>";
 }
+
+});
+
+$app->run();
