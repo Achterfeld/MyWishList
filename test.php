@@ -126,6 +126,7 @@ $listes = Liste::get();
 foreach ($listes as $liste) {
     echo $liste . "<br><br>";
 }
+
 echo "<br>";
 echo "<br>";
 echo "<h1>Liste des items créés :</h1> <br> ";
