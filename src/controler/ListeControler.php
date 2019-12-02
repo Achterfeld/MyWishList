@@ -9,28 +9,22 @@ use wishlist\model\Item;
 
 class ListeControler {   
 
-    public function getAllItem() {
-        $liste = Item::OrderBy('titre')->get();
-        $v = new VueParticipant($liste);
-        $v->render('ALL_ITEM_VIEW');
-    }
-
     public function getItem($id) {
         $i = Item::where('id','=',$id)->first();
         $v = newItemView($i);
-        $v->render('ITEM_VIEW');
+        $v->render(VueParticipant::ITEM);
     }
 
     public function getAllListe() {
         $liste = Liste::OrderBy('titre')->get();
         $v = new VueParticipant($liste);
-        $v->render('ALL_LISTE_VIEW');
+        $v->render(VueParticipant::ALL_LIST);
     }
 
     public function getListe($id) {
         $l = Liste::where('id','=',$id)->first();
         $v = new VueParticipant($l);
-        $v = render('LISTE_VIEW');
+        $v = render(VueParticipant::ALL_LIST_ITEMS);
     }
 }
     /**
