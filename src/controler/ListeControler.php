@@ -7,7 +7,7 @@ use wishlist\model\Liste;
 use wishlist\model\Item;
 
 
-class CompteControler {   
+class ListeControler {   
 
     public function getAllItem() {
         $liste = Item::OrderBy('titre')->get();
