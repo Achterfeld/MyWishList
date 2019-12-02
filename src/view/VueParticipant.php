@@ -2,6 +2,9 @@
 <?php 
 
 namespaces \mywishlist\view;
+define(ALL_LIST, 1);
+define(ALL_LIST_ITEMS, 2);
+define(ITEM, 3);
 
 class VueParticipant 
 {
@@ -37,6 +40,25 @@ class VueParticipant
 	{
 		
 		return "<section>$this->liste</section>";
+	}
+
+	public function htmlAll($selecter)
+	{
+		switch ($selecter) {
+			case 1:
+				$content = $this->htmlListeListes;
+				break;
+			case 2:
+				$content = $this->htmlListesItems;
+				break;
+			case 3:
+				$content = $this->htmlItem;
+				break;
+		}
+
+		$html = <<<END
+
+END;
 	}
 
 }
