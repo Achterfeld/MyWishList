@@ -50,13 +50,13 @@ class VueParticipant
 	{
 		switch ($selecter) {
 			case 1:
-				$content = $this->htmlListeListes;
+				$content = $this->htmlListeListes();
 				break;
 			case 2:
-				$content = $this->htmlListesItems;
+				$content = $this->htmlListesItems();
 				break;
 			case 3:
-				$content = $this->htmlItem;
+				$content = $this->htmlItem();
 				break;
 		}
 
