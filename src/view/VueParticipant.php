@@ -12,5 +12,14 @@ class VueParticipant
 		$this->liste = $l;
 	}
 
+	private function htmlListeListes()
+	{
+		$html = "<section>";
+		foreach ($item as $this->liste) {
+			$html .= $item."<br>"
+		}
+		return $html."</section>";
+	}
+
 }
 ?>
