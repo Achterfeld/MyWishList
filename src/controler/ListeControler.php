@@ -34,23 +34,4 @@ class ListeControler {
         $v -> render(VueParticipant::LIST_VIEW);
     }
 }
-    /**
-    static function afficherTout()
-    {
-        $listes = Liste::get();
-
-        foreach ($listes as $liste) {
-            echo $liste . "<br><br>";
-        }
-    }
-
-    static function afficherParID($id)
-    {
-
-        $listeDesc = Liste::where('no', '=', $id)->get()->first();
-        if (!is_null($listeDesc)) {
-            echo "<h1>Description de la liste " . $id . " :</h1><br> " . $listeDesc;
-        }
-    }
-    */
     

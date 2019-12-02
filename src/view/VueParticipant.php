@@ -5,8 +5,10 @@ namespace wishlist\view;
 class VueParticipant
 {
 
-    const ALL_ITEM_VIEW = 1, ALL_LIST_VIEW = 2, ITEM_VIEW = 3, LIST_VIEW = 4;
-
+    const ALL_ITEM_VIEW = 1;
+    const ALL_LIST_VIEW = 2;
+    const ITEM_VIEW = 3;
+    const LIST_VIEW = 4;
 
     private $liste;
 
@@ -83,7 +85,7 @@ class VueParticipant
     <div style="flex:1"></div>
     <div><a href="./" >Se connecter</a></div>
     <div><a href="./" >S'inscrire</a></div>
-    </div>
+    </div><br>
 
     $content
 
