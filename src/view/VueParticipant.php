@@ -33,5 +33,11 @@ class VueParticipant
 		return $html."</section>";
 	}
 
+	private function htmlItem()
+	{
+		
+		return "<section>$this->liste</section>";
+	}
+
 }
 ?>
