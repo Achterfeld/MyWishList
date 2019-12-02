@@ -1,14 +1,16 @@
-<?php
 
-namespace wishlist\view;
+<?php 
 
-class VueParticipant
+namespaces \mywishlist\view;
+
+class VueParticipant 
 {
+	private $liste;
 
-    var $liste;
+    function __construct($l)
+	{
+		$this->liste = $l;
+	}
 
-    function __construct($liste)
-    {
-        $this->liste = $liste;
-    }
 }
+?>
