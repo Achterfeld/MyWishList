@@ -1,16 +1,18 @@
 
 <?php
 
-namespaces\mywishlist\view;
 
-define("ALL_ITEM_VIEW", 1);
-define("ITEM_VIEW", 2);
-define("ALL_LIST_VIEW", 3);
-define("LIST_VIEW", 4);
+namespace mywishlist\view;
+
 
 class VueParticipant
 {
-
+    
+    const ALL_ITEM_VIEW = 1;
+    const ITEM_VIEW = 2;
+    const ALL_LIST_VIEW = 3;
+    const LIST_VIEW = 4;
+    
 
 	private $liste;
 
