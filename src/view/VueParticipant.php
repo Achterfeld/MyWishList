@@ -1,9 +1,7 @@
 
 <?php
 
-
 namespace mywishlist\view;
-
 
 class VueParticipant
 {
@@ -50,25 +48,20 @@ class VueParticipant
 		return "<section>$this->liste[0]</section>";
 	}
 
-	public function render($code)
+	public function htmlAll($selecter)
 	{
-		$Fragment = "";
-		switch ($code) {
-
-			case ALL_ITEM_VIEW:
-				$Fragment = $this->afficheListeListe();
+		switch ($selecter) {
+			case 1:
+				$content = $this->htmlListeListes();
 				break;
-			case ITEM_VIEW:
-				$Fragment = $this->afficheListe();
+			case 2:
+				$content = $this->htmlListesItems();
 				break;
-			case ALL_LIST_VIEW:
-				$Fragment = $this->afficheItem();
-				break;
-				//LIST_VIEW
-			default:
-				# code...
+			case 3:
+				$content = $this->htmlItem();
 				break;
 		}
+
 		$html = <<<END 
 <head>
 <meta charset="utf-8">
@@ -87,9 +80,7 @@ class VueParticipant
 </div>
 END;
 
-echo $html;
-
-
+		echo $html;
 	}
 }
 ?>
