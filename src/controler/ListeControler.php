@@ -7,8 +7,27 @@ use wishlist\model\Liste;
 use wishlist\model\Item;
 
 
-class CompteControler
-{
+class ListeControler {   
+
+    public function getItem($id) {
+        $i = Item::where('id','=',$id)->first();
+        $v = newItemView($i);
+        $v->render(VueParticipant::ITEM);
+    }
+
+    public function getAllListe() {
+        $liste = Liste::OrderBy('titre')->get();
+        $v = new VueParticipant($liste);
+        $v->render(VueParticipant::ALL_LIST);
+    }
+
+    public function getListe($id) {
+        $l = Liste::where('id','=',$id)->first();
+        $v = new VueParticipant($l);
+        $v = render(VueParticipant::ALL_LIST_ITEMS);
+    }
+}
+    /**
     static function afficherTout()
     {
         $listes = Liste::get();
@@ -26,4 +45,5 @@ class CompteControler
             echo "<h1>Description de la liste " . $id . " :</h1><br> " . $listeDesc;
         }
     }
-}
+    */
+    

@@ -1,45 +1,49 @@
 
-<?php 
+<?php
 
 namespaces \mywishlist\view;
 define(ALL_LIST, 1);
 define(ALL_LIST_ITEMS, 2);
 define(ITEM, 3);
 
-class VueParticipant 
+class VueParticipant
 {
+
+
 	private $liste;
 
-    function __construct($l)
+	function __construct($l)
 	{
 		$this->liste = $l;
 	}
 
-	private function htmlListeListes()
+	private function afficheListeListe()
 	{
-		$html = "<section>";
-		foreach ($item as $this->liste) {
-			$html .= $item."<br>"
+		$affiche = "<section>";
+		foreach ($this->listes as $liste) {
+			$affiche .= "$liste<br>";
 		}
-		return $html."</section>";
+		$affiche .= "</section>";
+
+		return $affiche;
 	}
 
-	private function htmlListesItems()
+	private function afficheListe()
 	{
-		$html = "<section>";
-		foreach ($obj as $this->liste) {
-			$html .= $obj."<br>"
-			foreach ($item as $obj) {
-				$html .= $item."<br>"
-			}
+		$affiche = "<section>";
+		foreach ($this->listes as $liste) {
+			$affiche .= $liste;
 		}
-		return $html."</section>";
+		$affiche .= "</section>";
+
+		return $affiche;
 	}
 
-	private function htmlItem()
+
+
+	private function afficheItem()
 	{
-		
-		return "<section>$this->liste</section>";
+		return "<section>$this->liste[0]</section>";
 	}
 
 	public function htmlAll($selecter)
@@ -56,10 +60,25 @@ class VueParticipant
 				break;
 		}
 
-		$html = <<<END
+		$html = <<<END 
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="./img/favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="/MyWishList/style/style.css">
+<title>My Wish List</title>
+</head>
 
+<div id="navBarre"> 
+<div>Bonjour, bienvenue dans MyWishList</div>
+<div style="flex:1"></div>
+<div><a href="./" >Se connecter</a></div>
+<div><a href="./" >S\'inscrire</a></div>
+</div>
 END;
-	}
 
+		echo $html;
+	}
 }
 ?>
