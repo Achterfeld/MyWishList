@@ -39,5 +39,14 @@ class ListeControler {
         $v = new VueCreation();
         $v -> render(VueCreation::LIST);
     }
+    public function getResumeListe($token){
+        
+        //TODO
+        //Insérer la nouvelle liste dans la BDD
+
+        $l = Liste::where('token','=',$token)->first();
+        $v = new VueParticipant($l);
+        $v -> render(VueParticipant::LIST_VIEW_TOKEN);
+    }
 }
     
