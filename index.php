@@ -22,7 +22,14 @@ $app = new \Slim\Slim;
 $app->get('/liste', function () {
     
     $c = new ListeControler();
-    $liste = $c->getAllListe();
+    $c->getAllListe();
+
+});
+
+$app->get('/liste/creer', function () {
+    
+    $c = new ListeControler();
+    $c->getCreation();
 
 });
 
@@ -32,7 +39,7 @@ $app->get('/item', function () {
 
 
     $c = new ListeControler();
-    $liste = $c->getAllItem();
+    $c->getAllItem();
 
 });
 
@@ -41,7 +48,7 @@ $app->get('/item', function () {
 $app->get('/liste/:id', function ($id) {
 
     $c = new ListeControler();
-    $liste = $c->getListe($id);
+    $c->getListe($id);
 
 });
 
@@ -50,7 +57,7 @@ $app->get('/liste/:id', function ($id) {
 $app->get('/item/:id', function ($id) {
     
     $c = new ListeControler();
-    $liste = $c->getItem($id);
+    $c->getItem($id);
 
 });
 
