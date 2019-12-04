@@ -10,8 +10,10 @@ class VueCreation
     function afficheCreationListe()
     {
 
+        $token = substr(base64_encode(random_bytes(64)),0,10);
+        $token = strtr($token, '+/', '-_');
         $html = <<<END
-        <form action="" method="post">
+        <form action="validation/$token" method="post">
 
             <h1>Création liste</h1>
             <input type="text" placeholder="Titre" name="titreNouvelleListe"><br>
@@ -29,7 +31,7 @@ END;
     {
 
         $html = <<<END
-        <form action="" method="post">
+        <form action="validation" method="post">
 
             <h1>Création liste</h1>
             <input type="text" placeholder="Titre" name="titreNouvelleListe"><br>
