@@ -17,13 +17,25 @@ class Item extends \Illuminate\Database\Eloquent\Model
     {
         $str = "<div class='item'>
         <div class='num num_item'> $this->id </div>
-        <div class='description'>"
-        . $this->liste()->first()['titre'] . " ($this->liste_id) <br>
+        <div class='description'>";
+
+        if (is_null($this->liste()->first())) {
+
+            $str.= "Pas de liste pour l'item";
+        
+        } else {
+
+            $str.= $this->liste()->first()['titre'];
+
+        } 
+
+        $str.= " ($this->liste_id) <br>
         <h3>$this->nom : $this->descr </h3><br>
         <a href=\"$this->url\" ></a>
         $this->tarif €
         </div><div><img src=\"/MyWishList/img/$this->img\"></img> 
         </div></div>";
+
         return $str;
     }
 }
