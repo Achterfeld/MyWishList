@@ -37,7 +37,7 @@ class VueHome
         <div>
             <h1>Pas besoin de compte ?</h1>
             <br>
-            <a href="./" class="boutton">Mode invité</a>
+            <a href="/MyWishList/liste/creer" class="boutton">Mode invité</a>
         </div>
     </div>
         <div>

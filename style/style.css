@@ -11,11 +11,12 @@ body {
     vertical-align: middle;
     height: 100%;
     overflow-x: hidden;
-    color: white
+    color: #000;
 }
 
 #accueil {
     background: #222836;
+    color: #fff;
 }
 
 #navBarre {
@@ -223,9 +224,17 @@ a.boutton.small {
 .titre {
     font-weight: lighter;
     font-size: 5em;
+    padding-top: 1em;
 }
 
 form {
     background: #222836;
     padding: 1em;
+}
+
+#token {
+    background: #222836;
+    padding: 1em;
+    color: #fff;
+    margin: 1em;
 }
