@@ -15,4 +15,3 @@ class HomeControler {
         $v->render();
     }
 }
-    
