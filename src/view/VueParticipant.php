@@ -70,16 +70,6 @@ class VueParticipant
                 break;
         }
 
-        $header = VueGenerale::renderHeader();
-        $nav = VueGenerale::renderNavBarre();
-
-        $html = <<<END
-                $header
-                $nav
-                $content
-
-END;
-
-        echo $html;
+        VueGenerale::renderPage($content);
     }
 }

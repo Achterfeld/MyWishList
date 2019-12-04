@@ -35,4 +35,21 @@ END;
 return $navBarre;
     }
 
+    static function renderPage($html){
+
+        $header = self::renderHeader();
+        $nav = self::renderNavBarre();
+
+
+        $htmlRender =<<<END
+        
+        $header
+        $nav
+        $html
+
+END;
+
+        echo $htmlRender;
+    }
+
 }

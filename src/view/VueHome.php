@@ -6,15 +6,8 @@ class VueHome
 {
     public function render()
     {
-
-        $header = VueGenerale::renderHeader();
-        $nav = VueGenerale::renderNavBarre();
-
-        $html = <<<END
-        $header
-        $nav
-
-<div>
+        $html=<<<END
+        <div>
     <a href="./liste" > La liste de toutes les listes </a>
 </div>
 
@@ -25,6 +18,7 @@ class VueHome
 <br>
 END;
 
-        echo $html;
+        VueGenerale::renderPage($html);
+
     }
 }
