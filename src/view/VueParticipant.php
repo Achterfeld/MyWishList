@@ -9,6 +9,7 @@ class VueParticipant
     const ALL_LIST_VIEW = 2;
     const ITEM_VIEW = 3;
     const LIST_VIEW = 4;
+    const LIST_VIEW_TOKEN = 5;
 
     private $liste;
 
@@ -39,10 +40,23 @@ class VueParticipant
         return $affiche;
     }
 
-    private function afficheListe()
+    private function afficheListe($token = false)
     {
-        $affiche = "<section>$this->liste</section>";
 
+        if (!is_null($this->liste)) {
+
+            $affiche = "<section>$this->liste";
+
+            if ($token) {
+
+                var_dump($_POST);
+                $affiche .= "<div id='token' > Token à conserver :<br><br>" . $this->liste->token . "</div>";
+            }
+
+            $affiche .= "</section>";
+        }else{
+            $affiche="<section>Aucune liste correspondante</section>";
+        }
         return $affiche;
     }
 
@@ -67,6 +81,9 @@ class VueParticipant
                 break;
             case VueParticipant::ALL_ITEM_VIEW:
                 $content = $this->afficheListeItem();
+                break;
+            case VueParticipant::LIST_VIEW_TOKEN:
+                $content = $this->afficheListe(true);
                 break;
         }
 
