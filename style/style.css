@@ -6,12 +6,16 @@
 
 body {
     padding: 1em;
-    background-color: #FFF;
+    background-color: #fff;
     text-align: center;
     vertical-align: middle;
     height: 100%;
     overflow-x: hidden;
     color: white
+}
+
+#accueil {
+    background: #222836;
 }
 
 #navBarre {
@@ -27,7 +31,6 @@ body {
     margin: 0 1em;
     width: max-content;
 }
-
 
 #navBarre a {
     color: #fff;
@@ -126,8 +129,6 @@ input[type="number"] {
     font-family: sans-serif;
 }
 
-
-
 a {
     color: white;
     text-decoration: none;
@@ -172,7 +173,8 @@ body span {
     border-right: #000 2px solid;
 }
 
-.deuxColonnes div input {
+.deuxColonnes div input,
+div input {
     padding: 1em;
     background: #fff2;
     color: #fff;
@@ -195,6 +197,7 @@ body span {
     display: flex;
     align-items: center;
 }
+
 #topBarre img {
     margin: right;
 }

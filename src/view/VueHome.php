@@ -9,7 +9,7 @@ class VueHome
         $header = VueGenerale::renderHeader();
         $html=<<<END
         $header
-
+<body id="accueil">
         <div id="topBarre">
         <img style="height:20px;width:20px" href="">
         <a class="boutton small" href="">S'inscrire</a>
@@ -49,6 +49,7 @@ class VueHome
 </div>
 
 <br>
+<body>
 END;
 
 echo $html;
