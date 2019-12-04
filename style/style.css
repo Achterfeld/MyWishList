@@ -105,9 +105,108 @@ input[type="number"] {
     text-align: center;
 }
 
-form {
-    width: 30vw;
-    background: #0002;
-    margin: 1em auto;
+
+/*Debut du deuxieme CSS
+*/
+
+* {
+    font-family: sans-serif;
+}
+
+body {
+    text-align: center;
+    vertical-align: middle;
+    background: #222836;
+    height: 100%;
+    overflow-x: hidden;
+    padding-top: 5em;
+    color: white
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.boutton {
+    color: #222836;
+    background: #fff;
+    border-radius: 1em;
+    padding: 1em 2em;
+    margin-top: 3em;
+    border: #fff 2px solid;
+    margin: 0 1em;
+}
+
+.boutton:hover {
+    background: #fff2;
+    color: #fff;
+    transition: 0.5s;
+}
+
+body span {
+    width: 10em;
+    height: 10em;
+    background: rgb(138, 124, 177);
+    position: absolute;
+    clip-path: circle(50% at 50% 50%);
+    z-index: -1;
+}
+
+.deuxColonnes {
+    display: flex;
+    width: 100%;
+}
+
+.deuxColonnes div {
+    padding: 2em;
+    width: 50%;
+}
+
+.deuxColonnes div:nth-of-type(1) {
+    border-right: #000 2px solid;
+}
+
+.deuxColonnes div input {
     padding: 1em;
+    background: #fff2;
+    color: #fff;
+    border: 0;
+    border-bottom: 1px solid #000;
+    font-size: large;
+    width: 90%;
+    margin: 0.5em;
+    border-radius: 1em;
+}
+
+#topBarre {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 3em;
+    vertical-align: middle;
+    justify-content: right;
+    display: flex;
+    align-items: center;
+}
+
+#topBarre a {
+    color: #fff;
+}
+
+.small {
+    height: 75%;
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+a.boutton.small {
+    background: none;
+    border: none
+}
+
+.titre {
+    font-weight: lighter;
+    font-size: 5em;
 }
