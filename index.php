@@ -6,6 +6,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use wishlist\model\Liste;
 use wishlist\model\Item;
 use wishlist\controler\ListeControler;
+use wishlist\controler\HomeControler;
 
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
@@ -54,7 +55,8 @@ $app->get('/item/:id', function ($id) {
 });
 
 $app->get('/', function () {
-    echo "<h1>index</h1>";
+    $c = new HomeControler();
+    $c->getHome();
 });
 
 $app->run();
