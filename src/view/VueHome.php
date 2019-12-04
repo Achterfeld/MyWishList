@@ -12,8 +12,8 @@ class VueHome
 <body id="accueil">
         <div id="topBarre">
         <img style="height:20px;width:20px" href="">
-        <a class="boutton small" href="">S'inscrire</a>
         <a class="boutton small" href="">Se connecter</a>
+        <a class="boutton small" href="">S'inscrire</a>
     </div>
 
 
