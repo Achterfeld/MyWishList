@@ -6,6 +6,7 @@ use \Illuminate\Database\Capsule\Manager as DB;
 use wishlist\model\Liste;
 use wishlist\model\Item;
 use wishlist\view\VueParticipant;
+use wishlist\view\VueCreation;
 
 
 class ListeControler {   
@@ -32,6 +33,11 @@ class ListeControler {
         $l = Liste::where('no','=',$no)->first();
         $v = new VueParticipant($l);
         $v -> render(VueParticipant::LIST_VIEW);
+    }
+
+    public function getCreation(){
+        $v = new VueCreation();
+        $v -> render(VueCreation::LIST);
     }
 }
     
