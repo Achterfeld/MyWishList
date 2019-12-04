@@ -33,7 +33,7 @@ class Item extends \Illuminate\Database\Eloquent\Model
         <h3>$this->nom : $this->descr </h3><br>
         <a href=\"$this->url\" ></a>
         $this->tarif €
-        </div><div><img src=\"/MyWishList/img/$this->img\"></img> 
+        </div><div class='crop'><img src=\"/MyWishList/img/$this->img\"></img> 
         </div></div>";
 
         return $str;
