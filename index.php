@@ -33,6 +33,13 @@ $app->get('/liste/creer', function () {
 
 });
 
+$app->get('/liste/validation/:token', function ($token) {
+    
+    $c = new ListeControler();
+    $c->getResumeListe($token);
+
+});
+
 //Affichage de tous les items
 
 $app->get('/item', function () {
