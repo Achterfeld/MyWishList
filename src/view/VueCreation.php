@@ -11,7 +11,7 @@ class VueCreation
     {
 
         $html = <<<END
-        <form action="test.php" method="post">
+        <form action="" method="post">
 
             <h1>Création liste</h1>
             <input type="text" placeholder="Titre" name="titreNouvelleListe"><br>
@@ -29,7 +29,7 @@ END;
     {
 
         $html = <<<END
-        <form action="test.php" method="post">
+        <form action="" method="post">
 
             <h1>Création liste</h1>
             <input type="text" placeholder="Titre" name="titreNouvelleListe"><br>

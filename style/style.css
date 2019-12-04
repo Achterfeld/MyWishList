@@ -92,6 +92,8 @@ li {
     text-align: left;
 }
 
+
+/*
 input {
     padding: 5px;
     background: #0002
@@ -113,7 +115,7 @@ input[type="number"] {
     background: #0000;
     border: 0;
     border-bottom: 1px solid #0002;
-}
+}*/
 
 #formulaires {
     display: flex;
@@ -174,7 +176,8 @@ body span {
 }
 
 .deuxColonnes div input,
-div input {
+div input,
+form input {
     padding: 1em;
     background: #fff2;
     color: #fff;
@@ -220,4 +223,9 @@ a.boutton.small {
 .titre {
     font-weight: lighter;
     font-size: 5em;
+}
+
+form {
+    background: #222836;
+    padding: 1em;
 }
