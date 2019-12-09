@@ -68,7 +68,7 @@ class VueParticipant
         return "<section>$this->liste</section>";
     }
 
-    private function afficheItemListe() {
+    function afficheItemListe() {
         $content=<<<END
         <section>$this->liste<br>
             <form method="post" action="/reserver">
