@@ -98,8 +98,9 @@ $app->post('/inscription', function () {
 });
 
 // permet de réserver un item dans une liste
-$app->post('/reserver', function() {
-
+$app->post('/reserver/:id/:participant', function($id, $participant) {
+    $c = new ListeControler();
+    $c->reserverItemListe($id, $participant);
 });
 
 $app->run();
