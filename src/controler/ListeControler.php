@@ -17,6 +17,12 @@ class ListeControler {
         $v->render(VueParticipant::ITEM_VIEW);
     }
 
+    public function getItemListe($id, $idItem) {
+        $i = Item::where(['id', '=',$id],['liste_id', '=',$idItem])->first();
+        $v = new VueParticipant($i);
+        $v->render(VueParticipant::LIST_ITEM_VIEW);
+    }
+
     public function getAllListe() {
         $liste = Liste::OrderBy('titre')->get();
         $v = new VueParticipant($liste);
