@@ -33,6 +33,15 @@ $app->get('/liste/creer', function () {
 
 });
 
+$app->post('/liste/validation/:token', function ($token) {
+    
+    $c = new ListeControler();
+    $c->insertListe();
+    $c->getResumeListe($token);
+
+});
+
+
 $app->get('/liste/validation/:token', function ($token) {
     
     $c = new ListeControler();
