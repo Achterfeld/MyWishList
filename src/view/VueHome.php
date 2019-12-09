@@ -11,18 +11,19 @@ class VueHome
         $header
 <body id="accueil">
         <div id="topBarre">
-        <img style="height:20px;width:20px" href="">
+        <img style="height:20px;width:20px" href="../../img/logo.png">
         <a class="boutton small" href="">Se connecter</a>
         <a class="boutton small" href="">S'inscrire</a>
     </div>
 
 
     <H1 class="titre">My Wish List</H1>
+    <img href="/img/logo.png">
 
 
     <div class="deuxColonnes">
         <div>
-            <form>
+            <form method="post" >
                 <h1>S'inscrire</h1>
                 <input type="text" placeholder="Nom" name="Nom" autofocus required ><br>
                 <input type="text" placeholder="Prenom" name="Prenom" required ><br>
