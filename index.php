@@ -89,4 +89,10 @@ $app->get('/', function () {
     $c->getHome();
 });
 
+$app->post('/inscription', function () {
+
+	$c = new IdentifiantControler();
+	$c->insertUser();
+
+});
 $app->run();
