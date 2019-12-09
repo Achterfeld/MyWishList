@@ -70,7 +70,7 @@ $app->get('/liste/:id', function ($id) {
 
 
 //Affichage d'un item (via son no) dans une liste (via son no)
-$app->get('/list/:id/idItem', function ($id) {
+$app->get('/list/:id/:idItem', function ($id) {
     $c = new ListeControler();
     $c->getItemListe($id, $idItem);
 });
