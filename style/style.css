@@ -238,3 +238,8 @@ form {
     color: #fff;
     margin: 1em;
 }
+
+.fBlanc {
+    color: #000;
+    text-decoration: underline;
+}

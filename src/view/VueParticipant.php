@@ -48,14 +48,16 @@ class VueParticipant
             $affiche = "<section>$this->liste";
 
             if ($token) {
-
-                var_dump($_POST);
+//TODO
+//                var_dump($_POST);
                 $affiche .= "<div id='token' > Token à conserver :<br><br>" . $this->liste->token . "</div>";
             }
 
             $affiche .= "</section>";
         }else{
-            $affiche="<section>Aucune liste correspondante</section>";
+            $affiche='<section>Aucune liste correspondante
+            <br>
+            <a class="fBlanc" href="/MyWishList">Retour à l\'accueil</a></section>';
         }
         return $affiche;
     }
