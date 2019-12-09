@@ -71,9 +71,9 @@ $app->get('/liste/:id', function ($id) {
 
 
 //Affichage d'un item (via son no) dans une liste (via son no)
-$app->get('/list/:id/:idItem', function ($id,$idItem) {
+$app->get('/liste/:id/:idItem', function ($id,$idItem) {
     $c = new ListeControler();
-//    $c->getItemListe($id, $idItem);
+    $c->getItemListe($id, $idItem);
 });
 
 //Affichage d'un item via son id
@@ -94,6 +94,11 @@ $app->post('/inscription', function () {
 
 	$c = new IdentifiantControler();
 	$c->insertUser();
+
+});
+
+// permet de réserver un item dans une liste
+$app->post('/reserver', function() {
 
 });
 
