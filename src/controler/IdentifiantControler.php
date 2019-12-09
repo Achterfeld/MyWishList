@@ -4,7 +4,7 @@ namespace wishlist\controler;
 
 use \Illuminate\Database\Capsule\Manager as DB;
 use wishlist\model\User;
-use wishlist\view\Identifiant;
+use wishlist\view\VueIdentifiant;
 
 
 class IdentifiantControler {   
@@ -13,6 +13,6 @@ class IdentifiantControler {
         //$nom, $prenom, $dateNaiss, $email, $hash
         $app = new \Slim\Slim;
 
-        $v = new User() //A FINIR , creer un user avec les tab post
+        $v = new User(); //A FINIR , creer un user avec les tab post
     }
 }

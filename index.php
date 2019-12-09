@@ -7,6 +7,7 @@ use wishlist\model\Liste;
 use wishlist\model\Item;
 use wishlist\controler\ListeControler;
 use wishlist\controler\HomeControler;
+use wishlist\controler\IdentifiantControler;
 
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
