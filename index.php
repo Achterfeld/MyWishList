@@ -88,4 +88,5 @@ $app->post('/inscription', function () {
 	$c->insertUser();
 
 });
+
 $app->run();
