@@ -24,12 +24,12 @@ class VueHome
         <div>
             <form>
                 <h1>S'inscrire</h1>
-                <input type="text" placeholder="Nom" name="Nom"><br>
-                <input type="text" placeholder="Prenom" name="Prenom"><br>
-                <input type="date" placeholder="Date de naissance" name="DNaiss"><br>
-                <input type="email" placeholder="Mail" name="Mail"><br>
-                <input class="boutton" type="submit" value="S'inscrire"></input>
-
+                <input type="text" placeholder="Nom" name="Nom" autofocus required ><br>
+                <input type="text" placeholder="Prenom" name="Prenom" required ><br>
+                <input type="date" placeholder="Date de naissance" name="DNaiss" required ><br>
+                <input type="email" placeholder="Mail" name="Mail" required ><br>
+                <input class="boutton" type="submit" value="S'inscrire" required ></input>
+                <br>
                 <a href="./">Déjà inscrit ?</a>
             </form>
 
@@ -41,11 +41,11 @@ class VueHome
         </div>
     </div>
         <div>
-    <a href="./liste" > La liste de toutes les listes </a>
+    <a href="./liste" > Toutes nos listes </a>
 </div>
 
 <div>
-    <a href="./item" > La liste de tout les items </a>
+    <a href="./item" > Tous nos items </a>
 </div>
 
 <br>
