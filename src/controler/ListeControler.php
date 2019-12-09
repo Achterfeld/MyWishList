@@ -8,45 +8,70 @@ use wishlist\model\Item;
 use wishlist\view\VueParticipant;
 use wishlist\view\VueCreation;
 
+class ListeControler
+{
 
-class ListeControler {   
 
-    public function getItem($id) {
-        $i = Item::where('id','=',$id)->first();
+
+
+    public function getItem($id)
+    {
+        $i = Item::where('id', '=', $id)->first();
         $v = new VueParticipant($i);
         $v->render(VueParticipant::ITEM_VIEW);
     }
 
-    public function getAllListe() {
+    public function getAllListe()
+    {
         $liste = Liste::OrderBy('titre')->get();
         $v = new VueParticipant($liste);
         $v->render(VueParticipant::ALL_LIST_VIEW);
     }
 
-    public function getAllItem() {
+    public function getAllItem()
+    {
         $liste = Item::get();
         $v = new VueParticipant($liste);
         $v->render(VueParticipant::ALL_ITEM_VIEW);
     }
 
-    public function getListe($no) {
-        $l = Liste::where('no','=',$no)->first();
+    public function getListe($no)
+    {
+        $l = Liste::where('no', '=', $no)->first();
         $v = new VueParticipant($l);
-        $v -> render(VueParticipant::LIST_VIEW);
+        $v->render(VueParticipant::LIST_VIEW);
     }
 
-    public function getCreation(){
+    public function getCreation()
+    {
         $v = new VueCreation();
-        $v -> render(VueCreation::LIST);
+        $v->render(VueCreation::LIST);
     }
-    public function getResumeListe($token){
-        
-        //TODO
-        //Insérer la nouvelle liste dans la BDD
-
-        $l = Liste::where('token','=',$token)->first();
+    public function getResumeListe($token)
+    {
+        $l = Liste::where('token', '=', $token)->first();
         $v = new VueParticipant($l);
-        $v -> render(VueParticipant::LIST_VIEW_TOKEN);
+        $v->render(VueParticipant::LIST_VIEW_TOKEN);
+    }
+
+    public function insertListe($token)
+    {
+
+        $app = new \Slim\Slim;
+        $l = new Liste();
+
+        $datas = $app->request();
+
+        $l->user_id = -1;
+
+        //TODO
+        //A ajuster avec un user_id
+
+        $l->expiration = $datas->post("dateLimiteNouvelleListe");
+        $l->titre = $datas->post("titreNouvelleListe");
+        $l->description = $datas->post("descriptionNouvelleListe");
+        $l->token = $token;
+
+        $l->save();
     }
 }
-    
