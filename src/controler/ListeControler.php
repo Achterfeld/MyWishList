@@ -22,7 +22,7 @@ class ListeControler
     }
 
     public function getItemListe($id, $idItem) {
-        $i = Item::where(['id', '=',$id],['liste_id', '=',$idItem])->first();
+        $i = Item::where('id', '=',$id)->where('liste_id', '=',$idItem)->first();
         $v = new VueParticipant($i);
         $v->render(VueParticipant::LIST_ITEM_VIEW);
     }
