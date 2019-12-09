@@ -7,6 +7,7 @@ use wishlist\model\Liste;
 use wishlist\model\Item;
 use wishlist\controler\ListeControler;
 use wishlist\controler\HomeControler;
+use wishlist\controler\IdentifiantControler;
 
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
@@ -36,7 +37,7 @@ $app->get('/liste/creer', function () {
 $app->post('/liste/validation/:token', function ($token) {
     
     $c = new ListeControler();
-    $c->insertListe();
+    $c->insertListe($token);
     $c->getResumeListe($token);
 
 });
@@ -70,9 +71,9 @@ $app->get('/liste/:id', function ($id) {
 
 
 //Affichage d'un item (via son no) dans une liste (via son no)
-$app->get('/list/:id/:idItem', function ($id) {
+$app->get('/list/:id/:idItem', function ($id,$idItem) {
     $c = new ListeControler();
-    $c->getItemListe($id, $idItem);
+//    $c->getItemListe($id, $idItem);
 });
 
 //Affichage d'un item via son id
@@ -95,4 +96,5 @@ $app->post('/inscription', function () {
 	$c->insertUser();
 
 });
+
 $app->run();
