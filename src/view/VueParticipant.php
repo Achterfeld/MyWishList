@@ -71,11 +71,11 @@ class VueParticipant
     private function afficheItemListe() {
         $content=<<<END
         <section>$this->liste<br>
-            <form method="post" action="/inscription">
-                    <input type="checkbox" name="reservation" required ><br>
-                    <input type="text" placeholder="Nom participant" name="participant" required ><br>
-                    <input class="boutton" type="submit" value="Réserver" required ></input>
-                    <br>
+            <form method="post" action="/reserver">
+                <div>Réserver : </div>
+                <input type="checkbox" name="reservation" required ><br>
+                <input type="text" placeholder="Nom participant" name="participant" required ><br>
+                <input class="boutton" type="submit" value="Réserver" required ></input><br>
             </form>
         </section>
 END;
