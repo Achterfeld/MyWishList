@@ -107,4 +107,10 @@ $app->post('/reservation/:id', function($id) {
     $c->getAllListe();
 });
 
+$app->notFound(function () use ($app) {
+    //TODO 
+    //Vue 404
+    echo "<a href='\myWishList'> Retour à l'accueil</a> <br>Pas trouvé";
+});
+
 $app->run();
