@@ -22,7 +22,7 @@ class VueHome
 
     <div class="deuxColonnes">
         <div>
-            <form method="post" action="/inscription">
+            <form method="post" action="/myWishList/inscription">
                 <h1>S'inscrire</h1>
                 <input type="text" placeholder="Nom" name="Nom" autofocus required ><br>
                 <input type="text" placeholder="Prenom" name="Prenom" required ><br>

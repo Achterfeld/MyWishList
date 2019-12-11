@@ -10,6 +10,7 @@ class VueParticipant
     const ITEM_VIEW = 3;
     const LIST_VIEW = 4;
     const LIST_VIEW_TOKEN = 5;
+    const LIST_ITEM_VIEW = 6;
 
     private $liste;
 
@@ -29,7 +30,7 @@ class VueParticipant
         return $affiche;
     }
 
-    private function afficheListeItem()
+    private function afficheListeItems()
     {
         $affiche = "<section>";
         foreach ($this->liste as $UneListe) {
@@ -67,6 +68,20 @@ class VueParticipant
         return "<section>$this->liste</section>";
     }
 
+    function afficheItemListe() {
+        $content=<<<END
+        <section>$this->liste<br>
+            <form method="post" action="/reserver">
+                <div>Réserver : </div>
+                <input type="checkbox" name="reservation" required ><br>
+                <input type="text" placeholder="Nom participant" name="participant" required ><br>
+                <input class="boutton" type="submit" value="Réserver" required ></input><br>
+            </form>
+        </section>
+END;
+        return $content;
+    }
+
     public function render($selecter)
     {
 
@@ -82,10 +97,13 @@ class VueParticipant
                 $content = $this->afficheListe();
                 break;
             case VueParticipant::ALL_ITEM_VIEW:
-                $content = $this->afficheListeItem();
+                $content = $this->afficheListeItems();
                 break;
             case VueParticipant::LIST_VIEW_TOKEN:
                 $content = $this->afficheListe(true);
+                break;
+            case VueParticipant::LIST_ITEM_VIEW:
+                $content = $this->afficheItemListe();
                 break;
         }
 
