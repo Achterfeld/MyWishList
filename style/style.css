@@ -146,6 +146,9 @@ a {
     border: #fff 2px solid;
     margin: 0 1em;
 }
+.bouttonDisabled {
+    background-color: black;
+}
 
 .boutton:hover {
     background: #fff2;

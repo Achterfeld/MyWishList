@@ -12,6 +12,7 @@ CREATE TABLE `item` (
   `img` text,
   `url` text,
   `tarif` decimal(5,2) DEFAULT NULL,
+  `reservation` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
