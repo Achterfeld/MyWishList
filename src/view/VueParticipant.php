@@ -57,7 +57,7 @@ class VueParticipant
         }else{
             $affiche='<section>Aucune liste correspondante
             <br>
-            <a class="fBlanc" href="/MyWishList">Retour à l\'accueil</a></section>';
+            <a class="fBlanc" href="/myWishList">Retour à l\'accueil</a></section>';
         }
         return $affiche;
     }

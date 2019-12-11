@@ -25,7 +25,7 @@ return $header;
     {
         $navBarre=<<<END
         <div id="navBarre"> 
-        <div> <a href="/MyWishList">My Wish List</a></div>
+        <div> <a href="/myWishList">My Wish List</a></div>
         <div style="flex:1"></div>
         <div><a href="./" >Se connecter</a></div>
         <div><a href="./" >S'inscrire</a></div>
