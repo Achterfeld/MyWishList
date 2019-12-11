@@ -91,10 +91,14 @@ $app->get('/', function () {
 });
 
 $app->post('/inscription', function () {
-
 	$c = new IdentifiantControler();
 	$c->insertUser();
+});
 
+$app->get('/inscription', function () {
+	$c = new IdentifiantControler();
+	echo "TODO";
+	//TODO PLUS TARD
 });
 
 

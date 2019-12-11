@@ -60,5 +60,6 @@ CREATE TABLE `user` (
   `dateNaiss` date DEFAULT NULL,
   `mail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `hash` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `salt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
