@@ -21,12 +21,12 @@ class IdentifiantControler {
     	$v->dateNaiss = $datas->post("DNaiss");
     	$v->mail = $datas->post("Mail");
 
-		$salt = substr(base64_encode(random_bytes(64)),0,10);
-        $salt = strtr($salt, '+/', '-_');
+		$salt = random_bytes(32);
+		$salt = bin2hex($salt);
         
         $v->salt = $salt;
-    	$hash1 = md5($datas->post("Passe1").$salt);
-    	$hash2 = md5($datas->post("Passe2").$salt);
+    	$hash1 = password_hash($datas->post("Passe1"), PASSWORD_DEFAULT, ['cost'=> 12, 'salt'=>$salt]);
+    	$hash2 = password_hash($datas->post("Passe2"), PASSWORD_DEFAULT, ['cost'=> 12, 'salt'=>$salt]);
         
         if ($hash1 == $hash2) {
         	$v->hash = $hash1;
