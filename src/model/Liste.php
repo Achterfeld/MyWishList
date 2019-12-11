@@ -27,7 +27,9 @@ class Liste extends \Illuminate\Database\Eloquent\Model
         $itDedans = $this->item()->get();
         $str .= "<ul>";
         foreach ($itDedans as $key => $value) {
-            $str .= "<li>$value->nom</li> ";
+
+
+            $str .= "<li><a class='lienSCouleur' href='/myWishList/reservation/$value->id'>$value->nom</a></li> ";
         }
         $str .= "</ul></div>";
 
