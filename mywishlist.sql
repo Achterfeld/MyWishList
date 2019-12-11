@@ -55,9 +55,7 @@ INSERT INTO `liste` (`no`, `user_id`, `titre`, `description`, `expiration`, `tok
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `prenom` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
-  `dateNaiss` date DEFAULT NULL,
   `mail` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `hash` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
   `salt` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,

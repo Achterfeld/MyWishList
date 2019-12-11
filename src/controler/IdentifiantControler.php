@@ -16,9 +16,7 @@ class IdentifiantControler {
         
         $v = new User();
         
-        $v->nom = $datas->post("Nom");
     	$v->prenom = $datas->post("Prenom");
-    	$v->dateNaiss = $datas->post("DNaiss");
     	$v->mail = $datas->post("Mail");
 
 		$salt = random_bytes(32);

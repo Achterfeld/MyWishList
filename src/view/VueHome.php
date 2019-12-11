@@ -24,9 +24,7 @@ class VueHome
         <div>
             <form method="post" action="/myWishList/inscription">
                 <h1>S'inscrire</h1>
-                <input type="text" placeholder="Nom" name="Nom" autofocus required ><br>
                 <input type="text" placeholder="Prenom" name="Prenom" required ><br>
-                <input type="date" placeholder="Date de naissance" name="DNaiss" required ><br>
                 <input type="email" placeholder="Mail" name="Mail" required ><br>
                 <input type="password" placeholder="Mot de passe" name="Passe1" required ><br>
                 <input type="password" placeholder="Confirmation mot de passe" name="Passe2" required ><br>
