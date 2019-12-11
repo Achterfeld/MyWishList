@@ -70,10 +70,10 @@ $app->get('/liste/:id', function ($id) {
 });
 
 
-//Affichage d'un item (via son no) dans une liste (via son no)
-$app->get('/liste/:id/:idItem', function ($id,$idItem) {
+//Affichage d'un item (via son no) 
+$app->get('/item/reservation/:idItem', function ($idItem) {
     $c = new ListeControler();
-    $c->getItemListe($id, $idItem);
+    $c->getItemListe($idItem);
 });
 
 //Affichage d'un item via son id
@@ -93,12 +93,18 @@ $app->get('/', function () {
 $app->post('/inscription', function () {
 	$c = new IdentifiantControler();
 	$c->insertUser();
+    $c->getConnexion();
 });
 
 $app->get('/inscription', function () {
 	$c = new IdentifiantControler();
-	echo "TODO";
-	//TODO PLUS TARD
+	$c->getConnexion();
+});
+
+$app->post('/reservation/:id', function($id) {
+    $c = new ListeControler();
+    $c->addRes($id);
+    $c->getAllListe();
 });
 
 $app->notFound(function () use ($app) {
@@ -106,6 +112,5 @@ $app->notFound(function () use ($app) {
     //Vue 404
     echo "<a href='\myWishList'> Retour à l'accueil</a> <br>Pas trouvé";
 });
-
 
 $app->run();

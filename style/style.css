@@ -147,6 +147,10 @@ a {
     margin: 0 1em;
 }
 
+.bouttonDisabled {
+    background-color: black;
+}
+
 .boutton:hover {
     background: #fff2;
     color: #fff;
@@ -247,4 +251,11 @@ form {
 .lienSCouleur {
     color: #000;
     text-decoration: none;
+}
+
+#connexion {
+    background: #222836;
+    color: #fff;
+    padding-left: 30%;
+    padding-right: 30%;
 }

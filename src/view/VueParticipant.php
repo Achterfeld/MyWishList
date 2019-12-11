@@ -68,18 +68,26 @@ class VueParticipant
         return "<section>$this->liste</section>";
     }
 
-    function afficheItemListe() {
+    function afficheItemListe($idList, $r) {
+        if ($r) {
+            $state = "required";
+            $class = "boutton";
+        }
+        else {
+            $state = "disabled";
+            $class = "bouttonDisabled";
+        }
         $content=<<<END
         <section>$this->liste<br>
-            <form method="post" action="/reserver">
+            <form method="post" action="/myWishList/reservation/$idList">
                 <div>Réserver : </div>
-                <input type="checkbox" name="reservation" required ><br>
-                <input type="text" placeholder="Nom participant" name="participant" required ><br>
-                <input class="boutton" type="submit" value="Réserver" required ></input><br>
+                <input type="checkbox" name="reservation" $state ><br>
+                <input type="text" placeholder="Nom participant" name="participant" $state ><br>
+                <input class="$class" type="submit" value="Réserver" $state ></input><br>
             </form>
         </section>
 END;
-        return $content;
+        VueGenerale::renderPage($content);
     }
 
     public function render($selecter)

@@ -21,10 +21,14 @@ class ListeControler
         $v->render(VueParticipant::ITEM_VIEW);
     }
 
-    public function getItemListe($id, $idItem) {
-        $i = Item::where('id', '=',$id)->where('liste_id', '=',$idItem)->first();
+    public function getItemListe($idItem) {
+        $i = Item::where('id', '=',$idItem)->first();
+        if (is_null($i->reservation))
+            $r = true;
+        else
+            $r = false;
         $v = new VueParticipant($i);
-        $v->render(VueParticipant::LIST_ITEM_VIEW);
+        $v->afficheItemListe($idItem, $r);
     }
 
     public function getAllListe() {
@@ -77,6 +81,14 @@ class ListeControler
         $l->token = $token;
 
         $l->save();
+    }
+
+    public function addRes($id) {
+        $app = new \Slim\Slim;
+        $i = Item::where('id', '=', $id)->first();
+
+        $i->reservation = $app->request()->post("participant");
+        $i->save();
     }
 
 }
