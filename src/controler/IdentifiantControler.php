@@ -5,7 +5,7 @@ namespace wishlist\controler;
 use \Illuminate\Database\Capsule\Manager as DB;
 use wishlist\model\User;
 use wishlist\view\VueIdentifiant;
-
+use wishlist\view\VueConnexion;
 
 class IdentifiantControler {   
 
@@ -31,5 +31,10 @@ class IdentifiantControler {
         }
 
         $v->save();
+    }
+
+    public function getConnexion() {
+    	$v = new VueConnexion();
+        $v->render();
     }
 }

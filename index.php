@@ -93,12 +93,12 @@ $app->get('/', function () {
 $app->post('/inscription', function () {
 	$c = new IdentifiantControler();
 	$c->insertUser();
+    $c->getConnexion();
 });
 
 $app->get('/inscription', function () {
 	$c = new IdentifiantControler();
-	echo "TODO";
-	//TODO PLUS TARD
+	$c->getConnexion();
 });
 
 

@@ -243,3 +243,10 @@ form {
     color: #000;
     text-decoration: underline;
 }
+
+#connexion {
+    background: #222836;
+    color: #fff;
+    padding-left: 30%; 
+    padding-right: 30%;
+}
