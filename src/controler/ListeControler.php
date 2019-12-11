@@ -80,7 +80,4 @@ class ListeControler
         $l->save();
     }
 
-    public function reserverItemListe($id, $particiapnt) {
-        
-    }
 }
