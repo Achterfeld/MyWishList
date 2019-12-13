@@ -28,7 +28,7 @@ class VueHome
                 <input type="password" placeholder="Confirmation mot de passe" name="Passe2" required ><br>
                 <input class="boutton" type="submit" value="S'inscrire" required ></input>
                 <br>
-                <a href="./">Déjà inscrit ?</a>
+                <a href="/myWishList/inscription">Déjà inscrit ?</a>
             </form>
 
         </div>
