@@ -29,7 +29,7 @@ class Liste extends \Illuminate\Database\Eloquent\Model
         foreach ($itDedans as $key => $value) {
 
 
-            $str .= "<li><a class='lienSCouleur' href='/myWishList/reservation/$value->id'>$value->nom</a></li> ";
+            $str .= "<li><a class='lienSCouleur' href='/myWishList/item/reservation/$value->id'>$value->nom</a></li> ";
         }
         $str .= "</ul></div>";
 
