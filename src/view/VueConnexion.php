@@ -22,6 +22,12 @@ class VueConnexion
             </form>
 
         </div>
+        <br>
+        <a href="/myWishList/liste" class="boutton">Se connecter</a>
+        <br>
+        <br>
+        <br>
+        <br>
         <div>
             <h1>Pas besoin de compte ?</h1>
             <br>
