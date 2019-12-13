@@ -11,9 +11,7 @@ class VueHome
         $header
 <body id="accueil">
         <div id="topBarre">
-        <img style="height:50px;width:50px" src="img/logo.png">
-        <a class="boutton small" href="">Se connecter</a>
-        <a class="boutton small" href="">S'inscrire</a>
+        <a class="boutton small" href="/myWishList/inscription">Se connecter</a>
     </div>
 
 
@@ -42,7 +40,7 @@ class VueHome
         </div>
     </div>
         <div>
-    <a href="./liste" > Toutes nos listes </a>
+    <a href="./liste" > Toutes nos listes </a> 
 </div>
 
 <div>
