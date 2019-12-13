@@ -8,6 +8,8 @@ use wishlist\model\Item;
 use wishlist\controler\ListeControler;
 use wishlist\controler\HomeControler;
 use wishlist\controler\IdentifiantControler;
+use wishlist\controler\notFoundControler;
+use wishlist\view\VueGenerale;
 
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
@@ -110,7 +112,10 @@ $app->post('/reservation/:id', function($id) {
 $app->notFound(function () use ($app) {
     //TODO 
     //Vue 404
-    echo "<a href='\myWishList'> Retour à l'accueil</a> <br>Pas trouvé";
+
+    $c = new notFoundControler();
+    $c->get404();
+    
 });
 
 $app->run();
