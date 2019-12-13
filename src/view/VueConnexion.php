@@ -11,7 +11,7 @@ class VueConnexion
         $header
 <body id="connexion">
 
-    <img style="height:200px;width:200px" src="img/logo.png">
+    <a href="/myWishList"><img style="height:200px;width:200px" src="img/logo.png"></a>
 
 
         <div>
@@ -34,7 +34,19 @@ class VueConnexion
             <br>
             <a href="/myWishList/liste/creer" class="boutton">Mode invité</a>
         </div>
+
+        
 <br>
+
+
+<div>
+<br>
+<br>
+<br>
+
+<a href="/myWishList class="boutton">Retour à l'accueil</a>
+<br>
+</div>
 <body>
 END;
 
