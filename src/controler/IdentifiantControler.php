@@ -19,18 +19,15 @@ class IdentifiantControler {
     	$v->prenom = $datas->post("Prenom");
     	$v->mail = $datas->post("Mail");
 
-		$salt = random_bytes(32);
-		$salt = bin2hex($salt);
+    	$hash1 = password_hash($datas->post("Passe1"), PASSWORD_DEFAULT, ['cost'=> 12]);
         
-        $v->salt = $salt;
-    	$hash1 = password_hash($datas->post("Passe1"), PASSWORD_DEFAULT, ['cost'=> 12, 'salt'=>$salt]);
-    	$hash2 = password_hash($datas->post("Passe2"), PASSWORD_DEFAULT, ['cost'=> 12, 'salt'=>$salt]);
-        
-        if ($hash1 == $hash2) {
+        if (password_verify($datas->post("Passe2"),$hash1)) {
         	$v->hash = $hash1;
+            $v->save();
         }
+        else
+            echo "republicas bananas";
 
-        $v->save();
     }
 
     public function getConnexion() {
