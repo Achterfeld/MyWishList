@@ -12,7 +12,7 @@ CREATE TABLE `item` (
   `img` text,
   `url` text,
   `tarif` decimal(5,2) DEFAULT NULL,
-  `reservation` text,
+  `reservation` bool DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -51,7 +51,8 @@ CREATE TABLE `liste` (
 INSERT INTO `liste` (`no`, `user_id`, `titre`, `description`, `expiration`, `token`) VALUES
 (1,	1,	'Pour fêter le bac !',	'Pour un week-end à Nancy qui nous fera oublier les épreuves. ',	'2018-06-27',	'nosecure1'),
 (2,	2,	'Liste de mariage d\'Alice et Bob',	'Nous souhaitons passer un week-end royal à Nancy pour notre lune de miel :)',	'2018-06-30',	'nosecure2'),
-(3,	3,	'C\'est l\'anniversaire de Charlie',	'Pour lui préparer une fête dont il se souviendra :)',	'2017-12-12',	'nosecure3');
+(3,	3,	'C\'est l\'anniversaire de Charlie',	'Pour lui préparer une fête dont il se souviendra :)',	'2017-12-12',	'nosecure3'),
+(4,	1,	'BlaBla',	'Bla',	'2018-06-30',	'nosecure4');
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -61,3 +62,8 @@ CREATE TABLE `user` (
   `hash` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `user` (`prenom`, `mail`, `hash`) VALUES
+('Guillaume','g@gmail.com',"hashBidon1"),
+('Mateo','m@gmail.com',"hashBidon2"),
+('Tom','t@gmail.com',"hashBidon3");
