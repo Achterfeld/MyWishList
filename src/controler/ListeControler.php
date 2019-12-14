@@ -75,7 +75,8 @@ class ListeControler
         $l->user_id = -1;
 
         //TODO
-        //A ajuster avec un user_id
+        //A ajuster avec un user_id (via la session par ex)
+        
         $l->expiration = filter_var($datas->post("dateLimiteNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS);
         $l->titre = substr(filter_var($datas->post("titreNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS),0,256);
         $l->description = filter_var($datas->post("descriptionNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS);
