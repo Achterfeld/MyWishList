@@ -49,14 +49,14 @@ class VueParticipant
             $affiche = "<section>$this->liste";
 
             if ($token) {
-//TODO
-//                var_dump($_POST);
+                //TODO
+                // ???
                 $affiche .= "<div id='token' > Token à conserver :<br><br>" . $this->liste->token . "</div>";
             }
 
             $affiche .= "</section>";
-        }else{
-            $affiche='<section>Aucune liste correspondante
+        } else {
+            $affiche = '<section>Aucune liste correspondante
             <br>
             <a class="fBlanc" href="/myWishList">Retour à l\'accueil</a></section>';
         }
@@ -68,16 +68,16 @@ class VueParticipant
         return "<section>$this->liste</section>";
     }
 
-    function afficheItemListe($idList, $r) {
+    function afficheItemListe($idList, $r)
+    {
         if ($r) {
             $state = "required";
             $class = "boutton";
-        }
-        else {
+        } else {
             $state = "disabled";
             $class = "bouttonDisabled";
         }
-        $content=<<<END
+        $content = <<<END
         <section>$this->liste<br>
             <form method="post" action="/myWishList/reservation/$idList">
                 <div>Réserver : </div>
