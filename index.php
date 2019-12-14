@@ -9,6 +9,7 @@ use wishlist\controler\ListeControler;
 use wishlist\controler\HomeControler;
 use wishlist\controler\IdentifiantControler;
 use wishlist\controler\notFoundControler;
+use wishlist\controler\pagePersoControler;
 use wishlist\view\VueGenerale;
 
 $db = new DB();
@@ -26,6 +27,13 @@ $app->get('/liste', function () {
     
     $c = new ListeControler();
     $c->getAllListe();
+
+});
+
+$app->get('/pagePerso', function () {
+    
+    $c = new pagePersoControler();
+    $c->getPPerso();
 
 });
 
@@ -121,8 +129,7 @@ $app->post('/reservation/:id', function($id) {
 });
 
 $app->notFound(function () use ($app) {
-    //TODO 
-    //Vue 404
+
 
     $c = new notFoundControler();
     $c->get404();
