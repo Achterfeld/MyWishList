@@ -7,6 +7,7 @@ use wishlist\model\Liste;
 use wishlist\model\Item;
 use wishlist\view\VueParticipant;
 use wishlist\view\VueCreation;
+use wishlist\view\VueModification;
 
 class ListeControler
 {
@@ -89,6 +90,32 @@ class ListeControler
 
         $i->reservation = $app->request()->post("participant");
         $i->save();
+    }
+
+
+    public function modifierListe($no,$token){
+
+        $app = new \Slim\Slim;
+        $l = Liste::where([['no', '=', $no],['token','=',$token]])->first();
+
+        $v = new VueModification();
+        $v->render(VueModification::LIST,$l);
+
+    }
+
+	public function validerListe($no,$token){
+        
+        $app = new \Slim\Slim;
+        $l = Liste::where([['no', '=', $no],['token','=',$token]])->first();
+
+        $datas = $app->request();
+
+        $l->expiration = filter_var($datas->post("dateLimiteNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS);
+        $l->titre = substr(filter_var($datas->post("titreNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS),0,256);
+        $l->description = filter_var($datas->post("descriptionNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS);
+        
+        $l->save();
+
     }
 
 }

@@ -103,6 +103,17 @@ $app->get('/inscription', function () {
 	$c->getConnexion();
 });
 
+$app->get('/modification/liste/:id/:token', function ($id, $token) {
+	$c = new ListeControler();
+	$c->modifierListe($id,$token);
+});
+
+$app->post('/modification/liste/:id/:token', function ($id, $token) {
+	$c = new ListeControler();
+	$c->validerListe($id,$token);
+    $c->getResumeListe($token);
+});
+
 $app->post('/reservation/:id', function($id) {
     $c = new ListeControler();
     $c->addRes($id);
