@@ -14,7 +14,7 @@ Pour installer l'application sur une machine :
 
 ## URL vers webetu :
 
-[Lien vers myWishList](webetu.iutnc.univ-lorraine.fr/www/keller73u/myWishList)
+[Lien vers myWishList](https://webetu.iutnc.univ-lorraine.fr/www/keller73u/myWishList)
 
 ## Liste des fonctionnalités
 
