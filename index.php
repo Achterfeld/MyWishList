@@ -106,7 +106,7 @@ $app->post('/inscription', function () {
     $c->getConnexion();
 });
 
-$app->get('/inscription', function () {
+$app->get('/connexion', function () {
 	$c = new IdentifiantControler();
 	$c->getConnexion();
 });
