@@ -53,7 +53,7 @@ class VuePagePerso
 <body id="accueil">
 $navBarre
 <div class="section" id="infoCompte">
-        <img id="profilPic" src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png">
+        <img id="profilPic" src="img/profil.png">
         <div id="infos">
             <ul>
                 <li>

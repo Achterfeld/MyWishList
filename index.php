@@ -20,6 +20,7 @@ $db->bootEloquent();
 
 $app = new \Slim\Slim;
 
+session_start();
 
 //Affichage de toutes les listes
 
@@ -106,7 +107,7 @@ $app->post('/inscription', function () {
     $c->getConnexion();
 });
 
-$app->get('/inscription', function () {
+$app->get('/connexion', function () {
 	$c = new IdentifiantControler();
 	$c->getConnexion();
 });
@@ -128,7 +129,7 @@ $app->post('/reservation/:id', function($id) {
     $c->getAllListe();
 });
 
-$app->notFound(function () use ($app) {
+$app->notFound(function() use ($app) {
 
 
     $c = new notFoundControler();
