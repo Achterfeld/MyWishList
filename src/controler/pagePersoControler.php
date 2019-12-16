@@ -16,10 +16,10 @@ class pagePersoControler {
 
         //TODO
         //Utiliser le user_id retenu dans la session
-        
-        $u = User::where('user_id','=','1')->first();
-
-        $v->vuePPerso($u);
+        if (isset($_SESSION['user_id'])) {
+			$u = User::where('user_id','=',$_SESSION['session']['user_id'])->first();
+	        $v->vuePPerso($u);
+        }
 //        $v->render();
     }
 }
