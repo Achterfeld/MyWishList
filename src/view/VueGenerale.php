@@ -23,7 +23,7 @@ return $header;
 
     static function renderNavBarre()
     {
-        if (isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['session'])) {
             $co = '<div><a href="myWishList/pagePerso"> Page perso</a></div>';
         } else {
             $co = '<div><a href="./connexion" >Se connecter</a></div>';
