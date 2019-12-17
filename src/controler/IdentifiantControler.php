@@ -6,12 +6,13 @@ use \Illuminate\Database\Capsule\Manager as DB;
 use wishlist\model\User;
 use wishlist\view\VueIdentifiant;
 use wishlist\view\VueConnexion;
+use wishlist\authentification\Authentification;
 
 class IdentifiantControler {   
 
     public function insertUser() {
 
-        $app = new \Slim\Slim;
+        /*$app = new \Slim\Slim;
         $datas = $app->request();
         
         $v = new User();
@@ -26,7 +27,10 @@ class IdentifiantControler {
             $v->save();
         }
         else
-            echo "republicas bananas";
+            echo "republicas bananas";*/
+        $app = new \Slim\Slim;
+        $datas = $app->request();
+        Authentification::createUser($datas->post("Prenom"),$datas->post("Passe1"),$datas->post("Passe2"),$datas->post("Mail"));
 
     }
 
