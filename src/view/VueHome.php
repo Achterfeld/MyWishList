@@ -11,7 +11,7 @@ class VueHome
         $header
 <body id="accueil">
         <div id="topBarre">
-        <a class="boutton small" href="/myWishList/inscription">Se connecter</a>
+        <a class="boutton small" href="/myWishList/connexion">Se connecter</a>
     </div>
 
 
