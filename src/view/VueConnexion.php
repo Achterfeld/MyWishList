@@ -15,17 +15,16 @@ class VueConnexion
 
 
         <div>
-            <form method="post" action="/myWishList/inscription">
+            <form method="post" action="/myWishList/pagePerso">
                 <h1>Se connecter</h1>
                 <input type="email" placeholder="Mail" name="Mail" required ><br>
                 <input type="password" placeholder="Mot de passe" name="Passe" required ><br>
+                <input class="boutton" type="submit" value="Se connecter" required ></input>
+
+
             </form>
 
         </div>
-        <br>
-        <a href="/myWishList/liste" class="boutton">Se connecter</a>
-        <br>
-        <br>
         <br>
         <br>
         <div>

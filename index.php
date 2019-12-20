@@ -32,9 +32,16 @@ $app->get('/liste', function () {
 });
 
 $app->get('/pagePerso', function () {
-    
+
     $c = new pagePersoControler();
     $c->getPPerso();
+
+});
+
+
+$app->post('/pagePerso', function () {
+    $c = new pagePersoControler();
+    $c->connexion();
 
 });
 

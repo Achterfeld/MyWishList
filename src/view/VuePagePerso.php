@@ -7,7 +7,7 @@ use wishList\model\User;
 class VuePagePerso
 {
 
-    public function vuePPerso($u)
+    public function render($u)
     {
 
         $header = VueGenerale::renderHeader();

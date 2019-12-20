@@ -7,6 +7,7 @@ use wishlist\model\Liste;
 use wishlist\model\Item;
 use wishlist\model\User;
 use wishlist\view\VuePagePerso;
+use wishlist\authentification\Authentification;
 
 
 class pagePersoControler {   
@@ -16,10 +17,24 @@ class pagePersoControler {
 
         //TODO
         //Utiliser le user_id retenu dans la session
-        if (isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['session'])) {
 			$u = User::where('user_id','=',$_SESSION['session']['user_id'])->first();
 	        $v->vuePPerso($u);
-        }
-//        $v->render();
+        } 
+        $v->render($u);
+    }
+
+    public function connexion() {
+    	try {
+    		$app = new \Slim\Slim;
+        	$datas = $app->request();
+        	Authentification::authenticate($datas->post("Mail"),$datas->post("Passe"));
+        	$u = User::where('mail','=',$datas->post("Mail"))->first();
+        	Authentification::loadProfile($u);
+        	getPPerso();
+    	} catch(AuthException $ae) {
+
+    		echo "Email ou mot de passe invalide<br>";
+    	}
     }
 }

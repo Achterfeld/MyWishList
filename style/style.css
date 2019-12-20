@@ -59,6 +59,7 @@ li {
     width: 98%;
     display: block;
     max-height: 15em;
+    object-fit: cover;
 }
 
 .crop {
