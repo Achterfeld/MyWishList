@@ -15,8 +15,6 @@ class pagePersoControler {
     public function getPPerso() {
         $v = new VuePagePerso();
 
-        //TODO
-        //Utiliser le user_id retenu dans la session
         if (isset($_SESSION['session'])) {
 			$u = User::where('user_id','=',$_SESSION['session']['user_id'])->first();
             $v = new vuePagePerso();

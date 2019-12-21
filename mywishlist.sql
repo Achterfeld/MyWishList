@@ -60,6 +60,8 @@ CREATE TABLE `user` (
   `prenom` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `mail` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `hash` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `droit` int(1) COLLATE utf8_unicode_ci DEFAULT NULL,
+
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

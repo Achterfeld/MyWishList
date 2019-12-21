@@ -19,6 +19,7 @@ class Authentification {
 			$u->prenom=$prenom;
 			$u->mail=$mail;
         	$u->hash = $hash1;
+        	$u->droit = 2;
             $u->save();
         }
         else 
