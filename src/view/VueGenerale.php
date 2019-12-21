@@ -24,9 +24,9 @@ return $header;
     static function renderNavBarre()
     {
         if (isset($_SESSION['session'])) {
-            $co = '<div><a href="./pagePerso">'.$_SESSION['session']['prenom'].'</a></div>';
+            $co = '<div><a href="/myWishList/pagePerso">'.$_SESSION['session']['prenom'].'</a></div>';
         } else {
-            $co = '<div><a href="./connexion" >Se connecter</a></div>';
+            $co = '<div><a href="/myWishList/connexion" >Se connecter</a></div>';
         }
 
         $navBarre=<<<END
