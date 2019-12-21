@@ -19,9 +19,9 @@ class pagePersoControler {
         //Utiliser le user_id retenu dans la session
         if (isset($_SESSION['session'])) {
 			$u = User::where('user_id','=',$_SESSION['session']['user_id'])->first();
-	        $v->vuePPerso($u);
-        } 
-        $v->render($u);
+            $v = new vuePagePerso();
+            $v->render($u);
+        }
     }
 
     public function connexion() {
@@ -30,8 +30,8 @@ class pagePersoControler {
         	$datas = $app->request();
         	Authentification::authenticate($datas->post("Mail"),$datas->post("Passe"));
         	$u = User::where('mail','=',$datas->post("Mail"))->first();
-        	Authentification::loadProfile($u);
-        	getPPerso();
+        	Authentification::loadProfile($u->user_id);
+        	$this->getPPerso();
     	} catch(AuthException $ae) {
 
     		echo "Email ou mot de passe invalide<br>";
