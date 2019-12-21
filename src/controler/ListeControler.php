@@ -57,6 +57,7 @@ class ListeControler
         $v = new VueCreation();
         $v->render(VueCreation::LIST);
     }
+
     public function getResumeListe($token)
     {
         $l = Liste::where('token', '=', $token)->first();
@@ -72,11 +73,12 @@ class ListeControler
 
         $datas = $app->request();
 
-        $l->user_id = -1;
+        if (isset($_SESSION['session'])) {
+            $l->user_id = $_SESSION['session']['user_id'];
+        } else {
+            $l->user_id = -1;   
+        }
 
-        //TODO
-        //A ajuster avec un user_id (via la session par ex)
-        
         $l->expiration = filter_var($datas->post("dateLimiteNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS);
         $l->titre = substr(filter_var($datas->post("titreNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS),0,256);
         $l->description = filter_var($datas->post("descriptionNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS);

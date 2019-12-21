@@ -75,6 +75,10 @@ $navBarre
         </ul>
 
     </div>
+    <br>
+    <br>
+    <a href="/myWishList/liste/creer" class="boutton">Créer une liste</a>
+
 </body>
 
 END;

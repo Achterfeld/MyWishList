@@ -45,6 +45,7 @@ $app->post('/pagePerso', function () {
 
 });
 
+//Pour les invités
 $app->get('/liste/creer', function () {
     
     $c = new ListeControler();
