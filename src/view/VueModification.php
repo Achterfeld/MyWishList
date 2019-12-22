@@ -18,7 +18,7 @@ class VueModification
         $visibilite = $this->genererVisibilite($modif);
 
         $html = <<<END
-        <form action="$token" method="post">
+        <form action="$token" method="post" class="formulaire">
 
             <h1>Modification liste</h1>
             <input type="text" value="$titre" placeholder="Titre" name="titreNouvelleListe"><br>
@@ -45,11 +45,11 @@ END;
         <label>Visibilité de la liste :</label>
 
         <div>
-            <input type="radio" value="privé" name="visibilité" $public>
+            <input type="radio" value="0" name="visib" $public>
             <label for="privé">Privée</label>
         </div>
         <div>
-            <input type="radio" value="public" name="visibilité" $prive>
+            <input type="radio" value="1" name="visib" $prive>
             <label for="public">Publique</label>
         </div>
 END;
@@ -63,7 +63,7 @@ return $txt;
     {
 
         $html = <<<END
-        <form action="./" method="post">
+        <form action="./" method="post" class="formulaire">
 
             <h1>Création liste</h1>
             <input type="text" placeholder="Titre" name="titreNouvelleListe"><br>
