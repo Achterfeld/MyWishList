@@ -27,17 +27,20 @@ END;
         return $html;
     }
 
-    function afficheCreationItem()
+    function afficheCreationItem($token,$no)
     {
 
         $html = <<<END
-        <form action="validation" method="post" class="formulaire">
+        <form action="/myWishList/validation/item" method="post" class="formulaire">
 
-            <h1>Création liste</h1>
-            <input type="text" placeholder="Titre" name="titreNouvelleListe"><br>
-            <input type="text" placeholder="Description" name="descriptionNouvelleListe"><br>
-            <input type="text" placeholder="Titre" name="titreNouvelleListe"><br> Limite de validité : <input type="date" name="dateLimiteNouvelleListe"><br>
-            <input type="submit" value="Ajouter une liste"></input>
+            <h1>Ajout d'un item</h1>
+            <input type="text" name="tokenListe" value=$token required readonly><br>
+            <input type="text" name="noListe" value=$no required readonly><br>
+            <input type="text" name="nomItem" placeholder="Nom" required><br>
+            <input type="text" name="descriptionItem" placeholder="Description" required><br>
+            <input type="number" name="prixItem" min="0.01" max="99999.99" step="any" placeholder="Prix" required><br>
+            <input type="url" name="URL" placeholder="Page de description ? (optionnel)"><br>
+            <input type="submit" value="Ajouter l'objet dans la liste" required></input>
 
         </form>
 
@@ -47,7 +50,7 @@ END;
 
 
 
-    function render($selecter)
+    function render($selecter, $token="",$no="")
     {
         switch ($selecter) {
 
@@ -55,7 +58,7 @@ END;
                 $content = $this->afficheCreationListe();
                 break;
             case self::ITEM:
-                $content = $this->afficheCreationItem();
+                $content = $this->afficheCreationItem($token,$no);
                 break;
         }
 

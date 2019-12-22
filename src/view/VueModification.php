@@ -31,6 +31,13 @@ class VueModification
 
         </form>
 
+        <br>
+
+        <form class='formulaire'>
+            <a href="/myWishList/item/ajout/$no/$token"> <h1>+</h1> Ajouter un item dans la liste</a>
+        </form>
+
+
 END;
         return $html;
     }
