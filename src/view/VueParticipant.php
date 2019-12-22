@@ -73,21 +73,27 @@ END;
         return "<section>$this->liste</section>";
     }
 
-    function afficheItemListe($idList, $r)
+    function afficheItemListe($i)
     {
+        
+        $reserv = $i->reservation;
+        $idItem = $i->id;
 
-        $state = $r ? "disabled" : "required";
-        $class = $r ? "bouttonDisabled" : "boutton";
+
+
+        $state = !is_null($reserv) ? "disabled" : "required";
+        $class = !is_null($reserv) ? "bouttonDisabled" : "boutton";
+        $txt = !is_null($reserv) ? "Cet item est déjà réservé" : "Réserver";
         
         $nom=isset($_SESSION['session'])?$_SESSION['session']['prenom']:"''";
      
         $content = <<<END
         <section>$this->liste<br>
-            <form method="post" action="/myWishList/reservation/$idList">
+            <form method="post" action="/myWishList/reservation/$idItem">
                 <div>Réserver : </div>
                 <input type="checkbox" name="reservation" $state ><br>
                 <input type="text" placeholder="Nom participant" name="participant" value=$nom $state ><br>
-                <input class="$class" type="submit" value="Réserver" $state ></input><br>
+                <input class="$class" type="submit" value="$txt" $state ></input><br>
             </form>
         </section>
 END;
@@ -113,10 +119,10 @@ END;
                 break;
             case VueParticipant::LIST_VIEW_TOKEN:
                 $content = $this->afficheListe(true);
-                break;
+                break;/*
             case VueParticipant::LIST_ITEM_VIEW:
                 $content = $this->afficheItemListe();
-                break;
+                break;*/
         }
 
         VueGenerale::renderPage($content);
