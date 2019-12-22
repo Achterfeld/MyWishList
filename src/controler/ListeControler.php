@@ -45,9 +45,9 @@ class ListeControler
         $v->render(VueParticipant::ALL_ITEM_VIEW);
     }
 
-    public function getListe($no)
+    public function getListe($no, $token)
     {
-        $l = Liste::where('no', '=', $no)->first();
+        $l = Liste::where([['no', '=', $no],['token', '=', $token]])->first();
         $v = new VueParticipant($l);
         $v->render(VueParticipant::LIST_VIEW);
     }
@@ -116,7 +116,7 @@ class ListeControler
         $l->expiration = filter_var($datas->post("dateLimiteNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS);
         $l->titre = substr(filter_var($datas->post("titreNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS),0,256);
         $l->description = filter_var($datas->post("descriptionNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS);
-        
+        $l->public = $datas->post("visib");
         $l->save();
 
     }
