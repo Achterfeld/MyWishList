@@ -41,7 +41,9 @@ END;
         $str .= "<ul>";
         foreach ($itDedans as $key => $value) {
 
-            $str .= "<li><a class='lienSCouleur' href='/myWishList/item/reservation/$value->id'>$value->nom</a></li> ";
+            $reserv = !is_null($value->reservation) ? "✔️" : "❌";
+
+            $str .= "<li><a class='lienSCouleur' href='/myWishList/item/reservation/$value->id'>$value->nom $reserv</a></li> ";
         }
         $str .= "</ul></div>";
 
