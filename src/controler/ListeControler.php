@@ -26,10 +26,6 @@ class ListeControler
 
     public function getItemListe($idItem) {
         $i = Item::where('id', '=',$idItem)->first();
-        if (is_null($i->reservation))
-            $r = true;
-        else
-            $r = false;
         $v = new VueParticipant($i);
         $v->afficheItemListe($i);
     }
@@ -93,7 +89,9 @@ class ListeControler
         $app = new \Slim\Slim;
         $i = Item::where('id', '=', $id)->first();
 
-        $i->reservation = $app->request()->post("participant");
+        $i->reservation = filter_var($app->request()->post("participant"),FILTER_SANITIZE_SPECIAL_CHARS);
+        $i->reservation = substr(filter_var($app->request()->post("message"),FILTER_SANITIZE_SPECIAL_CHARS),0,256);
+
         $i->save();
     }
 
