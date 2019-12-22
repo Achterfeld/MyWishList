@@ -6,11 +6,22 @@ use \Illuminate\Database\Capsule\Manager as DB;
 use wishlist\model\User;
 use wishlist\view\VueIdentifiant;
 use wishlist\view\VueConnexion;
+use wishlist\view\VueDeconnexion;
 use wishlist\authentification\Authentification;
 
-class IdentifiantControler {   
+class IdentifiantControler
+{
 
-    public function insertUser() {
+    public function pageDeconnexion()
+    {
+
+        Authentification::disconnect();
+        $v = new VueDeconnexion();
+        $v->render();
+    }
+
+    public function insertUser()
+    {
 
         /*$app = new \Slim\Slim;
         $datas = $app->request();
@@ -30,12 +41,12 @@ class IdentifiantControler {
             echo "republicas bananas";*/
         $app = new \Slim\Slim;
         $datas = $app->request();
-        Authentification::createUser($datas->post("Prenom"),$datas->post("Passe1"),$datas->post("Passe2"),$datas->post("Mail"));
-
+        Authentification::createUser($datas->post("Prenom"), $datas->post("Passe1"), $datas->post("Passe2"), $datas->post("Mail"));
     }
 
-    public function getConnexion() {
-    	$v = new VueConnexion();
+    public function getConnexion()
+    {
+        $v = new VueConnexion();
         $v->render();
     }
 }

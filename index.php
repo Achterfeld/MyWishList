@@ -3,6 +3,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Illuminate\Database\Capsule\Manager as DB;
+use wishlist\authentification\Authentification;
 use wishlist\model\Liste;
 use wishlist\model\Item;
 use wishlist\controler\ListeControler;
@@ -119,6 +120,18 @@ $app->get('/connexion', function () {
 	$c = new IdentifiantControler();
 	$c->getConnexion();
 });
+
+
+
+
+$app->get('/deconnexion', function () {
+    $c = new IdentifiantControler();
+    $c->pageDeconnexion();
+});
+
+
+
+
 
 $app->get('/modification/liste/:id/:token', function ($id, $token) {
 	$c = new ListeControler();
