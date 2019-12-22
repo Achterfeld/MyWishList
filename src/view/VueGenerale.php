@@ -24,7 +24,10 @@ return $header;
     static function renderNavBarre()
     {
         if (isset($_SESSION['session'])) {
-            $co = '<div><a href="/myWishList/pagePerso">'.$_SESSION['session']['prenom'].'</a></div>';
+            $co = '<div><a href="/myWishList/pagePerso">'.$_SESSION['session']['prenom'].'</a></div>
+            <div><a href="/myWishList/deconnexion" class = "disconnect">Se déconnecter</a>
+            </div>';
+
         } else {
             $co = '<div><a href="/myWishList/connexion" >Se connecter</a></div>';
         }
@@ -33,8 +36,8 @@ return $header;
         <div id="navBarre"> 
         <div> <a href="/myWishList">My Wish List</a></div>
         <div style="flex:1"></div>
-        $co
         <div><a href="./" >Page d'accueil</a></div>
+        $co
         </div><br>
 
 END;
