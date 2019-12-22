@@ -34,7 +34,13 @@ class VueModification
         <br>
 
         <form class='formulaire'>
-            <a href="/myWishList/item/ajout/$no/$token"> <h1>+</h1> Ajouter un item dans la liste</a>
+            <a href="/myWishList/item/ajout/$no/$token"> <h1>+</h1>Ajouter un item dans la liste</a>
+        </form>
+
+        <br>
+
+        <form class='formulaire redBG' action="/myWishList/liste/preSuppression/$no/$token" method="post">
+            <input type="submit" value="❌Supprimer la liste">
         </form>
 
 
