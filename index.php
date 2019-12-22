@@ -73,12 +73,13 @@ $app->get('/item', function () {
     $c->getAllItem();
 });
 
-//Affichage d'une liste via son no
+//Affichage d'une liste via son token + id
 
-$app->get('/liste/:id', function ($id) {
+
+$app->get('/liste/:no/:token', function ($no, $token) {
 
     $c = new ListeControler();
-    $c->getListe($id);
+    $c->getListe($no, $token);
 });
 
 //Affichage d'un item (via son no) 
