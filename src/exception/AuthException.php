@@ -1,6 +1,7 @@
 <?php
 
-	class AuthException extends Exception {
+namespace wishlist\exception;
+
+	class AuthException extends \Exception {
 		
 	}
-?>
