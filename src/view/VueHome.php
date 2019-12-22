@@ -6,13 +6,27 @@ class VueHome
 {
     public function render()
     {
+
+
+        if (isset($_SESSION['session'])) {
+            $co = '<a class="boutton small" href="/myWishList/pagePerso">' . $_SESSION['session']['prenom'] . '</a>
+            <a  class="boutton small disconnect" href="/myWishList/deconnexion">Se déconnecter</a>';
+        } else {
+            $co = '<a class="boutton small" href="/myWishList/connexion">Se connecter</a>';
+        }
+
+
+
+
         $header = VueGenerale::renderHeader();
-        $html=<<<END
+        $html = <<<END
         $header
 <body id="accueil">
         <div id="topBarre">
-        <a class="boutton small" href="/myWishList/connexion">Se connecter</a>
-    </div>
+
+$co 
+    
+        </div>
 
 
     <img style="height:200px;width:200px" src="img/logo.png">
@@ -51,7 +65,6 @@ class VueHome
 <body>
 END;
 
-echo $html;
-
+        echo $html;
     }
 }
