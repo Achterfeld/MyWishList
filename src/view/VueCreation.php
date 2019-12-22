@@ -6,11 +6,12 @@ class VueCreation
 {
     const LIST = 1;
     const ITEM = 2;
+    const SUPPR_LIST = 3;
 
     function afficheCreationListe()
     {
 
-        $token = substr(base64_encode(random_bytes(64)),0,10);
+        $token = substr(base64_encode(random_bytes(64)), 0, 10);
         $token = strtr($token, '+/', '-_');
         $html = <<<END
         <form action="validation/$token" class="formulaire" method="post">
@@ -27,7 +28,7 @@ END;
         return $html;
     }
 
-    function afficheCreationItem($token,$no)
+    function afficheCreationItem($token, $no)
     {
 
         $html = <<<END
@@ -48,17 +49,37 @@ END;
         return $html;
     }
 
+    function afficheSuppressionListe($token, $no)
+    {
+
+        $html = <<<END
+        <form action="/myWishList/liste/suppression/$no/$token" method="post" class="formulaire bgRed">
+
+        <h1>Voulez-vous vraiment supprimer la liste ?</h1>
+
+            <input type="submit" value="Oui" required>
+            <a href="/myWishList/modification/liste/$no/$token">Retour à l'accueil</a>
+
+        </form>
+
+END;
+        return $html;
+    }
 
 
-    function render($selecter, $token="",$no="")
+
+    function render($selecter, $token = "", $no = "")
     {
         switch ($selecter) {
 
             case self::LIST:
                 $content = $this->afficheCreationListe();
                 break;
+            case self::SUPPR_LIST:
+                $content = $this->afficheSuppressionListe($token,$no);
+                break;
             case self::ITEM:
-                $content = $this->afficheCreationItem($token,$no);
+                $content = $this->afficheCreationItem($token, $no);
                 break;
         }
 
