@@ -29,7 +29,7 @@ class ListeControler
         else
             $r = false;
         $v = new VueParticipant($i);
-        $v->afficheItemListe($idItem, $r);
+        $v->afficheItemListe($i);
     }
 
     public function getAllListe() {
