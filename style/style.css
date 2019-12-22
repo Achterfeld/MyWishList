@@ -298,3 +298,11 @@ form {
     right: 2em;
     position: absolute;
 }
+
+.disconnect {
+    color: #f00 !important;
+}
+
+input[type="radio"] {
+    width: 1em;
+}
