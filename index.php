@@ -26,7 +26,7 @@ session_start();
 //Affichage de toutes les listes
 
 $app->get('/liste', function () {
-    
+
     $c = new ListeControler();
     $c->getAllListe();
 
