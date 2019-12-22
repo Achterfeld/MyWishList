@@ -67,6 +67,9 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `user` (`prenom`, `mail`, `hash`) VALUES
-('Guillaume','g@gmail.com',"hashBidon1"),
-('Mateo','m@gmail.com',"hashBidon2"),
-('Tom','t@gmail.com',"hashBidon3");
+-- mdp : guillaume
+('Guillaume','g@gmail.com',"$2y$12$KDS6kJpFzJkYoUksUoANR.lQ3sHZxWRLG5fpjNKtgOy/vshQazh3."),
+-- mdp : matéo
+('Mateo','m@gmail.com',"$2y$12$4TyrxuzlZCZqO4n/89lLCuHUfWt4dmEI2L0LRFelrn75.ixDPlK9C"),
+-- mdp : tom
+('Tom','t@gmail.com',"$2y$12$m3.pveCaREtFA4n2TS1Q6e0kuUjQh0S1QjED/CMeQ2f.5tvhY0Vbi");
