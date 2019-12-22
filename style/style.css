@@ -328,3 +328,15 @@ input[type="radio"] {
     padding: 2px 10px;
     border-radius: 5px;
 }
+
+.redBG {
+    background: #f00 !important;
+}
+
+#message {
+    padding: 1em;
+    margin-bottom: 1em;
+    background: #557;
+    border-radius: 1em;
+    border: 0.1em solid #f00;
+}
