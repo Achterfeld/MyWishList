@@ -7,7 +7,7 @@ use wishList\model\User;
 class VuePagePerso
 {
 
-    public function render($u)
+    public function render($u, $message="")
     {
 
         $header = VueGenerale::renderHeader();
@@ -57,8 +57,10 @@ class VuePagePerso
         $header
 <body id="accueil">
 $navBarre
+
+<section id="message">$message</section>
 <div class="section" id="infoCompte">
-        <img id="profilPic" src="img/profil.png">
+        <img id="profilPic" src="/myWishList/img/profil.png">
         <div id="infos">
             <ul>
                 <li>
