@@ -13,6 +13,7 @@ CREATE TABLE `item` (
   `url` text,
   `tarif` decimal(7,2) DEFAULT NULL,
   `reservation` text,
+  `message` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -54,6 +55,10 @@ INSERT INTO `liste` (`no`, `user_id`, `titre`, `description`, `expiration`, `tok
 (2,	2,	'Liste de mariage d\'Alice et Bob',	'Nous souhaitons passer un week-end royal à Nancy pour notre lune de miel :)',	'2018-06-30',	'nosecure2'),
 (3,	3,	'C\'est l\'anniversaire de Charlie',	'Pour lui préparer une fête dont il se souviendra :)',	'2017-12-12',	'nosecure3'),
 (4,	1,	'BlaBla',	'Bla',	'2018-06-30',	'nosecure4');
+
+INSERT INTO `liste` (`user_id`, `titre`, `description`, `expiration`, `token`,`public`) VALUES
+(3,	'Coucou',	'Lorem Ipsum',	'2019-12-12',	'sacréToken','1'),
+(1,	'Nouvelle liste',	'Lorem Ipsum',	'2018-06-30',	'Waw','1');
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
