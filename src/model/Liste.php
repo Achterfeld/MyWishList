@@ -20,13 +20,20 @@ class Liste extends \Illuminate\Database\Eloquent\Model
 
     public function __toString()
     {
-        $str = "
+
+        $public = $this->public?"<span class='public'>publique":"<span class='priv'>privée";
+
+        $str=<<<END
+
         <div class='list'>
         <div class='num num_liste'>$this->no</div>
         <h3>$this->titre : $this->description </h3><br>
         Numéro d'utilisateur : $this->user_id |
-        expire le $this->expiration <br><br>";/*|
-        token $this->token " ;*/
+        Expire le $this->expiration <br><br>
+        Visibilité : $public</span><br><br>
+
+END;
+/*|token $this->token " ;*/
 
         $itDedans = $this->item()->get();
         $str .= "<ul>";
