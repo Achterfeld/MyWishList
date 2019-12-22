@@ -16,20 +16,18 @@ class VuePagePerso
         $listes = $u->listes()->get();
 
         $listesTxt = "";
-        $nbListes = 0;
 
         foreach ($listes as $key => $value) {
-            $nbListes++;
 
             //            echo ($key);
             $items = $value->item()->get();
 
-            $compteur = 0;
+            $compteur = count ($items);
             $reserve = 0;
 
             foreach ($items as $key1 => $value1) {
 
-                $compteur++;
+//                $compteur++;
 
                 // var_dump($value->reservation);
 
@@ -40,13 +38,20 @@ class VuePagePerso
                     $reserve++;
                 }
             }
-            $listesTxt .= "<li><span>Liste n°$value->no</span><a href=\"/myWishList/modification/liste/$value->no/$value->token\">Liste 🔗</a> <span>Item(s) réservé(s) : ($reserve / $compteur) </span><progress max='$compteur' value='$reserve'></progress></li>";
+            $listesTxt .= " <li>
+                                <span>Liste n°$value->no</span>
+                                <a href=\"/myWishList/modification/liste/$value->no/$value->token\">Modification 🖉</a>
+                                <a href=\"/myWishList/liste/$value->no/$value->token\">Liste 🔗</a>
+                                <span>Item(s) réservé(s) : ($reserve / $compteur) </span>
+                                <progress max='$compteur' value='$reserve'></progress>
+                             </li>";
         }
 
         $navBarre = VueGenerale::renderNavBarre();
         //TODO
         //Permettre les modifs de nom d'utilisateur, de mail, de mdp
 
+        $nbListes= count($listes);
         $html = <<<END
 
         $header
