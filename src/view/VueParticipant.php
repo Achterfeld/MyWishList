@@ -41,18 +41,23 @@ class VueParticipant
         return $affiche;
     }
 
-    private function afficheListe($token = false)
+    private function afficheListe($affToken = false)
     {
 
         if (!is_null($this->liste)) {
 
             $affiche = "<section>$this->liste";
 
-            if ($token) {
-                //TODO
-                // ???
-                $affiche .= "<div id='token' > Token à conserver :<br><br>" . $this->liste->token . "</div>";
-            }
+            if ($affToken) {
+                
+                $no=$this->liste->no;
+                $token=$this->liste->token;
+
+                $affiche .=<<<END
+                 <div id='token' > Token à conserver :<br><br> $token </div>
+                 <div id='token'>Lien à copier :<br><a href="/myWishList/liste/$no/$token">/myWishList/liste/$no/$token</a></div>
+END;
+                }
 
             $affiche .= "</section>";
         } else {
@@ -70,19 +75,18 @@ class VueParticipant
 
     function afficheItemListe($idList, $r)
     {
-        if ($r) {
-            $state = "required";
-            $class = "boutton";
-        } else {
-            $state = "disabled";
-            $class = "bouttonDisabled";
-        }
+
+        $state = $r ? "disabled" : "required";
+        $class = $r ? "bouttonDisabled" : "boutton";
+        
+        $nom=isset($_SESSION['session'])?$_SESSION['session']['prenom']:"''";
+     
         $content = <<<END
         <section>$this->liste<br>
             <form method="post" action="/myWishList/reservation/$idList">
                 <div>Réserver : </div>
                 <input type="checkbox" name="reservation" $state ><br>
-                <input type="text" placeholder="Nom participant" name="participant" $state ><br>
+                <input type="text" placeholder="Nom participant" name="participant" value=$nom $state ><br>
                 <input class="$class" type="submit" value="Réserver" $state ></input><br>
             </form>
         </section>
