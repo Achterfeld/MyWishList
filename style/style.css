@@ -306,3 +306,7 @@ form {
 input[type="radio"] {
     width: 1em;
 }
+
+.error {
+    color: #f00;
+}
