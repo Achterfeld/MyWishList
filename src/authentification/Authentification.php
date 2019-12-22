@@ -16,18 +16,28 @@ class Authentification
 		$password2 = filter_var($password2, FILTER_SANITIZE_SPECIAL_CHARS);
 		$mail = filter_var($mail, FILTER_SANITIZE_SPECIAL_CHARS);
 
-		$u = new User();
-		$hash1 = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+		$u = User::where("mail", "=", $mail)->first();
 
-		if (password_verify($password2, $hash1)) {
-			$u->prenom = $prenom;
-			$u->mail = $mail;
-			$u->hash = $hash1;
-			$u->droit = 2;
-			$u->save();
-		} else {
-			echo "Le mot de passe n'est pas bon (erreur 1)";
-			//			throw new AuthException;
+		if (!$u) {
+
+			$u = new User();
+			$hash1 = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+
+			if (password_verify($password2, $hash1)) {
+				$u->prenom = $prenom;
+				$u->mail = $mail;
+				$u->hash = $hash1;
+				$u->droit = 2;
+				$u->save();
+				return true;
+
+			} else {
+				echo "La confirmation du mot de passe n'est pas bonne (erreur 1)";
+				return false;
+				//			throw new AuthException;
+			}
+		}else{
+			return false;
 		}
 	}
 
