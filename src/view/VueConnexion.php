@@ -43,7 +43,7 @@ class VueConnexion
 <br>
 <br>
 
-<a href="/myWishList class="boutton">Retour à l'accueil</a>
+<a href="/myWishList" class="boutton">Retour à l'accueil</a>
 <br>
 </div>
 <body>
