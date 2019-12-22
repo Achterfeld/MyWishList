@@ -7,6 +7,7 @@ use wishlist\authentification\Authentification;
 use wishlist\model\Liste;
 use wishlist\model\Item;
 use wishlist\controler\ListeControler;
+use wishlist\controler\ItemControler;
 use wishlist\controler\HomeControler;
 use wishlist\controler\IdentifiantControler;
 use wishlist\controler\notFoundControler;
@@ -45,9 +46,24 @@ $app->post('/pagePerso', function () {
 
 //Pour les invités
 $app->get('/liste/creer', function () {
-
     $c = new ListeControler();
     $c->getCreation();
+});
+
+
+$app->get('/item/ajout/:no/:token', function ($no,$token) {
+    $c = new ItemControler();
+    $c->getCreation($no,$token);
+});
+
+$app->post('/validation/item', function(){
+    $c = new ItemControler();
+    $c->validerItem();
+});
+
+$app->get('/validation/item', function(){
+
+    echo("Voir les listes");
 });
 
 $app->post('/liste/validation/:token', function ($token) {
