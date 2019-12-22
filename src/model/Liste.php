@@ -21,7 +21,7 @@ class Liste extends \Illuminate\Database\Eloquent\Model
     public function __toString()
     {
 
-        $public = $this->public?"<span class='public'>publique":"<span class='priv'>privée";
+        $public = $this->public?"<span class='public'>🌎 publique":"<span class='priv'>🔒 privée";
 
         $possede=$this->possede()->first()->prenom;
 
@@ -30,9 +30,9 @@ class Liste extends \Illuminate\Database\Eloquent\Model
         <div class='list'>
         <div class='num num_liste'>$this->no</div>
         <h3>$this->titre : $this->description </h3><br>
-        Créateur de la liste : $possede<br>
-        ⌛ Expire le $this->expiration <br><br>
-        Visibilité : $public</span><br><br>
+        <div>Créateur de la liste : $possede</div><br>
+        <div>⌛ Expire le $this->expiration</div><br><br>
+        <div>Visibilité : $public</div></span><br><br>
 
 END;
 /*|token $this->token " ;*/
