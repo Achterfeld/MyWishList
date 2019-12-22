@@ -310,3 +310,21 @@ input[type="radio"] {
 .error {
     color: #f00;
 }
+
+.formulaire {
+    color: #fff;
+}
+
+.public {
+    background: #f00a;
+}
+
+.priv {
+    background: #0f0a;
+}
+
+.public,
+.priv {
+    padding: 2px 10px;
+    border-radius: 5px;
+}
