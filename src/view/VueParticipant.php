@@ -49,15 +49,15 @@ class VueParticipant
             $affiche = "<section>$this->liste";
 
             if ($affToken) {
-                
-                $no=$this->liste->no;
-                $token=$this->liste->token;
 
-                $affiche .=<<<END
+                $no = $this->liste->no;
+                $token = $this->liste->token;
+
+                $affiche .= <<<END
                  <div id='token' > Token à conserver :<br><br> $token </div>
                  <div id='token'>Lien à copier :<br><a href="/myWishList/liste/$no/$token">/myWishList/liste/$no/$token</a></div>
 END;
-                }
+            }
 
             $affiche .= "</section>";
         } else {
@@ -75,7 +75,7 @@ END;
 
     function afficheItemListe($i)
     {
-        
+
         $reserv = $i->reservation;
         $idItem = $i->id;
 
@@ -83,16 +83,21 @@ END;
 
         $state = !is_null($reserv) ? "disabled" : "required";
         $class = !is_null($reserv) ? "bouttonDisabled" : "boutton";
-        $txt = !is_null($reserv) ? "Cet item est déjà réservé" : "Réserver";
-        
-        $nom=isset($_SESSION['session'])?$_SESSION['session']['prenom']:"''";
-     
+        $txt = !is_null($reserv) ? " 🔒 Cet item est déjà réservé" : "🔓 Réserver";
+
+        $reserv = !is_null($reserv) ? $reserv : "''";
+
+        if ($reserv == "''") {
+            $reserv = isset($_SESSION['session']) ? $_SESSION['session']['prenom'] : "''";
+        }
+
+
         $content = <<<END
         <section>$this->liste<br>
             <form method="post" action="/myWishList/reservation/$idItem">
                 <div>Réserver : </div>
                 <input type="checkbox" name="reservation" $state ><br>
-                <input type="text" placeholder="Nom participant" name="participant" value=$nom $state ><br>
+                <input type="text" placeholder="Nom participant" name="participant" value=$reserv $state ><br>
                 <input class="$class" type="submit" value="$txt" $state ></input><br>
             </form>
         </section>
@@ -106,7 +111,8 @@ END;
         switch ($selecter) {
 
             case VueParticipant::ALL_LIST_VIEW:
-                $content = $this->afficheListeListe();
+                $content = "<h1>Listes publiques</h1><br>";
+                $content .= $this->afficheListeListe();
                 break;
             case VueParticipant::ITEM_VIEW:
                 $content = $this->afficheItem();
