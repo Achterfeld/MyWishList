@@ -51,19 +51,19 @@ $app->get('/liste/creer', function () {
 });
 
 
-$app->get('/item/ajout/:no/:token', function ($no,$token) {
+$app->get('/item/ajout/:no/:token', function ($no, $token) {
     $c = new ItemControler();
-    $c->getCreation($no,$token);
+    $c->getCreation($no, $token);
 });
 
-$app->post('/validation/item', function(){
+$app->post('/validation/item', function () {
     $c = new ItemControler();
     $c->validerItem();
 });
 
-$app->get('/validation/item', function(){
+$app->get('/validation/item', function () {
 
-    echo("Voir les listes");
+    echo ("Voir les listes");
 });
 
 $app->post('/liste/validation/:token', function ($token) {
@@ -148,6 +148,17 @@ $app->post('/modification/liste/:id/:token', function ($id, $token) {
     $c = new ListeControler();
     $c->validerListe($id, $token);
     $c->getResumeListe($token);
+});
+
+
+$app->post('/liste/suppression/:no/:token', function ($no, $token) {
+    $c = new ListeControler();
+    $c->supprimer($no, $token);
+});
+
+$app->post('/liste/preSuppression/:no/:token', function ($no, $token) {
+    $c = new ListeControler();
+    $c->confirmerSupprListe($no,$token);
 });
 
 $app->post('/reservation/:id', function ($id) {
