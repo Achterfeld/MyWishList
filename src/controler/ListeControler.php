@@ -5,9 +5,11 @@ namespace wishlist\controler;
 use \Illuminate\Database\Capsule\Manager as DB;
 use wishlist\model\Liste;
 use wishlist\model\Item;
+use wishlist\model\User;
 use wishlist\view\VueParticipant;
 use wishlist\view\VueCreation;
 use wishlist\view\VueModification;
+use wishlist\view\VuePagePerso;
 
 class ListeControler
 {
@@ -33,7 +35,7 @@ class ListeControler
     }
 
     public function getAllListe() {
-        $liste = Liste::OrderBy('titre')->get();
+        $liste = Liste::where('public','=','1')->OrderBy('expiration')->get();
         $v = new VueParticipant($liste);
         $v->render(VueParticipant::ALL_LIST_VIEW);
     }
@@ -118,6 +120,29 @@ class ListeControler
         $l->description = filter_var($datas->post("descriptionNouvelleListe"),FILTER_SANITIZE_SPECIAL_CHARS);
         $l->public = $datas->post("visib");
         $l->save();
+
+    }
+
+    public function confirmerSupprListe($no,$token){
+        $v = new VueCreation();
+        $v->render(VueCreation::SUPPR_LIST,$token,$no);
+    }
+
+    public function supprimer($no,$token){
+        $l = Liste::where([['no','=',$no],['token','=',$token]]);
+        $l->delete();
+
+
+        if (isset($_SESSION['session']['user_id'])) {
+
+            $v = new VuePagePerso();
+            $u = User::where('user_id','=',$_SESSION['session']['user_id'])->first();
+            $v->render($u,"Liste supprimée");
+        }else{
+            $app = new \Slim\Slim;
+            $app->redirect("/myWishList");
+            
+        }
 
     }
 
