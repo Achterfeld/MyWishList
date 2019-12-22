@@ -18,7 +18,6 @@ class pagePersoControler
 	{
 
 		if (isset($_SESSION['session'])) {
-			$v = new VuePagePerso();
 
 			$u = User::where('user_id', '=', $_SESSION['session']['user_id'])->first();
 			$v = new vuePagePerso();
@@ -34,12 +33,19 @@ class pagePersoControler
 		try {
 			$app = new \Slim\Slim;
 			$datas = $app->request();
-			Authentification::authenticate($datas->post("Mail"), $datas->post("Passe"));
-			$u = User::where('mail', '=', $datas->post("Mail"))->first();
-			if (!is_null($u)) {
-				Authentification::loadProfile($u->user_id);
+
+			$mail = $datas->post("Mail");
+			$pass = $datas->post("Passe");
+
+
+			Authentification::authenticate($mail, $pass);
+
+//			$u = User::where('mail', '=', $mail)->first();
+//			if (!is_null($u)) {
+				//Déjà fait par authenticate
+				//				Authentification::loadProfile($u->user_id);
 				$this->getPPerso();
-			}
+//			}
 		} catch (AuthException $ae) {
 
 			echo "Email ou mot de passe invalide<br>";
