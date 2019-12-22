@@ -4,8 +4,19 @@ namespace wishlist\view;
 
 class VueHome
 {
-    public function render()
+
+    const PB_MAIL = 1;
+    const PB_MDP = 2;
+    public function render($option = "")
     {
+
+        $txt = "";
+        if ($option == self::PB_MAIL) {
+            $txt = "<br><p class='error'>L'email est déjà connu</p><br>";
+        }
+        if ($option == self::PB_MDP) {
+            $txt = "<br><p class='error'>Le mot de passe de confirmation n'est pas bon</p><br>";
+        }
 
 
         if (isset($_SESSION['session'])) {
@@ -36,13 +47,16 @@ $co
         <div>
             <form method="post" action="/myWishList/inscription">
                 <h1>S'inscrire</h1>
+
+                $txt
+
                 <input type="text" placeholder="Prenom" name="Prenom" required ><br>
                 <input type="email" placeholder="Mail" name="Mail" required ><br>
                 <input type="password" placeholder="Mot de passe" name="Passe1" required ><br>
                 <input type="password" placeholder="Confirmation mot de passe" name="Passe2" required ><br>
                 <input class="boutton" type="submit" value="S'inscrire" required ></input>
                 <br>
-                <a href="/myWishList/inscription">Déjà inscrit ?</a>
+                <a href="/myWishList/connexion">Déjà inscrit ?</a>
             </form>
 
         </div>
