@@ -34,7 +34,7 @@ class VuePagePerso
                 // var_dump($value->reservation);
                 // echo($value);
 
-                if ($value1->reservation == "1") {
+                if (!is_null($value1->reservation)) {
                     $reserve++;
                 }
             }
