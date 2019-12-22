@@ -13,7 +13,7 @@ class Liste extends \Illuminate\Database\Eloquent\Model
         return $this->hasMany('wishlist\model\Item', 'liste_id');
     }
 
-    public static function possede(){
+    public function possede(){
         return $this->belongsTo('wishlist\model\User','user_id');
     }
 
@@ -23,13 +23,15 @@ class Liste extends \Illuminate\Database\Eloquent\Model
 
         $public = $this->public?"<span class='public'>publique":"<span class='priv'>privée";
 
+        $possede=$this->possede()->first()->prenom;
+
         $str=<<<END
 
         <div class='list'>
         <div class='num num_liste'>$this->no</div>
         <h3>$this->titre : $this->description </h3><br>
-        Numéro d'utilisateur : $this->user_id |
-        Expire le $this->expiration <br><br>
+        Créateur de la liste : $possede<br>
+        ⌛ Expire le $this->expiration <br><br>
         Visibilité : $public</span><br><br>
 
 END;
