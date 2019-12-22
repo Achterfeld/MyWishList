@@ -8,6 +8,7 @@ use wishlist\view\VueIdentifiant;
 use wishlist\view\VueConnexion;
 use wishlist\view\VueDeconnexion;
 use wishlist\authentification\Authentification;
+use wishlist\view\VueHome;
 
 class IdentifiantControler
 {
@@ -41,7 +42,26 @@ class IdentifiantControler
             echo "republicas bananas";*/
         $app = new \Slim\Slim;
         $datas = $app->request();
-        Authentification::createUser($datas->post("Prenom"), $datas->post("Passe1"), $datas->post("Passe2"), $datas->post("Mail"));
+
+        $prenom = $datas->post("Prenom");
+        $p1 = $datas->post("Passe1");
+        $p2 = $datas->post("Passe2");
+        $mail = $datas->post("Mail");
+        $creationOK = Authentification::createUser($prenom, $p1, $p2, $mail);
+        if ($creationOK == Authentification::Insertion_OK) {
+            $this->getConnexion();
+        } else {
+            $c = new HomeControler();
+            switch ($creationOK) {
+                case Authentification::Pb_MDP :
+                    $c->getHome(VueHome::PB_MDP);
+                    break;
+
+                case Authentification::Pb_Mail:
+                    $c->getHome(VueHome::PB_MAIL);
+                    break;
+            }
+        }
     }
 
     public function getConnexion()

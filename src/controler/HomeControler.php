@@ -10,8 +10,8 @@ use wishlist\view\VueHome;
 
 class HomeControler {   
 
-    public function getHome() {
+    public function getHome($option="") {
         $v = new VueHome();
-        $v->render();
+        $v->render($option);
     }
 }

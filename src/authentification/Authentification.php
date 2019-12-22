@@ -8,6 +8,10 @@ use wishlist\exception\AuthException;
 class Authentification
 {
 
+	const Insertion_OK = 0;
+	const Pb_MDP = 1;
+	const Pb_Mail = 2;
+
 	public static function createUser($prenom, $password, $password2, $mail)
 	{
 
@@ -29,15 +33,14 @@ class Authentification
 				$u->hash = $hash1;
 				$u->droit = 2;
 				$u->save();
-				return true;
-
+				return self::Insertion_OK;
 			} else {
-				echo "La confirmation du mot de passe n'est pas bonne (erreur 1)";
-				return false;
+				//				echo "La confirmation du mot de passe n'est pas bonne (erreur 1)";
+				return self::Pb_MDP;
 				//			throw new AuthException;
 			}
-		}else{
-			return false;
+		} else {
+			return self::Pb_Mail;
 		}
 	}
 
@@ -68,7 +71,7 @@ class Authentification
 			if (password_verify($password, $u->hash)) {
 				Authentification::loadProfile($u->user_id);
 			} else {
-				echo "Le mot de passe n'est pas bon (erreur 2)";
+				echo "<p class='error'>Le mot de passe n'est pas bon</p>";
 				//				throw new AuthException;
 			}
 		}
@@ -77,7 +80,7 @@ class Authentification
 	public static  function checkAccesRights($r)
 	{
 		if ($_SESSION['session']['niveauDeDroit'] < $r) {
-			echo "Problème de droits </body>";
+			echo "<p class='error'>Problème de droits</p>";
 			//			throw new AuthException;
 		}
 	}
