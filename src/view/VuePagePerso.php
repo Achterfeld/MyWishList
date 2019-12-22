@@ -51,14 +51,18 @@ class VuePagePerso
         //TODO
         //Permettre les modifs de nom d'utilisateur, de mail, de mdp
 
+        if ($message!="") {
+            $message=
+            "<section id='message'>$message</section>";
+        }
+
         $nbListes= count($listes);
         $html = <<<END
 
         $header
 <body id="accueil">
 $navBarre
-
-<section id="message">$message</section>
+$message
 <div class="section" id="infoCompte">
         <img id="profilPic" src="/myWishList/img/profil.png">
         <div id="infos">
