@@ -97,6 +97,7 @@ END;
             <form method="post" action="/myWishList/reservation/$idItem">
                 <div>Réserver : </div>
                 <input type="checkbox" name="reservation" $state ><br>
+                <input type="text" name="message" placeholder="Votre message pour l'organisateur" $state ><br>
                 <input type="text" placeholder="Nom participant" name="participant" value=$reserv $state ><br>
                 <input class="$class" type="submit" value="$txt" $state ></input><br>
             </form>
