@@ -2,6 +2,8 @@
 
 namespace wishlist\view;
 
+use wishlist\model\Liste;
+
 class VueParticipant
 {
 
@@ -76,10 +78,17 @@ END;
     function afficheItemListe($i)
     {
 
+
         $reserv = $i->reservation;
         $idItem = $i->id;
 
 
+        $content = "<section>$this->liste";
+
+        $l = Liste::where('no', '=', $this->liste->liste_id)->first();
+        $uID = $l->user_id;
+        //$uID=2;
+        //        var_dump($uID);
 
         $state = !is_null($reserv) ? "disabled" : "required";
         $class = !is_null($reserv) ? "bouttonDisabled" : "boutton";
@@ -92,17 +101,42 @@ END;
         }
 
 
-        $content = <<<END
-        <section>$this->liste<br>
-            <form method="post" action="/myWishList/reservation/$idItem">
-                <div>Réserver : </div>
-                <input type="checkbox" name="reservation" $state ><br>
-                <input type="text" name="message" placeholder="Votre message pour l'organisateur" $state ><br>
-                <input type="text" placeholder="Nom participant" name="participant" value=$reserv $state ><br>
-                <input class="$class" type="submit" value="$txt" $state ></input><br>
-            </form>
-        </section>
+
+        $txtAutre = <<<END
+<br>
+<form method="post" action="/myWishList/reservation/$idItem">
+<div>Réserver : </div>
+<input type="checkbox" name="reservation" $state ><br>
+<input type="text" name="message" placeholder="Votre message pour l'organisateur" $state ><br>
+<input type="text" placeholder="Nom participant" name="participant" value=$reserv $state ><br>
+<input class="$class" type="submit" value="$txt" $state ></input><br>
+</form>
+</section>
 END;
+
+
+        $txtProprietaire = <<<END
+</section>
+END;
+
+        if (isset($_COOKIE['user_id'])) {
+            if ($_COOKIE['user_id'] != $uID) {
+                $content .= $txtAutre;
+            } else {
+                
+                date_default_timezone_set('Europe/Paris');
+                $date = date('m/d/Y h:i:s a', time());
+                
+                if (strtotime($l->expiration)-strtotime($date)<0) {
+                    $content .= $txtAutre;
+                } else {
+                    $content .= $txtProprietaire;
+                }
+            }
+        } else {
+            $content .= $txtAutre;
+        }
+
         VueGenerale::renderPage($content);
     }
 

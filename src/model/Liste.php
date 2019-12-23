@@ -47,7 +47,30 @@ END;
         $str .= "<ul>";
         foreach ($itDedans as $key => $value) {
 
-            $reserv = !is_null($value->reservation) ? "✔️" : "❌";
+            $uID = $this->user_id;
+
+            $reserv = "";
+
+
+            
+
+
+            if (isset($_COOKIE['user_id'])) {
+                if ($_COOKIE['user_id'] != $uID) {
+                    $reserv = !is_null($value->reservation) ? "✔️" : "❌";
+                }else{
+                    date_default_timezone_set('Europe/Paris');
+                    $date = date('m/d/Y h:i:s a', time());
+                    
+                    if (strtotime($this->expiration)-strtotime($date)<0) {
+                        $reserv .= !is_null($value->reservation) ? "✔️" : "❌";
+                    } else {
+                        $reserv .= "";
+                    }
+                }
+            } else {
+                $reserv = !is_null($value->reservation) ? "✔️" : "❌";
+            }
 
             $str .= "<li><a class='lienSCouleur' href='/myWishList/item/reservation/$value->id'>$value->nom $reserv</a></li> ";
         }
