@@ -340,3 +340,9 @@ input[type="radio"] {
     border-radius: 1em;
     border: 0.1em solid #f00;
 }
+
+.messageListe {
+    background: #22283666;
+    padding: 1em 0;
+    margin: 1em;
+}
