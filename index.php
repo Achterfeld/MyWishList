@@ -12,6 +12,7 @@ use wishlist\controler\HomeControler;
 use wishlist\controler\IdentifiantControler;
 use wishlist\controler\notFoundControler;
 use wishlist\controler\pagePersoControler;
+use wishlist\controler\MessagesControler;
 use wishlist\view\VueGenerale;
 
 $db = new DB();
@@ -50,6 +51,14 @@ $app->get('/liste/creer', function () {
     $c->getCreation();
 });
 
+$app->post('/ajout/message/:no/:token', function ($no, $token) use ($app) {
+    $c = new MessagesControler();
+    $c->ajoutMessage($no);
+
+    $app->response->redirect("/myWishList/liste/$no/$token", 303);
+});
+
+
 
 $app->get('/item/ajout/:no/:token', function ($no, $token) {
     $c = new ItemControler();
@@ -63,6 +72,7 @@ $app->post('/validation/item', function () {
 
 $app->get('/validation/item', function () {
 
+    //TODO
     echo ("Voir les listes");
 });
 
@@ -97,6 +107,7 @@ $app->get('/liste/:no/:token', function ($no, $token) {
     $c = new ListeControler();
     $c->getListe($no, $token);
 });
+//->setName('afficheListe')
 
 //Affichage d'un item (via son no) 
 $app->get('/item/reservation/:idItem', function ($idItem) {
@@ -158,7 +169,7 @@ $app->post('/liste/suppression/:no/:token', function ($no, $token) {
 
 $app->post('/liste/preSuppression/:no/:token', function ($no, $token) {
     $c = new ListeControler();
-    $c->confirmerSupprListe($no,$token);
+    $c->confirmerSupprListe($no, $token);
 });
 
 $app->post('/reservation/:id', function ($id) {
