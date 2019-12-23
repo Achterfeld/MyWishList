@@ -50,6 +50,7 @@ class Authentification
 
 		if (isset($_SESSION['session']))
 			unset($_SESSION['session']);
+
 		if (!is_null($u)) {
 
 			$_SESSION['session']['eMail'] = $u->mail;
@@ -57,6 +58,8 @@ class Authentification
 			$_SESSION['session']['user_id'] = $u->user_id;
 			$_SESSION['session']['niveauDeDroit'] = $u->droit;
 		}
+
+		setcookie("user_id",$u->user_id,time()+60*60*24*2,"/");
 	}
 
 	public static function authenticate($mail, $password)
