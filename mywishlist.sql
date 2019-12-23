@@ -78,3 +78,19 @@ INSERT INTO `user` (`prenom`, `mail`, `hash`) VALUES
 ('Mateo','m@gmail.com',"$2y$12$4TyrxuzlZCZqO4n/89lLCuHUfWt4dmEI2L0LRFelrn75.ixDPlK9C"),
 -- mdp : tom
 ('Tom','t@gmail.com',"$2y$12$m3.pveCaREtFA4n2TS1Q6e0kuUjQh0S1QjED/CMeQ2f.5tvhY0Vbi");
+
+
+
+DROP TABLE IF EXISTS `messagesListes`;
+CREATE TABLE `messagesListes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `liste_id` int(11) NOT NULL,
+  `auteur` text NOT NULL,
+  `message` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `messagesListes` (`liste_id`, `auteur`, `message`) VALUES
+(2,	'Guillaume',	'Salut c\'est top cette liste'),
+(3,	'Guillaume',	'Sacré idée'),
+(2,	'Matéo',	'Super');
