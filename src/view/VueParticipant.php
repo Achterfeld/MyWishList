@@ -27,9 +27,28 @@ class VueParticipant
         
         date_default_timezone_set('Europe/Paris');
         $date = date('m/d/Y h:i:s a', time());
-        foreach ($this->liste as $UneListe) {
-            if (strtotime($UneListe->expiration) > strtotime($date)) {
-                $affiche .= $UneListe . "<br>";
+
+        if (isset($_SESSION['session'])) {
+
+            foreach ($this->liste as $UneListe) {
+                if (strtotime($UneListe->expiration) > strtotime($date)) {
+                    $affiche .= $UneListe . "<br>";
+                }
+            }
+        } else {
+
+            foreach ($this->liste as $UneListe) {
+                if (strtotime($UneListe->expiration) > strtotime($date)) {
+                    $affiche .= <<<END
+                    <div class='list'>
+                    
+                    <div class='num num_liste'>$UneListe->no</div>
+        <h3><a href="/myWishList/liste/$UneListe->no/$UneListe->token_visu">$UneListe->titre</a></h3><br>
+        <div>⌛ Expire le $UneListe->expiration</div><br><br>
+                    
+                    </div><br>
+END;
+                }
             }
         }
         $affiche .= "</section>";
@@ -58,11 +77,11 @@ class VueParticipant
             if ($affToken) {
 
                 $no = $this->liste->no;
-                $token = $this->liste->token;
+                $token_visu = $this->liste->token_visu;
 
                 $affiche .= <<<END
-                 <div id='token' > Token à conserver :<br><br> $token </div>
-                 <div id='token'>Lien à copier :<br><a href="/myWishList/liste/$no/$token">/myWishList/liste/$no/$token</a></div>
+                 <div id='token' > Token à conserver :<br><br> $token_visu </div>
+                 <div id='token'>Lien à copier :<br><a href="/myWishList/liste/$no/$token_visu">/myWishList/liste/$no/$token_visu</a></div>
 END;
             }
 
@@ -128,11 +147,11 @@ END;
             if ($_COOKIE['user_id'] != $uID) {
                 $content .= $txtAutre;
             } else {
-                
+
                 date_default_timezone_set('Europe/Paris');
                 $date = date('m/d/Y h:i:s a', time());
-                
-                if (strtotime($l->expiration)-strtotime($date)<0) {
+
+                if (strtotime($l->expiration) - strtotime($date) < 0) {
                     $content .= $txtAutre;
                 } else {
                     $content .= $txtProprietaire;
