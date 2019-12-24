@@ -51,11 +51,11 @@ $app->get('/liste/creer', function () {
     $c->getCreation();
 });
 
-$app->post('/ajout/message/:no/:token', function ($no, $token) use ($app) {
+$app->post('/ajout/message/:no/:token_visu', function ($no, $token_visu) use ($app) {
     $c = new MessagesControler();
     $c->ajoutMessage($no);
 
-    $app->response->redirect("/myWishList/liste/$no/$token", 303);
+    $app->response->redirect("/myWishList/liste/$no/$token_visu", 303);
 });
 
 
@@ -102,10 +102,20 @@ $app->get('/item', function () {
 //Affichage d'une liste via son token + id
 
 
-$app->get('/liste/:no/:token', function ($no, $token) {
+$app->get('/liste/:no/:token/valider', function ($no, $token) use ($app) {
 
     $c = new ListeControler();
-    $c->getListe($no, $token);
+    $c->confirmerListe($no, $token);
+
+    $app->response->redirect("/myWishList/pagePerso",303);
+});
+
+
+
+$app->get('/liste/:no/:token_visu', function ($no, $token_visu) {
+
+    $c = new ListeControler();
+    $c->getListe($no, $token_visu);
 });
 //->setName('afficheListe')
 
