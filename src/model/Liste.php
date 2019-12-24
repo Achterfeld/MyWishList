@@ -86,7 +86,7 @@ END;
         $str .= <<<END
 
         <div style="margin: 1em;">
-            <form class="formulaire" method="post" action="/myWishList/ajout/message/$this->no/$this->token">
+            <form class="formulaire" method="post" action="/myWishList/ajout/message/$this->no/$this->token_visu">
                 <div>Ajouter un message :</div>
                 <input type="text" name="auteur" placeholder="Votre nom" value=$auteur><br>
                 <input type="text" name="message" placeholder="Votre message pour l'organisateur" ><br>

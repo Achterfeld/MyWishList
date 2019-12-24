@@ -38,10 +38,21 @@ class VuePagePerso
                     $reserve++;
                 }
             }
+
+            if ($value->token_visu != ""){
+                $visuListe = "<a href=\"/myWishList/liste/$value->no/$value->token_visu\">Liste 🔗</a>";
+            }else{
+                $visuListe = "<a href=\"/myWishList/liste/$value->no/$value->token/valider\">Valider la liste</a>";
+            }
+             
+
+
             $listesTxt .= " <li>
                                 <span>Liste n°$value->no</span>
                                 <a href=\"/myWishList/modification/liste/$value->no/$value->token\">Modification 🖉</a>
-                                <a href=\"/myWishList/liste/$value->no/$value->token\">Liste 🔗</a>
+             
+                                $visuListe
+             
                                 <span>Item(s) réservé(s) : ($reserve / $compteur) </span>
                                 <progress max='$compteur' value='$reserve'></progress>
                              </li>";
