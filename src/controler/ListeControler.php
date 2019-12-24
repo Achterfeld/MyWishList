@@ -77,7 +77,11 @@ class ListeControler
             $l->user_id = $_SESSION['session']['user_id'];
         } else {
             $l->user_id = -1;
-            $l->public=1;
+            $l->public = 1;
+
+            $token_visu = substr(base64_encode(random_bytes(64)), 0, 10);
+            $token_visu = strtr($token_visu, '+/', '-_');
+            $l->token_visu = $token_visu;
         }
 
         $l->expiration = filter_var($datas->post("dateLimiteNouvelleListe"), FILTER_SANITIZE_SPECIAL_CHARS);
@@ -133,10 +137,9 @@ class ListeControler
         $token = substr(base64_encode(random_bytes(64)), 0, 10);
         $token = strtr($token, '+/', '-_');
 
-        $l->token_visu=$token;
+        $l->token_visu = $token;
 
         $l->save();
-        
     }
 
 
