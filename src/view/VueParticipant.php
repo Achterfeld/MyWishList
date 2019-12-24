@@ -24,8 +24,13 @@ class VueParticipant
     private function afficheListeListe()
     {
         $affiche = "<section>";
+        
+        date_default_timezone_set('Europe/Paris');
+        $date = date('m/d/Y h:i:s a', time());
         foreach ($this->liste as $UneListe) {
-            $affiche .= $UneListe . "<br>";
+            if (strtotime($UneListe->expiration) > strtotime($date)) {
+                $affiche .= $UneListe . "<br>";
+            }
         }
         $affiche .= "</section>";
 
