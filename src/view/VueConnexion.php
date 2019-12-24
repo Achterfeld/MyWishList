@@ -17,7 +17,7 @@ class VueConnexion
         <div>
             <form method="post" action="/myWishList/pagePerso">
                 <h1>Se connecter</h1>
-                <input type="email" placeholder="Mail" name="Mail" required ><br>
+                <input type="email" placeholder="Mail" name="Mail" required autofocus><br>
                 <input type="password" placeholder="Mot de passe" name="Passe" required ><br>
                 <input class="boutton" type="submit" value="Se connecter" required ></input>
 

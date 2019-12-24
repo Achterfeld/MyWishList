@@ -77,6 +77,7 @@ class ListeControler
             $l->user_id = $_SESSION['session']['user_id'];
         } else {
             $l->user_id = -1;
+            $l->public=1;
         }
 
         $l->expiration = filter_var($datas->post("dateLimiteNouvelleListe"), FILTER_SANITIZE_SPECIAL_CHARS);
