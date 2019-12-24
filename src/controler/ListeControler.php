@@ -45,9 +45,9 @@ class ListeControler
         $v->render(VueParticipant::ALL_ITEM_VIEW);
     }
 
-    public function getListe($no, $token)
+    public function getListe($no, $token_visu)
     {
-        $l = Liste::where([['no', '=', $no], ['token', '=', $token]])->first();
+        $l = Liste::where([['no', '=', $no], ['token_visu', '=', $token_visu]])->first();
         $v = new VueParticipant($l);
         $v->render(VueParticipant::LIST_VIEW);
     }
@@ -124,6 +124,21 @@ class ListeControler
         $l->public = $datas->post("visib");
         $l->save();
     }
+
+
+    public function confirmerListe($no, $token)
+    {
+        $l = Liste::where([['no', '=', $no], ['token', '=', $token]])->first();
+
+        $token = substr(base64_encode(random_bytes(64)), 0, 10);
+        $token = strtr($token, '+/', '-_');
+
+        $l->token_visu=$token;
+
+        $l->save();
+        
+    }
+
 
     public function confirmerSupprListe($no, $token)
     {
