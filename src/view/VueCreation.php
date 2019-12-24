@@ -13,6 +13,7 @@ class VueCreation
 
         $token = substr(base64_encode(random_bytes(64)), 0, 10);
         $token = strtr($token, '+/', '-_');
+
         $html = <<<END
         <form action="validation/$token" class="formulaire" method="post">
 

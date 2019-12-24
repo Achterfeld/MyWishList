@@ -24,7 +24,7 @@ class VueParticipant
     private function afficheListeListe()
     {
         $affiche = "<section>";
-        
+
         date_default_timezone_set('Europe/Paris');
         $date = date('m/d/Y h:i:s a', time());
 
@@ -78,10 +78,18 @@ END;
 
                 $no = $this->liste->no;
                 $token_visu = $this->liste->token_visu;
+                $token = $this->liste->token;
+
+                $modif="";
+                if ($this->liste->token_visu != ""){
+                    $modif = "Lien pour modifier la liste<br><br><a href='/myWishList/modification/liste/$no/$token'>/myWishList/modification/liste/$no/$token</a>";                  
+                }
 
                 $affiche .= <<<END
+
+                 <div id='token' > $modif </div>
                  <div id='token' > Token à conserver :<br><br> $token_visu </div>
-                 <div id='token'>Lien à copier :<br><a href="/myWishList/liste/$no/$token_visu">/myWishList/liste/$no/$token_visu</a></div>
+                 <div id='token'>Lien pour visualiser la liste :<br><br><a href="/myWishList/liste/$no/$token_visu">/myWishList/liste/$no/$token_visu</a></div>
 END;
             }
 
@@ -120,9 +128,8 @@ END;
 
         $reserv = !is_null($reserv) ? $reserv : "''";
 
-        if ($reserv == "''") {
-            $reserv = isset($_SESSION['session']) ? $_SESSION['session']['prenom'] : "''";
-        }
+        $reserv = isset($_SESSION['session']) ? $_SESSION['session']['prenom'] : "''";
+            
 
 
 
