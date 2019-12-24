@@ -29,7 +29,7 @@ class Liste extends \Illuminate\Database\Eloquent\Model
 
         $public = $this->public ? "<span class='public'>🌎 publique" : "<span class='priv'>🔒 privée";
 
-        $possede = $this->possede()->first()->prenom;
+        $possede = isset($this->possede()->first()->prenom)? $this->possede()->first()->prenom : "Invité" ;
 
         $str = <<<END
 
