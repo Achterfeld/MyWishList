@@ -36,7 +36,7 @@ return $header;
         <div id="navBarre"> 
         <div> <a href="/myWishList">My Wish List</a></div>
         <div style="flex:1"></div>
-        <div><a href="./" >Page d'accueil</a></div>
+        <div><a href="/myWishList" >Page d'accueil</a></div>
         $co
         </div><br>
 
