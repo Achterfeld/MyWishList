@@ -46,19 +46,24 @@ CREATE TABLE `liste` (
   `description` text COLLATE utf8_unicode_ci,
   `expiration` date DEFAULT NULL,
   `token` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `token_visu` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
   `public` bool DEFAULT 0,
   PRIMARY KEY (`no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `liste` (`no`, `user_id`, `titre`, `description`, `expiration`, `token`) VALUES
-(1,	1,	'Pour fêter le bac !',	'Pour un week-end à Nancy qui nous fera oublier les épreuves. ',	'2018-06-27',	'nosecure1'),
-(2,	2,	'Liste de mariage d\'Alice et Bob',	'Nous souhaitons passer un week-end royal à Nancy pour notre lune de miel :)',	'2018-06-30',	'nosecure2'),
-(3,	3,	'C\'est l\'anniversaire de Charlie',	'Pour lui préparer une fête dont il se souviendra :)',	'2017-12-12',	'nosecure3'),
-(4,	1,	'BlaBla',	'Bla',	'2018-06-30',	'nosecure4');
+INSERT INTO `liste` (`no`, `user_id`, `titre`, `description`, `expiration`, `token`, `token_visu`) VALUES
+(1,	1,	'Pour fêter le bac !',	'Pour un week-end à Nancy qui nous fera oublier les épreuves. ',	'2018-06-27',	'nosecure1','nosecure1_visu'),
+(2,	2,	'Liste de mariage d\'Alice et Bob',	'Nous souhaitons passer un week-end royal à Nancy pour notre lune de miel :)',	'2018-06-30',	'nosecure2','nosecure2_visu'),
+(3,	3,	'C\'est l\'anniversaire de Charlie',	'Pour lui préparer une fête dont il se souviendra :)',	'2017-12-12',	'nosecure3','nosecure3_visu'),
+(4,	1,	'BlaBla',	'Bla',	'2018-06-30',	'nosecure4','nosecure4_visu');
+
+INSERT INTO `liste` (`user_id`, `titre`, `description`, `expiration`, `token`,`token_visu`,`public`) VALUES
+(3,	'Coucou',	'Lorem Ipsum',	'2019-12-12',	'sacréToken','sacréToken_visu','1'),
+(1,	'Nouvelle liste',	'Lorem Ipsum',	'2020-06-30',	'Waw','Waw_visu','1');
 
 INSERT INTO `liste` (`user_id`, `titre`, `description`, `expiration`, `token`,`public`) VALUES
-(3,	'Coucou',	'Lorem Ipsum',	'2019-12-12',	'sacréToken','1'),
-(1,	'Nouvelle liste',	'Lorem Ipsum',	'2018-06-30',	'Waw','1');
+(1,	'Coucou',	'Lorem Ipsum',	'2019-12-12',	'sacréToken','1');
+
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
