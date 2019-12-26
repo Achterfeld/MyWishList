@@ -7,7 +7,7 @@ use wishList\model\User;
 class VuePagePerso
 {
 
-    public function render($u, $message="")
+    public function render($u, $message = "")
     {
 
         $header = VueGenerale::renderHeader();
@@ -22,12 +22,12 @@ class VuePagePerso
             //            echo ($key);
             $items = $value->item()->get();
 
-            $compteur = count ($items);
+            $compteur = count($items);
             $reserve = 0;
 
             foreach ($items as $key1 => $value1) {
 
-//                $compteur++;
+                //                $compteur++;
 
                 // var_dump($value->reservation);
 
@@ -39,40 +39,43 @@ class VuePagePerso
                 }
             }
 
-            if ($value->token_visu != ""){
-                $visuListe = "<a href=\"/myWishList/liste/$value->no/$value->token_visu\">Liste 🔗</a>";
-            }else{
-                $visuListe = "<a href=\"/myWishList/liste/$value->no/$value->token/valider\">Valider la liste</a>";
+            if ($value->token_visu != "") {
+                $visuListe = "<a  href=\"/myWishList/liste/$value->no/$value->token_visu\">Liste 🔗</a>";
+            } else {
+                $visuListe = "<a  href=\"/myWishList/liste/$value->no/$value->token/valider\">Valider la liste ✅</a>";
             }
-             
 
 
-            $listesTxt .= " <li>
-                                <span>Liste n°$value->no</span>
-                                <a href=\"/myWishList/modification/liste/$value->no/$value->token\">Modification 🖉</a>
+
+            $listesTxt .= " <div class='info'>
+                                <span >Liste n°$value->no</span>
+                                <a  href=\"/myWishList/modification/liste/$value->no/$value->token\">Modification 🖉</a>
              
                                 $visuListe
              
-                                <span>Item(s) réservé(s) : ($reserve / $compteur) </span>
-                                <progress max='$compteur' value='$reserve'></progress>
-                             </li>";
+                                <label>Item(s) réservé(s) ($reserve / $compteur)<br><progress  name='prog' max='$compteur' value='$reserve'></progress></label>
+                                
+                             </div>";
         }
 
         $navBarre = VueGenerale::renderNavBarre();
         //TODO
         //Permettre les modifs de nom d'utilisateur, de mail, de mdp
 
-        if ($message!="") {
-            $message=
-            "<section id='message'>$message</section>";
+        if ($message != "") {
+            $message =
+                "<section id='message'>$message</section>";
         }
 
-        $nbListes= count($listes);
+        $nbListes = count($listes);
         $html = <<<END
 
         $header
 <body id="accueil">
 $navBarre
+
+<section id="mainContent">
+
 $message
 <div class="section" id="infoCompte">
         <img id="profilPic" src="/myWishList/img/profil.png">
@@ -92,15 +95,14 @@ $message
     <div class="section" id="infoListe">
 
         <h1>Propriétaire des listes :</h1>
-        <ul>
             $listesTxt
-        </ul>
 
     </div>
     <br>
     <br>
     <a href="/myWishList/liste/creer" class="boutton">Créer une liste</a>
 
+    </section>
 </body>
 
 END;

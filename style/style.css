@@ -26,6 +26,8 @@ body {
     margin: -1em -1em 0 -1em;
     padding: 2em;
     display: flex;
+    position: fixed;
+    z-index: 1;
 }
 
 #navBarre div {
@@ -310,8 +312,40 @@ form {
     list-style: none;
 }
 
-#infoListe ul li {
+#infoListe div {
     display: flex;
+}
+
+.info * {
+    margin: auto 20px;
+}
+
+.info *:nth-child(4n) {
+    min-width: 20%;
+}
+
+.info:nth-child(n+3) {
+    border-top: 1px solid rgb(0, 0, 0);
+}
+
+.info {
+    padding: 1em 0;
+}
+
+progress.info {
+    height: 50%;
+}
+
+#infoListe h1 {
+    margin-bottom: 1em;
+}
+
+#infoListe progress {
+    margin: 2px 0;
+}
+
+.info a:nth-of-type(2) {
+    flex: 1;
 }
 
 #infoListe li span,
@@ -320,7 +354,10 @@ form {
     width: fit-content;
 }
 
-#infoListe li progress,
+
+/*#infoListe li progress,
+*/
+
 #infoCompte span {
     right: 2em;
     position: absolute;
@@ -377,4 +414,8 @@ input[type="radio"] {
 .prix:after {
     content: "\20AC";
     margin-left: 0.5em;
+}
+
+#mainContent {
+    margin-top: 4em;
 }

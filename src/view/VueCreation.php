@@ -41,7 +41,7 @@ END;
             <input type="text" name="nomItem" placeholder="Nom" required><br>
             <input type="text" name="descriptionItem" placeholder="Description" required><br>
             <input type="number" name="prixItem" min="0.01" max="99999.99" step="any" placeholder="Prix" required><br>
-            <input type="url" name="URL" placeholder="Page de description ? (optionnel)"><br>
+            <input type="url" name="URL" placeholder="Lien vers une page de description ? (optionnel)"><br>
             <input type="submit" value="Ajouter l'objet dans la liste" required></input>
 
         </form>

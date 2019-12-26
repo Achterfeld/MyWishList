@@ -54,7 +54,9 @@ return $navBarre;
         
         $header
         $nav
+        <section id="mainContent">
         $html
+        </section>
 
 END;
 
