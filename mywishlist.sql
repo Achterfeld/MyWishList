@@ -20,7 +20,7 @@ CREATE TABLE `item` (
 INSERT INTO `item` (`id`, `liste_id`, `nom`, `descr`, `img`, `url`, `tarif`) VALUES
 (1,	2,	'Champagne',	'Bouteille de champagne + flutes + jeux à gratter',	'champagne.jpg',	'',	20.00),
 (2,	2,	'Musique',	'Partitions de piano à 4 mains',	'musique.jpg',	'',	25.00),
-(3,	2,	'Exposition',	'Visite guidée de l’exposition ‘REGARDER’ à la galerie Poirel',	'poirelregarder.jpg',	'',	14.00),
+(3,	2,	'Exposition',	'Visite guidée de l’exposition ‘REGARDER’ à la galerie Poirel',	'poirelregarder.jpg',	'http://nancybuzz.fr/nancy-exposition-rendez-vous-estivaux-galerie-poirel-regarder/',	14.00),
 (4,	3,	'Goûter',	'Goûter au FIFNL',	'gouter.jpg',	'',	20.00),
 (5,	3,	'Projection',	'Projection courts-métrages au FIFNL',	'film.jpg',	'',	10.00),
 (6,	2,	'Bouquet',	'Bouquet de roses et Mots de Marion Renaud',	'rose.jpg',	'',	16.00),
