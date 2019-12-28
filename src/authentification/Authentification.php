@@ -59,7 +59,7 @@ class Authentification
 			$_SESSION['session']['niveauDeDroit'] = $u->droit;
 		}
 
-		setcookie("user_id",$u->user_id,time()+60*60*24*2,"/");
+		setcookie("user_id", $u->user_id, time() + 60 * 60 * 24 * 2, "/");
 	}
 
 	public static function authenticate($mail, $password)

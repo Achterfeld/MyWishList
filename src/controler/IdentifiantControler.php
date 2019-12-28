@@ -23,23 +23,6 @@ class IdentifiantControler
 
     public function insertUser()
     {
-
-        /*$app = new \Slim\Slim;
-        $datas = $app->request();
-        
-        $v = new User();
-        
-    	$v->prenom = $datas->post("Prenom");
-    	$v->mail = $datas->post("Mail");
-
-    	$hash1 = password_hash($datas->post("Passe1"), PASSWORD_DEFAULT, ['cost'=> 12]);
-        
-        if (password_verify($datas->post("Passe2"),$hash1)) {
-        	$v->hash = $hash1;
-            $v->save();
-        }
-        else
-            echo "republicas bananas";*/
         $app = new \Slim\Slim;
         $datas = $app->request();
 
@@ -53,7 +36,7 @@ class IdentifiantControler
         } else {
             $c = new HomeControler();
             switch ($creationOK) {
-                case Authentification::Pb_MDP :
+                case Authentification::Pb_MDP:
                     $c->getHome(VueHome::PB_MDP);
                     break;
 

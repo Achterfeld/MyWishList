@@ -14,9 +14,6 @@ use wishlist\view\VuePagePerso;
 class ListeControler
 {
 
-
-
-
     public function getItem($id)
     {
         $i = Item::where('id', '=', $id)->first();

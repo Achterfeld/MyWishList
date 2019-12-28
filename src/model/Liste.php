@@ -29,7 +29,7 @@ class Liste extends \Illuminate\Database\Eloquent\Model
 
         $public = $this->public ? "<span class='public'>🌎 publique" : "<span class='priv'>🔒 privée";
 
-        $possede = isset($this->possede()->first()->prenom)? $this->possede()->first()->prenom : "Invité" ;
+        $possede = isset($this->possede()->first()->prenom) ? $this->possede()->first()->prenom : "Invité";
 
         $str = <<<END
 
@@ -52,17 +52,17 @@ END;
             $reserv = "";
 
 
-            
+
 
 
             if (isset($_COOKIE['user_id'])) {
                 if ($_COOKIE['user_id'] != $uID) {
                     $reserv = !is_null($value->reservation) ? "✔️" : "❌";
-                }else{
+                } else {
                     date_default_timezone_set('Europe/Paris');
                     $date = date('m/d/Y h:i:s a', time());
-                    
-                    if (strtotime($this->expiration)-strtotime($date)<0) {
+
+                    if (strtotime($this->expiration) - strtotime($date) < 0) {
                         $reserv .= !is_null($value->reservation) ? "✔️" : "❌";
                     } else {
                         $reserv .= "";

@@ -77,7 +77,7 @@ END;
                 $content = $this->afficheCreationListe();
                 break;
             case self::SUPPR_LIST:
-                $content = $this->afficheSuppressionListe($token,$no);
+                $content = $this->afficheSuppressionListe($token, $no);
                 break;
             case self::ITEM:
                 $content = $this->afficheCreationItem($token, $no);

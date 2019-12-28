@@ -40,7 +40,7 @@ $co
         </div>
 
 
-    <img style="height:200px;width:200px" src="img/logo.png">
+    <img style="height:200px;width:200px" src="/myWishListimg/logo.png">
 
 
     <div class="deuxColonnes">

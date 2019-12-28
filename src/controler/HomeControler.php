@@ -8,9 +8,11 @@ use wishlist\model\Item;
 use wishlist\view\VueHome;
 
 
-class HomeControler {   
+class HomeControler
+{
 
-    public function getHome($option="") {
+    public function getHome($option = "")
+    {
         $v = new VueHome();
         $v->render($option);
     }

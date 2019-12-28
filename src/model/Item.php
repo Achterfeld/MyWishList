@@ -15,16 +15,17 @@ class Item extends \Illuminate\Database\Eloquent\Model
 
     public function __toString()
     {
-        //            <img class='itemBg' src=\"/myWishList/img/$this->img\"></img>
+        //            <img class='itemBg' src='/myWishList/img/$this->img'></img>
 
-        $str = "
+        $str = <<<END
         <div class='item'>
             <div class='itemBg'>
-                <img src=\"/myWishList/img/$this->img\"></img>
+                <img src="/myWishList/img/$this->img"></img>
             </div>
             <div class='itemContent'>
                 <div class='num num_item'> $this->id </div>
-                <div class='description'>";
+                <div class='description'>
+END;
 
         if (is_null($this->liste()->first())) {
 
@@ -37,13 +38,13 @@ class Item extends \Illuminate\Database\Eloquent\Model
         $str .= "<br>
                     <h4>$this->nom : $this->descr </h4><br>";
 
-        $str.= $this->url != "" ? "<a class='lienSCouleur' href=\"$this->url\" >Infos supplémentaires</a>" : "" ;
+        $str .= $this->url != "" ? "<a class='lienSCouleur' href='$this->url' >Infos supplémentaires</a>" : "";
 
         $str .= "
                     <div class='prix'>$this->tarif</div>
                 </div>
                 <div class='crop'>
-                    <img src=\"/myWishList/img/$this->img\"></img> 
+                    <img src='/myWishList/img/$this->img'></img> 
                 </div>
             </div>
         </div>";

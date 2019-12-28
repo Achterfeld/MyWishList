@@ -40,12 +40,12 @@ class pagePersoControler
 
 			Authentification::authenticate($mail, $pass);
 
-//			$u = User::where('mail', '=', $mail)->first();
-//			if (!is_null($u)) {
-				//Déjà fait par authenticate
-				//				Authentification::loadProfile($u->user_id);
-				$this->getPPerso();
-//			}
+			//			$u = User::where('mail', '=', $mail)->first();
+			//			if (!is_null($u)) {
+			//Déjà fait par authenticate
+			//				Authentification::loadProfile($u->user_id);
+			$this->getPPerso();
+			//			}
 		} catch (AuthException $ae) {
 
 			echo "Email ou mot de passe invalide<br>";

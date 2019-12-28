@@ -40,16 +40,16 @@ class VuePagePerso
             }
 
             if ($value->token_visu != "") {
-                $visuListe = "<a  href=\"/myWishList/liste/$value->no/$value->token_visu\">Liste 🔗</a>";
+                $visuListe = "<a  href='/myWishList/liste/$value->no/$value->token_visu'>Liste 🔗</a>";
             } else {
-                $visuListe = "<a  href=\"/myWishList/liste/$value->no/$value->token/valider\">Valider la liste ✅</a>";
+                $visuListe = "<a  href='/myWishList/liste/$value->no/$value->token/valider'>Valider la liste ✅</a>";
             }
 
 
 
             $listesTxt .= " <div class='info'>
                                 <span >Liste n°$value->no</span>
-                                <a  href=\"/myWishList/modification/liste/$value->no/$value->token\">Modification 🖉</a>
+                                <a  href='/myWishList/modification/liste/$value->no/$value->token'>Modification 🖉</a>
              
                                 $visuListe
              

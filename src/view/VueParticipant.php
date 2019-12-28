@@ -80,9 +80,9 @@ END;
                 $token_visu = $this->liste->token_visu;
                 $token = $this->liste->token;
 
-                $modif="";
-                if ($this->liste->token_visu != ""){
-                    $modif = "Lien pour modifier la liste<br><br><a href='/myWishList/modification/liste/$no/$token'>/myWishList/modification/liste/$no/$token</a>";                  
+                $modif = "";
+                if ($this->liste->token_visu != "") {
+                    $modif = "Lien pour modifier la liste<br><br><a href='/myWishList/modification/liste/$no/$token'>/myWishList/modification/liste/$no/$token</a>";
                 }
 
                 $affiche .= <<<END
@@ -129,7 +129,7 @@ END;
         $reserv = !is_null($reserv) ? $reserv : "''";
 
         $reserv = isset($_SESSION['session']) ? $_SESSION['session']['prenom'] : "''";
-            
+
 
 
 

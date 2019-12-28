@@ -7,11 +7,11 @@ class VueDeconnexion
     public function render()
     {
         $header = VueGenerale::renderHeader();
-        $html=<<<END
+        $html = <<<END
         $header
 <body id="connexion">
 
-    <a href="/myWishList"><img style="height:200px;width:200px" src="img/logo.png"></a>
+    <a href="/myWishList"><img style="height:200px;width:200px" src="/myWishListimg/logo.png"></a>
 
 
         <div>
@@ -25,7 +25,6 @@ class VueDeconnexion
 <body>
 END;
 
-echo $html;
-
+        echo $html;
     }
 }

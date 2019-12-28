@@ -67,9 +67,9 @@ END;
         </div>
 END;
 
-//TODO Ajout de la visibilité dans le controleur
+        //TODO Ajout de la visibilité dans le controleur
 
-return $txt;
+        return $txt;
     }
 
     function afficheModificationItem($modif)
