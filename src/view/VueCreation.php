@@ -54,41 +54,29 @@ END;
         return $html;
     }
 
-    function afficheSuppressionListe($token, $no)
+    function afficheSuppression($arg1, $arg2)
     {
 
         $app = \Slim\slim::getInstance();
-        $urlSuppressionListe = $app->urlFor('route_suppressionListe', ['no' => $no, 'token' => $token]);
-        $urlModificationListe = $app->urlFor('route_post_modifListe', ['no' => $no, 'token' => $token]);
+
+        // Si le deuxième argument est vide, on utilise un item
+        if ($arg2 == "") {
+            $urlSuppression = $app->urlFor('route_suppressionItem', ['id' => $arg1]);
+            $urlModification = $app->urlFor('route_post_modifItem', ['id' => $arg1]);
+        } else {
+            $urlSuppression = $app->urlFor('route_suppressionListe', ['token' => $arg1, 'no' => $arg2]);
+            $urlModification = $app->urlFor('route_post_modifListe', ['token' => $arg1, 'no' => $arg2]);
+        }
+
+        $txt = $app == "" ? "l'item" : "la liste";
 
         $html = <<<END
-        <form action="$urlSuppressionListe" method="post" class="formulaire bgRed">
+        <form action="$urlSuppression" method="post" class="formulaire bgRed">
 
-        <h1>Voulez-vous vraiment supprimer la liste ?</h1>
-
-            <input type="submit" value="Oui" required>
-            <a href="$urlModificationListe">Retour à l'accueil</a>
-
-        </form>
-
-END;
-        return $html;
-    }
-
-    function afficheSuppressionItem($id)
-    {
-
-        $app = \Slim\slim::getInstance();
-        $urlSuppressionItem = $app->urlFor('route_suppressionItem', ['id' => $id]);
-        $urlModificationItem = $app->urlFor('route_post_modifItem', ['id' => $id]);
-
-        $html = <<<END
-        <form action="$urlSuppressionItem" method="post" class="formulaire bgRed">
-
-        <h1>Voulez-vous vraiment supprimer l'item ?</h1>
+        <h1>Voulez-vous vraiment supprimer $txt ?</h1>
 
             <input type="submit" value="Oui" required>
-            <a href="$urlModificationItem">Retour à la modification</a>
+            <a href="$urlModification">Retour à la modification</a>
 
         </form>
 
@@ -104,10 +92,10 @@ END;
                 $content = $this->afficheCreationListe();
                 break;
             case self::SUPPR_LIST:
-                $content = $this->afficheSuppressionListe($token, $no);
+                $content = $this->afficheSuppression($token, $no);
                 break;
             case self::SUPPR_ITEM:
-                $content = $this->afficheSuppressionItem($token, "");
+                $content = $this->afficheSuppression($token, "");
                 break;
             case self::ITEM:
                 $content = $this->afficheCreationItem($token, $no);
