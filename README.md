@@ -35,6 +35,8 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 	 - 6 Création de liste
 	 - 7 Modification de liste
 	 - 8 Ajout d'items
+	 - 9 Modifier un item
+	 - 10 Supprimer un item
 	 - 14 Partage d'une liste
 	 - 15 Consultation des réservations (avant date)
 	 - 16 Consultation des réservations (après date)
@@ -45,11 +47,11 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 
 | Créateur | Extensions 
 |-|-
-| 9 | 19
-| 10 | 22
-| 11 | 23
-| 12 | 24
-| 13 | 25
+| 11 | 19
+| 12 | 22
+| 13 | 23
+|  | 24
+|  | 25
 |  | 26
 |  | 27
 |  | 28
