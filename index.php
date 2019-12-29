@@ -164,11 +164,22 @@ $app->get('/modification/liste/:no/:token', function ($no, $token) {
     $c->modifierListe($no, $token);
 })->name('route_get_modifListe');
 
+$app->get('/modification/item/:id', function ($id) {
+    $c = new ItemControler();
+    $c->modifierItem($id);
+})->name('route_modifItem');
+
 $app->post('/modification/liste/:no/:token', function ($no, $token) {
     $c = new ListeControler();
     $c->validerListe($no, $token);
     $c->getResumeListe($token);
 })->name('route_post_modifListe');
+
+$app->post('/modification/item/:id', function ($id) {
+    $c = new ItemControler();
+    $c->validationModifierItem($id);
+    $c->getItem($id);
+})->name('route_post_modifItem');
 
 
 $app->post('/liste/suppression/:no/:token', function ($no, $token) {
