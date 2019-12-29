@@ -158,9 +158,14 @@ class ListeControler
             $u = User::where('user_id', '=', $_SESSION['session']['user_id'])->first();
             $v->render($u, "Liste supprimée");
         } else {
-            $app = new \Slim\Slim;
+            $app = \Slim\Slim::getInstance();
 
-            $app->response->redirect("/myWishList", 303);
+            $rootUri = $app->request->getRootUri();
+            $itemUrl = $app->urlFor('home');
+            $url = $rootUri . $itemUrl;
+        
+
+            $app->response->redirect($url, 303);
         }
     }
 }

@@ -6,16 +6,22 @@ class VueConnexion
 {
     public function render()
     {
+        
+        $app = \Slim\Slim::getInstance();
+        $urlHome = $app->urlFor('route_home');
+        $urlPPerso = $app->urlFor('route_post_pagePerso');
+        $urlListeCreer = $app->urlFor('route_listeCreer');
+
         $header = VueGenerale::renderHeader();
         $html = <<<END
         $header
 <body id="connexion">
 
-    <a href="/myWishList"><img style="height:200px;width:200px" src="/myWishList/img/logo.png"></a>
+    <a href="$urlHome"><img style="height:200px;width:200px" src="$urlHome/img/logo.png"></a>
 
 
         <div>
-            <form method="post" action="/myWishList/pagePerso">
+            <form method="post" action="$urlPPerso">
                 <h1>Se connecter</h1>
                 <input type="email" placeholder="👱 Mail" name="Mail" required autofocus><br>
                 <input type="password" placeholder="🔒 Mot de passe" name="Passe" required ><br>
@@ -31,7 +37,7 @@ class VueConnexion
             <h1>Pas besoin de compte ?</h1>
             <br>
             <br>
-            <a href="/myWishList/liste/creer" class="boutton">Mode invité</a>
+            <a href="$urlListeCreer" class="boutton">Mode invité</a>
         </div>
 
         
@@ -43,7 +49,7 @@ class VueConnexion
 <br>
 <br>
 
-<a href="/myWishList" class="boutton">Retour à l'accueil</a>
+<a href="$urlHome" class="boutton">Retour à l'accueil</a>
 <br>
 </div>
 <body>

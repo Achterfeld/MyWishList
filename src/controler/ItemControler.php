@@ -22,26 +22,23 @@ class ItemControler
 
     public function validerItem()
     {
-        if (isset($_SESSION['session'])) {
 
-            $app = new \Slim\Slim;
-            $i = new Item();
-            $datas = $app->request();
+        $app = \Slim\Slim::getInstance();
 
-            $i->liste_id = $datas->post('noListe');
-            $i->nom = filter_var($datas->post('nomItem'), FILTER_SANITIZE_SPECIAL_CHARS);
-            $i->descr = filter_var($datas->post('descriptionItem'), FILTER_SANITIZE_SPECIAL_CHARS);
+        $i = new Item();
+        $datas = $app->request();
 
-            $url = filter_var($datas->post('URL'), FILTER_SANITIZE_SPECIAL_CHARS);
-            $i->url = $url;
+        $i->liste_id = $datas->post('noListe');
+        $i->nom = filter_var($datas->post('nomItem'), FILTER_SANITIZE_SPECIAL_CHARS);
+        $i->descr = filter_var($datas->post('descriptionItem'), FILTER_SANITIZE_SPECIAL_CHARS);
 
-            $i->tarif = $datas->post('prixItem');
-            $i->save();
+        $url = filter_var($datas->post('URL'), FILTER_SANITIZE_SPECIAL_CHARS);
+        $i->url = $url;
 
-            $this->getItem($i->id);
-        } else {
-            echo ("Vous devez être connecté pour modifier/ajouter un article dans une liste");
-        }
+        $i->tarif = $datas->post('prixItem');
+        $i->save();
+
+        $this->getItem($i->id);
     }
     public function getItem($id)
     {

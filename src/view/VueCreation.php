@@ -8,6 +8,7 @@ class VueCreation
     const ITEM = 2;
     const SUPPR_LIST = 3;
 
+
     function afficheCreationListe()
     {
 
@@ -32,8 +33,12 @@ END;
     function afficheCreationItem($token, $no)
     {
 
+
+        $app = \Slim\slim::getInstance();
+        $urlpostValidItem = $app->urlFor('route_post_validationItem');
+
         $html = <<<END
-        <form action="/myWishList/validation/item" method="post" class="formulaire">
+        <form action="$urlpostValidItem" method="post" class="formulaire">
 
             <h1>Ajout d'un item</h1>
             <input type="text" name="tokenListe" value=$token required readonly><br>
@@ -53,13 +58,17 @@ END;
     function afficheSuppressionListe($token, $no)
     {
 
+        $app = \Slim\slim::getInstance();
+        $urlSuppressionListe = $app->urlFor('route_suppressionListe', ['no' => $no, 'token' => $token]);
+        $urlModificationListe = $app->urlFor('route_post_modifListe', ['no' => $no, 'token' => $token]);
+
         $html = <<<END
-        <form action="/myWishList/liste/suppression/$no/$token" method="post" class="formulaire bgRed">
+        <form action="$urlSuppressionListe" method="post" class="formulaire bgRed">
 
         <h1>Voulez-vous vraiment supprimer la liste ?</h1>
 
             <input type="submit" value="Oui" required>
-            <a href="/myWishList/modification/liste/$no/$token">Retour à l'accueil</a>
+            <a href="$urlModificationListe">Retour à l'accueil</a>
 
         </form>
 

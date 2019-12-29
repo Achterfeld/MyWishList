@@ -23,6 +23,11 @@ class VueParticipant
 
     private function afficheListeListe()
     {
+
+
+        $app = \Slim\Slim::getInstance();
+
+
         $affiche = "<section>";
 
         date_default_timezone_set('Europe/Paris');
@@ -39,12 +44,16 @@ class VueParticipant
 
             foreach ($this->liste as $UneListe) {
                 if (strtotime($UneListe->expiration) > strtotime($date)) {
+
+                    $urlDetailListe = $app->urlFor('route_liste', ['no' => $UneListe->no, 'token_visu' => $UneListe->token_visu]);
+
+
                     $affiche .= <<<END
                     <div class='list'>
                     
                     <div class='num num_liste'>$UneListe->no</div>
-        <h3><a href="/myWishList/liste/$UneListe->no/$UneListe->token_visu">$UneListe->titre</a></h3><br>
-        <div>⌛ Expire le $UneListe->expiration</div><br><br>
+                    <h3><a href="$urlDetailListe">$UneListe->titre</a></h3><br>
+                    <div>⌛ Expire le $UneListe->expiration</div><br><br>
                     
                     </div><br>
 END;
@@ -69,6 +78,7 @@ END;
 
     private function afficheListe($affToken = false)
     {
+        $app = \Slim\Slim::getInstance();
 
         if (!is_null($this->liste)) {
 
@@ -82,22 +92,28 @@ END;
 
                 $modif = "";
                 if ($this->liste->token_visu != "") {
-                    $modif = "Lien pour modifier la liste<br><br><a href='/myWishList/modification/liste/$no/$token'>/myWishList/modification/liste/$no/$token</a>";
+
+                    $urlModifListe = $app->urlFor('route_get_modifListe', ['no' => $no, 'token' => $token]);
+
+                    $modif = "Lien pour modifier la liste<br><br><a href='$urlModifListe'>$urlModifListe</a>";
                 }
+
+                $urlDetailListe = $app->urlFor('route_liste', ['no' => $no, 'token_visu' => $token_visu]);
 
                 $affiche .= <<<END
 
-                 <div id='token' > $modif </div>
-                 <div id='token' > Token à conserver :<br><br> $token_visu </div>
-                 <div id='token'>Lien pour visualiser la liste :<br><br><a href="/myWishList/liste/$no/$token_visu">/myWishList/liste/$no/$token_visu</a></div>
+                <div id='token' > $modif </div>
+                <div id='token' > Token à conserver :<br><br> $token_visu </div>
+                <div id='token'>Lien pour visualiser la liste :<br><br><a href="$urlDetailListe">$urlDetailListe</a></div>
 END;
             }
 
             $affiche .= "</section>";
         } else {
-            $affiche = '<section>Aucune liste correspondante
+            $urlHome = $app->urlFor('route_home');
+            $affiche = "<section>Aucune liste correspondante
             <br>
-            <a class="fBlanc" href="/myWishList">Retour à l\'accueil</a></section>';
+            <a class='fBlanc' href='$urlHome'>Retour à l'accueil</a></section>";
         }
         return $affiche;
     }
@@ -119,8 +135,6 @@ END;
 
         $l = Liste::where('no', '=', $this->liste->liste_id)->first();
         $uID = $l->user_id;
-        //$uID=2;
-        //        var_dump($uID);
 
         $state = !is_null($reserv) ? "disabled" : "required";
         $class = !is_null($reserv) ? "bouttonDisabled" : "boutton";
@@ -129,13 +143,12 @@ END;
         $reserv = !is_null($reserv) ? $reserv : "''";
 
         $reserv = isset($_SESSION['session']) ? $_SESSION['session']['prenom'] : "''";
-
-
-
-
+        $app = \Slim\Slim::getInstance();
+        $route_post_itemReservation = $app->urlFor('route_post_itemReservation', ['id' => $idItem]);
+        
         $txtAutre = <<<END
 <br>
-<form method="post" action="/myWishList/reservation/$idItem">
+<form method="post" action="$route_post_itemReservation">
 <div>Réserver : </div>
 <input type="checkbox" name="reservation" $state ><br>
 <input type="text" name="message" placeholder="Votre message pour l'organisateur" $state ><br>

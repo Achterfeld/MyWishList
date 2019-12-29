@@ -27,6 +27,7 @@ class Liste extends \Illuminate\Database\Eloquent\Model
     public function __toString()
     {
 
+        $app = \Slim\Slim::getInstance();
         $public = $this->public ? "<span class='public'>🌎 publique" : "<span class='priv'>🔒 privée";
 
         $possede = isset($this->possede()->first()->prenom) ? $this->possede()->first()->prenom : "Invité";
@@ -72,7 +73,10 @@ END;
                 $reserv = !is_null($value->reservation) ? "✔️" : "❌";
             }
 
-            $str .= "<li><a class='lienSCouleur' href='/myWishList/item/reservation/$value->id'>$value->nom $reserv</a></li> ";
+            $urlItemReservation = $app->urlFor('route_get_itemReservation',['idItem'=>$value->id]);
+
+
+            $str .= "<li><a class='lienSCouleur' href='$urlItemReservation'>$value->nom $reserv</a></li> ";
         }
         $str .= "</ul></div>";
 
@@ -82,11 +86,12 @@ END;
 
         $auteur = isset($_SESSION['session']) ? $_SESSION['session']['prenom'] : "''";
 
+        $urlAjoutMessage = $app->urlFor('route_ajoutMessage',['no'=>$this->no,'token_visu'=>$this->token_visu]);
 
         $str .= <<<END
 
         <div style="margin: 1em;">
-            <form class="formulaire" method="post" action="/myWishList/ajout/message/$this->no/$this->token_visu">
+            <form class="formulaire" method="post" action="$urlAjoutMessage">
                 <div>Ajouter un message :</div>
                 <input type="text" name="auteur" placeholder="Votre nom" value=$auteur><br>
                 <input type="text" name="message" placeholder="Votre message pour l'organisateur" ><br>

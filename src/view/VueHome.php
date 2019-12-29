@@ -9,6 +9,8 @@ class VueHome
     const PB_MDP = 2;
     public function render($option = "")
     {
+        
+        $app = \Slim\Slim::getInstance();
 
         $txt = "";
         if ($option == self::PB_MAIL) {
@@ -20,15 +22,17 @@ class VueHome
 
 
         if (isset($_SESSION['session'])) {
-            $co = '<a class="boutton small" href="/myWishList/pagePerso">' . $_SESSION['session']['prenom'] . '</a>
-            <a  class="boutton small disconnect" href="/myWishList/deconnexion">Se déconnecter</a>';
+            $co = '<a class="boutton small" href="'.$app->urlFor('route_get_pagePerso').'">' . $_SESSION['session']['prenom'] . '</a>
+            <a  class="boutton small disconnect" href="'.$app->urlFor('route_deconnexion').'">Se déconnecter</a>';
         } else {
-            $co = '<a class="boutton small" href="/myWishList/connexion">Se connecter</a>';
+            $co = '<a class="boutton small" href="'.$app->urlFor('route_connexion').'">Se connecter</a>';
         }
 
-
-
-
+        $urlImg = $app->urlFor('route_home');
+        $urlInscription = $app->urlFor('route_inscription');
+        $urlConnexion = $app->urlFor('route_connexion');
+        $urlListeCreer = $app->urlFor('route_listeCreer');
+        
         $header = VueGenerale::renderHeader();
         $html = <<<END
         $header
@@ -40,12 +44,12 @@ $co
         </div>
 
 
-    <img style="height:200px;width:200px" src="/myWishListimg/logo.png">
+    <img style="height:200px;width:200px" src="$urlImg/img/logo.png">
 
 
     <div class="deuxColonnes">
         <div>
-            <form method="post" action="/myWishList/inscription">
+            <form method="post" action="$urlInscription">
                 <h1>S'inscrire</h1>
 
                 $txt
@@ -56,7 +60,7 @@ $co
                 <input type="password" placeholder="Confirmation mot de passe" name="Passe2" required ><br>
                 <input class="boutton" type="submit" value="S'inscrire" required ></input>
                 <br>
-                <a href="/myWishList/connexion">Déjà inscrit ?</a>
+                <a href="$urlConnexion">Déjà inscrit ?</a>
             </form>
 
         </div>
@@ -64,7 +68,7 @@ $co
             <h1>Pas besoin de compte ?</h1>
             <br>
             <br>
-            <a href="/myWishList/liste/creer" class="boutton">Mode invité</a>
+            <a href="$urlListeCreer" class="boutton">Mode invité</a>
         </div>
     </div>
         <div>

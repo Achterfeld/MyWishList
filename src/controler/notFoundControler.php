@@ -16,9 +16,16 @@ class notFoundControler
     public function get404()
     {
 
+        $app = \Slim\Slim::getInstance();
+        $rootUri = $app->request->getRootUri();
+        $itemUrl = $app->urlFor('route_home');
+        $url = $rootUri . $itemUrl;
+
+
+
         $html = <<<END
         <div style="display: flex;">
-        <img style="width: 50vw;height : 100%" src="/myWishList/img/404.png" >
+        <img style="width: 50vw;height : 100%" src="$url/img/404.png" >
         <h1><a href='/myWishList'  style="color:#000; text-decoration:underline"> Retour à l'accueil</a></h1>
         
         </div>

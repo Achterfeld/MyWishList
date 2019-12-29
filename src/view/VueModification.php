@@ -17,6 +17,11 @@ class VueModification
 
         $visibilite = $this->genererVisibilite($modif);
 
+        $app = \Slim\Slim::getInstance();
+        $urlItemAjout = $app->urlFor('route_itemAjout', ['no' => $no, 'token' => $token]);
+        $urlListePresuppression = $app->urlFor('route_presuppressionListe', ['no' => $no, 'token' => $token]);
+
+
         $html = <<<END
         <form action="$token" method="post" class="formulaire">
 
@@ -34,12 +39,12 @@ class VueModification
         <br>
 
         <form class='formulaire'>
-            <a href="/myWishList/item/ajout/$no/$token"> <h1>+</h1>Ajouter un item dans la liste</a>
+            <a href="$urlItemAjout"> <h1>+</h1>Ajouter un item dans la liste</a>
         </form>
 
         <br>
 
-        <form class='formulaire redBG' action="/myWishList/liste/preSuppression/$no/$token" method="post">
+        <form class='formulaire redBG' action="$urlListePresuppression" method="post">
             <input type="submit" value="❌Supprimer la liste">
         </form>
 

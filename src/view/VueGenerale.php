@@ -7,6 +7,10 @@ class VueGenerale
 
     static function renderHeader()
     {
+
+        $app = \Slim\Slim::getInstance();
+        $urlHome = $app->urlFor('route_home');
+
         $header = <<<END
 
         <head>
@@ -14,7 +18,7 @@ class VueGenerale
         <meta name="robots" content="noindex,nofollow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="./img/favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" type="text/css" href="/myWishList/style/style.css">
+        <link rel="stylesheet" type="text/css" href="$urlHome/style/style.css">
         <title>My Wish List</title>
         </head>
 END;
@@ -23,20 +27,31 @@ END;
 
     static function renderNavBarre()
     {
+
+        $app = \Slim\Slim::getInstance();
+        $urlHome = $app->urlFor('route_home');
+        $urlPPerso = $app->urlFor('route_get_pagePerso');
+        $urlConnexion = $app->urlFor('route_connexion');
+        $urlDeconnexion = $app->urlFor('route_deconnexion');
+
         if (isset($_SESSION['session'])) {
-            $co = '<div><a href="/myWishList/pagePerso">' . $_SESSION['session']['prenom'] . '</a></div>
-            <div><a href="/myWishList/deconnexion" class = "disconnect">Se déconnecter</a>
-            </div>';
+            $co = "<div><a href='$urlPPerso'>" . $_SESSION['session']['prenom'] . "</a></div>
+            <div><a href='$urlDeconnexion' class = 'disconnect'>Se déconnecter</a>
+            </div>";
         } else {
-            $co = '<div><a href="/myWishList/connexion" >Se connecter</a></div>';
+            $co = "<div><a href='$urlConnexion' >Se connecter</a></div>";
         }
 
         $navBarre = <<<END
         <div id="navBarre"> 
-        <div> <a href="/myWishList">My Wish List</a></div>
-        <div style="flex:1"></div>
-        <div><a href="/myWishList" >Page d'accueil</a></div>
-        $co
+            <div>
+                <a href="$urlHome">My Wish List</a>
+            </div>
+            <div style="flex:1"></div>
+            <div>
+                <a href="$urlHome" >Page d'accueil</a>
+            </div>
+            $co
         </div><br>
 
 END;

@@ -38,18 +38,25 @@ class VuePagePerso
                     $reserve++;
                 }
             }
+            
+        $app = \Slim\Slim::getInstance();
+        $urlDetailListe = $app->urlFor('route_liste',['no'=>$value->no,'token_visu'=>$value->token_visu]);
+        $urlValiderListe = $app->urlFor('route_listeValider',['no'=>$value->no,'token'=>$value->token]);
+        $urlModifListe = $app->urlFor('route_get_modifListe',['no'=>$value->no,'token'=>$value->token]);
+        $urlHome = $app->urlFor('route_home');
+        $urlListeCreer = $app->urlFor('route_listeCreer');
 
             if ($value->token_visu != "") {
-                $visuListe = "<a  href='/myWishList/liste/$value->no/$value->token_visu'>Liste 🔗</a>";
+                $visuListe = "<a  href='$urlDetailListe'>Liste 🔗</a>";
             } else {
-                $visuListe = "<a  href='/myWishList/liste/$value->no/$value->token/valider'>Valider la liste ✅</a>";
+                $visuListe = "<a  href='$urlValiderListe'>Valider la liste ✅</a>";
             }
 
 
 
             $listesTxt .= " <div class='info'>
                                 <span >Liste n°$value->no</span>
-                                <a  href='/myWishList/modification/liste/$value->no/$value->token'>Modification 🖉</a>
+                                <a  href='$urlModifListe'>Modification 🖉</a>
              
                                 $visuListe
              
@@ -78,7 +85,7 @@ $navBarre
 
 $message
 <div class="section" id="infoCompte">
-        <img id="profilPic" src="/myWishList/img/profil.png">
+        <img id="profilPic" src="$urlHome/img/profil.png">
         <div id="infos">
             <ul>
                 <li>
@@ -100,7 +107,7 @@ $message
     </div>
     <br>
     <br>
-    <a href="/myWishList/liste/creer" class="boutton">Créer une liste</a>
+    <a href="$urlListeCreer" class="boutton">Créer une liste</a>
 
     </section>
 </body>

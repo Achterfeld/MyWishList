@@ -7,11 +7,15 @@ class VueDeconnexion
     public function render()
     {
         $header = VueGenerale::renderHeader();
+
+        $app = \Slim\Slim::getInstance();
+        $urlHome = $app->urlFor('route_home');
+
         $html = <<<END
         $header
 <body id="connexion">
 
-    <a href="/myWishList"><img style="height:200px;width:200px" src="/myWishListimg/logo.png"></a>
+    <a href="$urlHome"><img style="height:200px;width:200px" src="$urlHome/img/logo.png"></a>
 
 
         <div>
@@ -19,7 +23,7 @@ class VueDeconnexion
         <p>Vous êtes bien déconnecté</p>
         <br>
         <br>
-        <a href="/myWishList" class="boutton">Retour à l'accueil</a>
+        <a href="$urlHome" class="boutton">Retour à l'accueil</a>
 
         </div>
 <body>
