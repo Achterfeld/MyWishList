@@ -14,11 +14,11 @@ class VueParticipant
     const LIST_VIEW_TOKEN = 5;
     const LIST_ITEM_VIEW = 6;
 
-    private $liste;
+    private $objet;
 
     function __construct($l)
     {
-        $this->liste = $l;
+        $this->objet = $l;
     }
 
     private function afficheListeListe()
@@ -35,14 +35,14 @@ class VueParticipant
 
         if (isset($_SESSION['session'])) {
 
-            foreach ($this->liste as $UneListe) {
+            foreach ($this->objet as $UneListe) {
                 if (strtotime($UneListe->expiration) > strtotime($date)) {
                     $affiche .= $UneListe . "<br>";
                 }
             }
         } else {
 
-            foreach ($this->liste as $UneListe) {
+            foreach ($this->objet as $UneListe) {
                 if (strtotime($UneListe->expiration) > strtotime($date)) {
 
                     $urlDetailListe = $app->urlFor('route_liste', ['no' => $UneListe->no, 'token_visu' => $UneListe->token_visu]);
@@ -68,7 +68,7 @@ END;
     private function afficheListeItems()
     {
         $affiche = "<section>";
-        foreach ($this->liste as $UneListe) {
+        foreach ($this->objet as $UneListe) {
             $affiche .= "$UneListe<br>";
         }
         $affiche .= "</section>";
@@ -80,18 +80,20 @@ END;
     {
         $app = \Slim\Slim::getInstance();
 
-        if (!is_null($this->liste)) {
+        if (!is_null($this->objet)) {
 
-            $affiche = "<section>$this->liste";
+            $affiche = "<section>$this->objet";
 
             if ($affToken) {
 
-                $no = $this->liste->no;
-                $token_visu = $this->liste->token_visu;
-                $token = $this->liste->token;
+                $liste=$this->objet;
+
+                $no = $liste->no;
+                $token_visu = $liste->token_visu;
+                $token = $liste->token;
 
                 $modif = "";
-                if ($this->liste->token_visu != "") {
+                if ($liste->token_visu != "") {
 
                     $urlModifListe = $app->urlFor('route_get_modifListe', ['no' => $no, 'token' => $token]);
 
@@ -120,7 +122,7 @@ END;
 
     private function afficheItem()
     {
-        return "<section>$this->liste</section>";
+        return "<section>$this->objet</section>";
     }
 
     function afficheItemListe($i)
@@ -130,10 +132,11 @@ END;
         $reserv = $i->reservation;
         $idItem = $i->id;
 
+        $liste=$this->objet;
 
-        $content = "<section>$this->liste";
+        $content = "<section>$liste";
 
-        $l = Liste::where('no', '=', $this->liste->liste_id)->first();
+        $l = Liste::where('no', '=', $liste->liste_id)->first();
         $uID = $l->user_id;
 
         $state = !is_null($reserv) ? "disabled" : "required";
