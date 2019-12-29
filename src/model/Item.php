@@ -15,11 +15,35 @@ class Item extends \Illuminate\Database\Eloquent\Model
 
     public function __toString()
     {
-        
+
         $app = \Slim\Slim::getInstance();
         $rootUri = $app->request->getRootUri();
         $itemUrl = "";
         $url = $rootUri . $itemUrl;
+
+        $modif = "";
+
+        if (isset($_SESSION['session'])) {
+
+            $userID = -1;
+
+            $liste = $this->liste()->first();
+
+            if (!is_null($liste)) {
+                $user = $liste->possede()->first();
+                if (!is_null($user)) {
+                    $userID = $user->user_id;
+                }
+            }
+
+
+            if ($_SESSION['session']['user_id'] == $userID) {
+
+                $urlModif = $app->urlFor('route_modifItem', ['id' => $this->id]);
+                $modif = "<a href='$urlModif' class='lienSCouleur' id='modifListe'>🖉</a>";
+            }
+        }
+
 
         $str = <<<END
         <div class='item'>
@@ -27,7 +51,8 @@ class Item extends \Illuminate\Database\Eloquent\Model
                 <img src="$url/img/$this->img"></img>
             </div>
             <div class='itemContent'>
-                <div class='num num_item'> $this->id </div>
+            $modif
+            <div class='num num_item'> $this->id </div>
                 <div class='description'>
 END;
 
@@ -44,7 +69,7 @@ END;
 
         $str .= $this->url != "" ? "<a class='lienSCouleur' href='$this->url' >Infos supplémentaires</a>" : "";
 
-        
+
         $str .= "
                     <div class='prix'>$this->tarif</div>
                 </div>
