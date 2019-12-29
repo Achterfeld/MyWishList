@@ -5,20 +5,20 @@ namespace wishlist\controler;
 use \Illuminate\Database\Capsule\Manager as DB;
 use wishlist\model\Liste;
 use wishlist\model\Item;
+use wishlist\model\User;
 use wishlist\view\VueParticipant;
 use wishlist\view\VueCreation;
 use wishlist\view\VueModification;
+use wishlist\view\VuePagePerso;
 
 class ItemControler
 {
-
 
     public function getCreation($no, $token)
     {
         $v = new VueCreation();
         $v->render(VueCreation::ITEM, $token, $no);
     }
-
 
     public function validerItem()
     {
@@ -48,8 +48,6 @@ class ItemControler
         $v->render(VueParticipant::ITEM_VIEW);
     }
 
-
-
     public function validationModifierItem($id)
     {
 
@@ -75,4 +73,31 @@ class ItemControler
         $v = new VueModification();
         $v->render(VueModification::ITEM, $i);
     }
+
+    public function confirmerSupprItem($id)
+    {
+        $v = new VueCreation();
+        $v->render(VueCreation::SUPPR_ITEM, $id);
+    }
+
+    public function supprimer($id)
+    {
+        $i = Item::where('id', '=', $id);
+        $i->delete();
+
+        $app = \Slim\Slim::getInstance();
+
+        if (isset($_SESSION['session']['user_id'])) {
+
+            $v = new VuePagePerso();
+            $u = User::where('user_id', '=', $_SESSION['session']['user_id'])->first();
+            $v->render($u, "Item supprimée");
+        } else {
+
+            $itemUrl = $app->urlFor('route_home');
+            $app->response->redirect($itemUrl, 303);
+        }
+    }
+
+    
 }
