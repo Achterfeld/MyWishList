@@ -7,7 +7,7 @@ class VueCreation
     const LIST = 1;
     const ITEM = 2;
     const SUPPR_LIST = 3;
-
+    const SUPPR_ITEM = 4;
 
     function afficheCreationListe()
     {
@@ -32,7 +32,6 @@ END;
 
     function afficheCreationItem($token, $no)
     {
-
 
         $app = \Slim\slim::getInstance();
         $urlpostValidItem = $app->urlFor('route_post_validationItem');
@@ -76,7 +75,26 @@ END;
         return $html;
     }
 
+    function afficheSuppressionItem($id)
+    {
 
+        $app = \Slim\slim::getInstance();
+        $urlSuppressionItem = $app->urlFor('route_suppressionItem', ['id' => $id]);
+        $urlModificationItem = $app->urlFor('route_post_modifItem', ['id' => $id]);
+
+        $html = <<<END
+        <form action="$urlSuppressionItem" method="post" class="formulaire bgRed">
+
+        <h1>Voulez-vous vraiment supprimer l'item ?</h1>
+
+            <input type="submit" value="Oui" required>
+            <a href="$urlModificationItem">Retour à la modification</a>
+
+        </form>
+
+END;
+        return $html;
+    }
 
     function render($selecter, $token = "", $no = "")
     {
@@ -87,6 +105,9 @@ END;
                 break;
             case self::SUPPR_LIST:
                 $content = $this->afficheSuppressionListe($token, $no);
+                break;
+            case self::SUPPR_ITEM:
+                $content = $this->afficheSuppressionItem($token, "");
                 break;
             case self::ITEM:
                 $content = $this->afficheCreationItem($token, $no);
