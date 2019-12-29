@@ -39,7 +39,6 @@ $app->get('/pagePerso', function () {
     $c->getPPerso();
 })->name('route_get_pagePerso');
 
-
 $app->post('/pagePerso', function () {
     $c = new pagePersoControler();
     $c->connexion();
@@ -59,8 +58,6 @@ $app->post('/ajout/message/:no/:token_visu', function ($no, $token_visu) use ($a
 
     $app->response->redirect($urlDetailListe, 303);
 })->name('route_ajoutMessage');
-
-
 
 $app->get('/item/ajout/:no/:token', function ($no, $token) {
     $c = new ItemControler();
@@ -85,7 +82,6 @@ $app->post('/liste/validation/:token', function ($token) {
     $c->getResumeListe($token);
 })->name('route_post_listeValidation');
 
-
 $app->get('/liste/validation/:token', function ($token) {
 
     $c = new ListeControler();
@@ -101,7 +97,6 @@ $app->get('/item', function () {
 
 //Affichage d'une liste via son token + id
 
-
 $app->get('/liste/:no/:token/valider', function ($no, $token) use ($app) {
 
     $c = new ListeControler();
@@ -111,8 +106,6 @@ $app->get('/liste/:no/:token/valider', function ($no, $token) use ($app) {
 
     $app->response->redirect($urlPagePerso, 303);
 })->name('route_listeValider');
-
-
 
 $app->get('/liste/:no/:token_visu', function ($no, $token_visu) {
 
@@ -177,16 +170,25 @@ $app->post('/modification/item/:id', function ($id) {
     $c->getItem($id);
 })->name('route_post_modifItem');
 
-
 $app->post('/liste/suppression/:no/:token', function ($no, $token) {
     $c = new ListeControler();
     $c->supprimer($no, $token);
 })->name('route_suppressionListe');
 
+$app->post('/liste/suppression/:id', function ($id) {
+    $c = new ItemControler();
+    $c->supprimer($id);
+})->name('route_suppressionItem');
+
 $app->post('/liste/preSuppression/:no/:token', function ($no, $token) {
     $c = new ListeControler();
     $c->confirmerSupprListe($no, $token);
 })->name('route_presuppressionListe');
+
+$app->post('/item/preSuppression/:id', function ($id) {
+    $c = new ItemControler();
+    $c->confirmerSupprItem($id);
+})->name('route_presuppressionItem');
 
 $app->post('/reservation/:id', function ($id) {
     $c = new ListeControler();
