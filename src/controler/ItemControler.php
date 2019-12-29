@@ -40,10 +40,39 @@ class ItemControler
 
         $this->getItem($i->id);
     }
+
     public function getItem($id)
     {
         $i = Item::where('id', '=', $id)->first();
         $v = new VueParticipant($i);
         $v->render(VueParticipant::ITEM_VIEW);
+    }
+
+    
+
+    public function validationModifierItem($id)
+    {
+
+        $app = \Slim\Slim::getInstance();
+        $i = Item::where('id', '=', $id)->first();
+
+        $datas = $app->request();
+
+        $i->nom = filter_var($datas->post("nomItem"), FILTER_SANITIZE_SPECIAL_CHARS);
+        $i->descr = substr(filter_var($datas->post("descriptionItem"), FILTER_SANITIZE_SPECIAL_CHARS), 0, 256);
+        $i->img = filter_var($datas->post("URLImage"), FILTER_SANITIZE_SPECIAL_CHARS);
+        $i->url = filter_var($datas->post("URL"), FILTER_SANITIZE_SPECIAL_CHARS);
+        $i->tarif = filter_var($datas->post("prixItem"), FILTER_SANITIZE_SPECIAL_CHARS);
+        $i->save();
+    }
+
+    public function modifierItem($id)
+    {
+
+        //        $app = new \Slim\Slim;
+        $i = Item::where('id','=',$id)->first();
+
+        $v = new VueModification();
+        $v->render(VueModification::ITEM, $i);
     }
 }
