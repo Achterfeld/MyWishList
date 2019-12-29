@@ -48,7 +48,7 @@ class ItemControler
         $v->render(VueParticipant::ITEM_VIEW);
     }
 
-    
+
 
     public function validationModifierItem($id)
     {
@@ -70,7 +70,7 @@ class ItemControler
     {
 
         //        $app = new \Slim\Slim;
-        $i = Item::where('id','=',$id)->first();
+        $i = Item::where('id', '=', $id)->first();
 
         $v = new VueModification();
         $v->render(VueModification::ITEM, $i);

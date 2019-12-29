@@ -163,7 +163,7 @@ class ListeControler
             $rootUri = $app->request->getRootUri();
             $itemUrl = $app->urlFor('home');
             $url = $rootUri . $itemUrl;
-        
+
 
             $app->response->redirect($url, 303);
         }

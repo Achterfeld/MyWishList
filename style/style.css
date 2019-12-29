@@ -418,3 +418,10 @@ input[type="radio"] {
 #mainContent {
     margin-top: 4em;
 }
+
+#modifListe {
+    font-size: xx-large;
+    position: absolute;
+    top: -1.5em;
+    right: 0;
+}

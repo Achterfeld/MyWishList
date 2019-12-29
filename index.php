@@ -55,10 +55,9 @@ $app->post('/ajout/message/:no/:token_visu', function ($no, $token_visu) use ($a
     $c = new MessagesControler();
     $c->ajoutMessage($no);
 
-    $urlDetailListe = $app->urlFor('route_liste',['no'=>$no,'token_visu'=>$token_visu]);
+    $urlDetailListe = $app->urlFor('route_liste', ['no' => $no, 'token_visu' => $token_visu]);
 
     $app->response->redirect($urlDetailListe, 303);
-
 })->name('route_ajoutMessage');
 
 
@@ -150,9 +149,6 @@ $app->get('/connexion', function () {
     $c = new IdentifiantControler();
     $c->getConnexion();
 })->name('route_connexion');
-
-
-
 
 $app->get('/deconnexion', function () {
     $c = new IdentifiantControler();
