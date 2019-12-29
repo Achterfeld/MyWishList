@@ -23,7 +23,6 @@ class VueModification
         $urlItemAjout = $app->urlFor('route_itemAjout', ['no' => $no, 'token' => $token]);
         $urlListePresuppression = $app->urlFor('route_presuppressionListe', ['no' => $no, 'token' => $token]);
 
-
         $html = <<<END
         <form action="$token" method="post" class="formulaire">
 
@@ -49,7 +48,6 @@ class VueModification
         <form class='formulaire redBG' action="$urlListePresuppression" method="post">
             <input type="submit" value="❌Supprimer la liste">
         </form>
-
 
 END;
         return $html;
@@ -78,7 +76,6 @@ END;
 
         return $txt;
     }
-
 
     function afficheModificationItem($modif)
     {
@@ -110,8 +107,7 @@ END;
 
                 $app = \Slim\Slim::getInstance();
                 //$urlItemPresuppression = $app->urlFor('route_presuppressionItem', ['id' => $id]);
-                $urlItemPresuppression = ""; //$app->urlFor('route_presuppressionItem', ['id' => $id]);
-
+                $urlItemPresuppression = $app->urlFor('route_presuppressionItem', ['id' => $id]);
 
                 //#############################
 
@@ -138,7 +134,6 @@ END;
             <input type="submit" value="❌Supprimer l'item">
         </form>
 
-
 END;
                 //#############################
 
@@ -154,8 +149,6 @@ END;
         }
         return $html;
     }
-
-
 
     function render($selecter, $modif)
     {

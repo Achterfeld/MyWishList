@@ -100,7 +100,6 @@ class ListeControler
         $i->save();
     }
 
-
     public function modifierListe($no, $token)
     {
 
@@ -126,7 +125,6 @@ class ListeControler
         $l->save();
     }
 
-
     public function confirmerListe($no, $token)
     {
         $l = Liste::where([['no', '=', $no], ['token', '=', $token]])->first();
@@ -139,7 +137,6 @@ class ListeControler
         $l->save();
     }
 
-
     public function confirmerSupprListe($no, $token)
     {
         $v = new VueCreation();
@@ -151,6 +148,7 @@ class ListeControler
         $l = Liste::where([['no', '=', $no], ['token', '=', $token]]);
         $l->delete();
 
+        $app = \Slim\Slim::getInstance();
 
         if (isset($_SESSION['session']['user_id'])) {
 
@@ -158,14 +156,9 @@ class ListeControler
             $u = User::where('user_id', '=', $_SESSION['session']['user_id'])->first();
             $v->render($u, "Liste supprimée");
         } else {
-            $app = \Slim\Slim::getInstance();
 
-            $rootUri = $app->request->getRootUri();
-            $itemUrl = $app->urlFor('home');
-            $url = $rootUri . $itemUrl;
-
-
-            $app->response->redirect($url, 303);
+            $itemUrl = $app->urlFor('route_home');
+            $app->response->redirect($itemUrl, 303);
         }
     }
 }

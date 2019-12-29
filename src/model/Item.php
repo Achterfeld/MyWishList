@@ -36,14 +36,12 @@ class Item extends \Illuminate\Database\Eloquent\Model
                 }
             }
 
-
             if ($_SESSION['session']['user_id'] == $userID) {
 
                 $urlModif = $app->urlFor('route_modifItem', ['id' => $this->id]);
                 $modif = "<a href='$urlModif' class='lienSCouleur' id='modifListe'>🖉</a>";
             }
         }
-
 
         $str = <<<END
         <div class='item'>
@@ -68,7 +66,6 @@ END;
                     <h4>$this->nom : $this->descr </h4><br>";
 
         $str .= $this->url != "" ? "<a class='lienSCouleur' href='$this->url' >Infos supplémentaires</a>" : "";
-
 
         $str .= "
                     <div class='prix'>$this->tarif</div>
