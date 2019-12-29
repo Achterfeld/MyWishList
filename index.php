@@ -102,7 +102,7 @@ $app->get('/liste/:no/:token/valider', function ($no, $token) use ($app) {
     $c = new ListeControler();
     $c->confirmerListe($no, $token);
 
-    $urlPagePerso = $app->urlFor('route_pagePerso');
+    $urlPagePerso = $app->urlFor('route_get_pagePerso');
 
     $app->response->redirect($urlPagePerso, 303);
 })->name('route_listeValider');

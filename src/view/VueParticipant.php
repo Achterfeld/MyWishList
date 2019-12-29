@@ -86,27 +86,40 @@ END;
 
             if ($affToken) {
 
-                $liste=$this->objet;
-
+                $liste = $this->objet;
                 $no = $liste->no;
                 $token_visu = $liste->token_visu;
                 $token = $liste->token;
 
-                $modif = "";
-                if ($liste->token_visu != "") {
+                //TODO
+                //Ajouter URL pour page perso
 
-                    $urlModifListe = $app->urlFor('route_get_modifListe', ['no' => $no, 'token' => $token]);
+                $urlPagePerso = $app->urlFor('route_get_pagePerso');
 
+
+                $modif = "Problème lors de la génération du token";
+                $urlModifListe = "";
+
+                $urlModifListe = $app->urlFor('route_get_modifListe', ['no' => $no, 'token' => $token]);
+                if ($urlModifListe != "") {
                     $modif = "Lien pour modifier la liste<br><br><a href='$urlModifListe'>$urlModifListe</a>";
+                }
+
+                if ($token_visu != "") {
                 }
 
                 $urlDetailListe = $app->urlFor('route_liste', ['no' => $no, 'token_visu' => $token_visu]);
 
+                $affVisu = is_null($token_visu) ? "<a href='$urlPagePerso'>Pour avoir le lien, passez par votre espace personnel</a>" : $token_visu;
+
+                $lienVisu = is_null($token_visu) ? "" : "<div id='token'>Lien pour visualiser la liste :<br><br><a href='$urlDetailListe'>$urlDetailListe</a></div>";
+
                 $affiche .= <<<END
 
+                <div id='token' > Token pour modifier, à conserver :<br><br> $token </div>
                 <div id='token' > $modif </div>
-                <div id='token' > Token à conserver :<br><br> $token_visu </div>
-                <div id='token'>Lien pour visualiser la liste :<br><br><a href="$urlDetailListe">$urlDetailListe</a></div>
+                <div id='token' > Token pour visualiser, à conserver :<br><br> $affVisu </div>
+                $lienVisu
 END;
             }
 
@@ -132,7 +145,7 @@ END;
         $reserv = $i->reservation;
         $idItem = $i->id;
 
-        $liste=$this->objet;
+        $liste = $this->objet;
 
         $content = "<section>$liste";
 
@@ -148,7 +161,7 @@ END;
         $reserv = isset($_SESSION['session']) ? $_SESSION['session']['prenom'] : "''";
         $app = \Slim\Slim::getInstance();
         $route_post_itemReservation = $app->urlFor('route_post_itemReservation', ['id' => $idItem]);
-        
+
         $txtAutre = <<<END
 <br>
 <form method="post" action="$route_post_itemReservation">

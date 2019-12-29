@@ -15,8 +15,11 @@ class VueCreation
         $token = substr(base64_encode(random_bytes(64)), 0, 10);
         $token = strtr($token, '+/', '-_');
 
+        $app = \Slim\slim::getInstance();
+        $urlpostListeValid = $app->urlFor('route_post_listeValidation',['token'=>$token]);
+        
         $html = <<<END
-        <form action="validation/$token" class="formulaire" method="post">
+        <form action="$urlpostListeValid" class="formulaire" method="post">
 
             <h1>Création liste</h1>
             <input type="text" placeholder="Titre" name="titreNouvelleListe"><br>
