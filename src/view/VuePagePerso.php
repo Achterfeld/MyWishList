@@ -10,12 +10,17 @@ class VuePagePerso
     public function render($u, $message = "")
     {
 
+        $app = \Slim\Slim::getInstance();
+        $urlHome = $app->urlFor('route_home');
+        $urlListeCreer = $app->urlFor('route_listeCreer');
+
         $header = VueGenerale::renderHeader();
 
 
         $listes = $u->listes()->get();
 
         $listesTxt = "";
+
 
         foreach ($listes as $key => $value) {
 
@@ -39,7 +44,6 @@ class VuePagePerso
                 }
             }
             
-        $app = \Slim\Slim::getInstance();
         $urlDetailListe = $app->urlFor('route_liste',['no'=>$value->no,'token_visu'=>$value->token_visu]);
         $urlValiderListe = $app->urlFor('route_listeValider',['no'=>$value->no,'token'=>$value->token]);
         $urlModifListe = $app->urlFor('route_get_modifListe',['no'=>$value->no,'token'=>$value->token]);
@@ -108,12 +112,41 @@ $message
     <br>
     <br>
     <a href="$urlListeCreer" class="boutton">Créer une liste</a>
+    <a href="/myWishList/pagePerso/supprimer" class="boutton">Suprimer le compte</a>
 
     </section>
 </body>
 
 END;
 
+        echo $html;
+    }
+
+    public function compteSupprimer() {
+        $html = <<<END
+        <head>
+        <meta charset="utf-8">
+        <meta name="robots" content="noindex,nofollow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="./img/favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="/myWishList//style/style.css">
+        <title>My Wish List</title>
+        </head>
+<body id="connexion">
+
+    <a href="/myWishList/"><img style="height:200px;width:200px" src="/myWishList//img/logo.png"></a>
+
+
+        <div>
+
+        <p>Votre compte a été supprimé.</p>
+        <br>
+        <br>
+        <a href="/myWishList/" class="boutton">Retour à l'accueil</a>
+
+        </div>
+<body>
+END;
         echo $html;
     }
 }

@@ -39,6 +39,13 @@ $app->get('/pagePerso', function () {
     $c->getPPerso();
 })->name('route_get_pagePerso');
 
+//Supprimer son compte
+$app->get('/pagePerso/supprimer', function () {
+
+    $c = new pagePersoControler();
+    $c->supprimerCompte();
+});
+
 $app->post('/pagePerso', function () {
     $c = new pagePersoControler();
     $c->connexion();
