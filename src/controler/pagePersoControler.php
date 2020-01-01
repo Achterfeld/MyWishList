@@ -79,4 +79,35 @@ class pagePersoControler
 		$v = new VuePagePerso();
 		$v->compteSupprimer();
 	}
+
+	public function modifProfile() {
+		
+		$app = new \Slim\Slim;
+		
+		$datas = $app->request();
+		
+		$prenom = $datas->post("Prenom");
+		$mail = $datas->post("Mail");
+		$pass1 = $datas->post("Passe1");
+		$pass2 = $datas->post("Passe2");
+
+
+		$prenom = filter_var($prenom, FILTER_SANITIZE_SPECIAL_CHARS);
+		$mail = filter_var($mail, FILTER_SANITIZE_SPECIAL_CHARS);
+		$pass1 = filter_var($pass1, FILTER_SANITIZE_SPECIAL_CHARS);
+		$pass2 = filter_var($pass2, FILTER_SANITIZE_SPECIAL_CHARS);
+
+
+		if ($pass1 == $pass2) {
+			$u = User::where('user_id', '=', $_SESSION['session']['user_id'])->first();
+			$u->prenom = $prenom;
+			$u->mail = $mail;
+			$u->hash = password_hash($pass1, PASSWORD_DEFAULT, ['cost' => 12]);
+ 			
+ 			$u->save();
+		}
+
+		$v = new VuePagePerso();
+		$v->confirmation();
+	}
 }

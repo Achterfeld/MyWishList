@@ -93,11 +93,11 @@ $message
         <div id="infos">
             <ul>
                 <li>
-                    <h1>$u->prenom <a href="./"> 🖉</a></h1>
+                    <h1>$u->prenom <a href="/myWishList/pagePerso/modification"> 🖉</a></h1>
                 </li>
-                <li>Mail : <span>$u->mail<a href="./"> 🖉</a></span></li>
-                <li>Nombre de listes : <span>$nbListes<a href="./"></a></span></li>
-                <li>Mot de passe : <span>******* <a href="./"> 🖉</a></span></li>
+                <li>Mail : <span>$u->mail<a href="/myWishList/pagePerso/modification"> 🖉</a></span></li>
+                <li>Nombre de listes : <span>$nbListes<a href="/pagePerso/modification"></a></span></li>
+                <li>Mot de passe : <span>******* <a href="/myWishList/pagePerso/modification"> 🖉</a></span></li>
             </ul>
         </div>
     </div>
@@ -147,6 +147,61 @@ END;
         </div>
 <body>
 END;
+        echo $html;
+    }
+
+    public function modification() {
+
+        $header = VueGenerale::renderHeader();
+
+        $html = <<<END
+        $header
+        <body>
+            <form method="post" action="/myWishList/pagePerso/validationModif">
+                    <h1>Modifier ses informations</h1>
+
+
+                    <input type="text" placeholder="Prenom" name="Prenom" required ><br>
+                    <input type="email" placeholder="Mail" name="Mail" required ><br>
+                    <input type="password" placeholder="Mot de passe" name="Passe1" required ><br>
+                    <input type="password" placeholder="Confirmation mot de passe" name="Passe2" required ><br>
+                    <input class="boutton" type="submit" value="Valider" required ></input>
+            </form>
+        </body>
+END;
+    
+        echo $html;
+    }
+
+    public function confirmation() {
+
+        $header = VueGenerale::renderHeader();
+
+        $html = <<<END
+        $header
+        <head>
+        <meta charset="utf-8">
+        <meta name="robots" content="noindex,nofollow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="./img/favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="/myWishList//style/style.css">
+        <title>My Wish List</title>
+        </head>
+<body id="connexion">
+
+    <a href="/myWishList/"><img style="height:200px;width:200px" src="/myWishList//img/logo.png"></a>
+
+
+        <div>
+            <p>Votre compte a été modifié.</p>
+            <br>
+            <br>
+            <a href="/myWishList/pagePerso" class="boutton">Ok</a>
+        
+        </div>
+<body>
+END;
+    
         echo $html;
     }
 }

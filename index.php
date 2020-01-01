@@ -15,6 +15,7 @@ use wishlist\controler\pagePersoControler;
 use wishlist\controler\MessagesControler;
 use wishlist\view\VueGenerale;
 use wishlist\view\VueConfirmation;
+use wishlist\view\VuePagePerso;
 
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
@@ -47,10 +48,25 @@ $app->get('/pagePerso/supprimer', function () {
     $c->supprimerCompte();
 });
 
+//Confirmation de suppression
 $app->get('/pagePerso/confirmation', function () {
 
     $v = new VueConfirmation();
     $v->render();
+});
+
+//Formulaire pour modifier le profile
+$app->get('/pagePerso/modification', function () {
+
+    $v = new VuePagePerso();
+    $v->modification();
+});
+
+//Page pour traiter le formulaire de modif
+$app->post('/pagePerso/validationModif', function () {
+
+    $c = new pagePersoControler();
+    $c->modifProfile();
 });
 
 $app->post('/pagePerso', function () {
