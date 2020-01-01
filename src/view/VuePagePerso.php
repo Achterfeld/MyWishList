@@ -112,7 +112,7 @@ $message
     <br>
     <br>
     <a href="$urlListeCreer" class="boutton">Créer une liste</a>
-    <a href="/myWishList/pagePerso/supprimer" class="boutton">Suprimer le compte</a>
+    <a href="/myWishList/pagePerso/confirmation" class="boutton">Suprimer le compte</a>
 
     </section>
 </body>

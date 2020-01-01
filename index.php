@@ -14,6 +14,7 @@ use wishlist\controler\notFoundControler;
 use wishlist\controler\pagePersoControler;
 use wishlist\controler\MessagesControler;
 use wishlist\view\VueGenerale;
+use wishlist\view\VueConfirmation;
 
 $db = new DB();
 $db->addConnection(parse_ini_file("src/conf/conf.ini"));
@@ -44,6 +45,12 @@ $app->get('/pagePerso/supprimer', function () {
 
     $c = new pagePersoControler();
     $c->supprimerCompte();
+});
+
+$app->get('/pagePerso/confirmation', function () {
+
+    $v = new VueConfirmation();
+    $v->render();
 });
 
 $app->post('/pagePerso', function () {
