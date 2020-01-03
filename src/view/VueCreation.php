@@ -74,7 +74,7 @@ END;
         $txt = $app == "" ? "l'item" : "la liste";
 
         $html = <<<END
-        <form action="$urlSuppression" method="post" class="formulaire bgRed">
+        <form action="$urlSuppression" method="post" class="formulaire redBG">
 
         <h1>Voulez-vous vraiment supprimer $txt ?</h1>
 

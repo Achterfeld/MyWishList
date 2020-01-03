@@ -7,33 +7,36 @@ class VueConfirmation
 
     public function render()
     {
+
+        $header = VueGenerale::renderHeader();
+
+        $app = \Slim\Slim::getInstance();
+        $urlHome = $app->urlFor('route_home');
+        $urlPPerso = $app->urlFor('route_post_pagePerso');
+
+        $urlSuppression = $app->urlFor('route_pagePersoSupprimer');
+
         $html = <<<END
-        <head>
-        <meta charset="utf-8">
-        <meta name="robots" content="noindex,nofollow">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="./img/favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" type="text/css" href="/myWishList//style/style.css">
-        <title>My Wish List</title>
-        </head>
+        $header
 <body id="connexion">
 
-    <a href="/myWishList/"><img style="height:200px;width:200px" src="/myWishList//img/logo.png"></a>
+    <a href="$urlHome"><img style="height:200px;width:200px" src="$urlHome/img/logo.png"></a>
 
 
         <div>
+        
+        <form action="$urlSuppression" method="post" class="formulaire ">
 
-        <p>Voulez-vous vraiment supprimer votre compte définitivement ?</p>
-        <br>
-        <br>
+        <h1>Voulez-vous vraiment supprimer votre compte ?</h1>
 
-        <a href="/myWishList/pagePerso/supprimer" class="boutton">Suprimer le compte</a>
-        <a href="/myWishList/" class="boutton">Non</a>
+            <input type="submit" value="Oui"  class='redBG' required>
+            <a href="$urlPPerso">Retour au compte</a>
+
+        </form>
 
         </div>
 <body>
 END;
         echo $html;
-
     }
 }

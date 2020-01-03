@@ -42,32 +42,32 @@ $app->get('/pagePerso', function () {
 })->name('route_get_pagePerso');
 
 //Supprimer son compte
-$app->get('/pagePerso/supprimer', function () {
+$app->get('/pagePerso/presuppression', function () {
+
+    $c = new VueConfirmation();
+    $c->render();
+})->name('route_pagePersoPresuppression');
+
+//Confirmation de suppression
+$app->post('/pagePerso/confirmation', function () {
 
     $c = new pagePersoControler();
     $c->supprimerCompte();
-});
-
-//Confirmation de suppression
-$app->get('/pagePerso/confirmation', function () {
-
-    $v = new VueConfirmation();
-    $v->render();
-});
+})->name('route_pagePersoSupprimer');
 
 //Formulaire pour modifier le profile
 $app->get('/pagePerso/modification', function () {
 
     $v = new VuePagePerso();
     $v->modification();
-});
+})->name('route_pagePersoModifier');
 
 //Page pour traiter le formulaire de modif
 $app->post('/pagePerso/validationModif', function () {
 
     $c = new pagePersoControler();
     $c->modifProfile();
-});
+})->name('route_pagePersoConfirmerModifier');
 
 $app->post('/pagePerso', function () {
     $c = new pagePersoControler();

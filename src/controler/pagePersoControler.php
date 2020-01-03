@@ -51,41 +51,43 @@ class pagePersoControler
 
 			echo "Email ou mot de passe invalide<br>";
 		}
-	}		
+	}
 
-	public function supprimerCompte() {
+	public function supprimerCompte()
+	{
 
 		if (isset($_SESSION['session'])) {
 
 			//destruction dans la table user de la ligne de l'utilisateur
 			$u = User::where('user_id', '=', $_SESSION['session']['user_id'])->first();
-			User::destroy($u->user_id);
-			
-			//destruction des listes de l'utilisateur
-			foreach (Liste::where('user_id', '=', $_SESSION['session']['user_id']) as $liste) {
-				//destruction des items de ses listes
-				foreach (Item::where('liste_id','=', $liste->liste_id) as $item) {
-					Item::destroy($item->id);
-				}
-				Liste::destroy($value->user_id);
-			}
 
-			//destruction des messages
-			foreach (MessagesListes::where('auteur','=',$_SESSION['session']['prenom']) as $msg) {
-				MessagesListes::destroy($msg->id);
+			$l = $u->listes()->get();
+
+			foreach ($l as $value) {
+				$i = $value->item()->get();
+				$m = $value->messages()->get();
+				foreach ($i as $item) {
+					$item->delete();
+				}
+				foreach ($m as $message) {
+					$message->delete();
+				}
+				$value->delete();
 			}
+			$u->delete();
 		}
 		Authentification::disconnect();
 		$v = new VuePagePerso();
 		$v->compteSupprimer();
 	}
 
-	public function modifProfile() {
-		
+	public function modifProfile()
+	{
+
 		$app = new \Slim\Slim;
-		
+
 		$datas = $app->request();
-		
+
 		$prenom = $datas->post("Prenom");
 		$mail = $datas->post("Mail");
 		$pass1 = $datas->post("Passe1");
@@ -103,12 +105,11 @@ class pagePersoControler
 			$u->prenom = $prenom;
 			$u->mail = $mail;
 			$u->hash = password_hash($pass1, PASSWORD_DEFAULT, ['cost' => 12]);
- 			
- 			$u->save();
 
- 			$_SESSION['session']['eMail'] = $u->mail;
+			$u->save();
+
+			$_SESSION['session']['eMail'] = $u->mail;
 			$_SESSION['session']['prenom'] = $u->prenom;
-
 		}
 
 		$v = new VuePagePerso();

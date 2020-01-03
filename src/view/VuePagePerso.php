@@ -79,6 +79,13 @@ class VuePagePerso
         }
 
         $nbListes = count($listes);
+
+
+        
+        $urlHome = $app->urlFor('route_home');
+        $urlPPersoModif = $app->urlFor('route_pagePersoModifier');
+        $urlPPersoSupprimer = $app->urlFor('route_pagePersoPresuppression');
+
         $html = <<<END
 
         $header
@@ -93,11 +100,11 @@ $message
         <div id="infos">
             <ul>
                 <li>
-                    <h1>$u->prenom <a href="/myWishList/pagePerso/modification"> 🖉</a></h1>
+                    <h1>$u->prenom <a href="$urlPPersoModif"> 🖉</a></h1>
                 </li>
-                <li>Mail : <span>$u->mail<a href="/myWishList/pagePerso/modification"> 🖉</a></span></li>
-                <li>Nombre de listes : <span>$nbListes<a href="/pagePerso/modification"></a></span></li>
-                <li>Mot de passe : <span>******* <a href="/myWishList/pagePerso/modification"> 🖉</a></span></li>
+                <li>Mail : <span>$u->mail<a href="$urlPPersoModif"> 🖉</a></span></li>
+                <li>Nombre de listes : <span>$nbListes<a href="$urlPPersoModif"></a></span></li>
+                <li>Mot de passe : <span>******* <a href="$urlPPersoModif"> 🖉</a></span></li>
             </ul>
         </div>
     </div>
@@ -112,7 +119,7 @@ $message
     <br>
     <br>
     <a href="$urlListeCreer" class="boutton">Créer une liste</a>
-    <a href="/myWishList/pagePerso/confirmation" class="boutton">Suprimer le compte</a>
+    <a href="$urlPPersoSupprimer" class="boutton redBG">Supprimer le compte</a>
 
     </section>
 </body>
@@ -123,18 +130,19 @@ END;
     }
 
     public function compteSupprimer() {
+        $header = VueGenerale::renderHeader();
+
+        $app=\Slim\Slim::getInstance();
+
+        $urlHome = $app->urlFor('route_home');
+        $urlPPersoModif = $app->urlFor('route_pagePersoModifier');
+        $urlPPersoSupprimer = $app->urlFor('route_pagePersoSupprimer');
+        
         $html = <<<END
-        <head>
-        <meta charset="utf-8">
-        <meta name="robots" content="noindex,nofollow">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="./img/favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" type="text/css" href="/myWishList//style/style.css">
-        <title>My Wish List</title>
-        </head>
+        $header
 <body id="connexion">
 
-    <a href="/myWishList/"><img style="height:200px;width:200px" src="/myWishList//img/logo.png"></a>
+    <a href="$urlHome"><img style="height:200px;width:200px" src="$urlHome/img/logo.png"></a>
 
 
         <div>
@@ -142,7 +150,7 @@ END;
         <p>Votre compte a été supprimé.</p>
         <br>
         <br>
-        <a href="/myWishList/" class="boutton">Retour à l'accueil</a>
+        <a href="$urlHome" class="boutton">Retour à l'accueil</a>
 
         </div>
 <body>
@@ -154,10 +162,14 @@ END;
 
         $header = VueGenerale::renderHeader();
 
+        $app=\Slim\Slim::getInstance();
+
+        $urlPPersoConfirmerModif = $app->urlFor('route_pagePersoConfirmerModifier');
+
         $html = <<<END
         $header
         <body>
-            <form method="post" action="/myWishList/pagePerso/validationModif">
+            <form method="post" action="$urlPPersoConfirmerModif">
                     <h1>Modifier ses informations</h1>
 
 
@@ -177,26 +189,25 @@ END;
 
         $header = VueGenerale::renderHeader();
 
+        $app=\Slim\Slim::getInstance();
+
+        $urlHome = $app->urlFor('route_home');
+
+        $urlPPerso = $app->urlFor('route_get_pagePerso');
+        $urlPPersoSupprimer = $app->urlFor('route_pagePersoSupprimer');
+
         $html = <<<END
         $header
-        <head>
-        <meta charset="utf-8">
-        <meta name="robots" content="noindex,nofollow">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="./img/favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" type="text/css" href="/myWishList//style/style.css">
-        <title>My Wish List</title>
-        </head>
 <body id="connexion">
 
-    <a href="/myWishList/"><img style="height:200px;width:200px" src="/myWishList//img/logo.png"></a>
+    <a href="$urlHome"><img style="height:200px;width:200px" src="$urlHome/img/logo.png"></a>
 
 
         <div>
             <p>Votre compte a été modifié.</p>
             <br>
             <br>
-            <a href="/myWishList/pagePerso" class="boutton">Ok</a>
+            <a href="$urlPPerso" class="boutton">Ok</a>
         
         </div>
 <body>
