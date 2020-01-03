@@ -17,7 +17,7 @@ class VueCreation
 
         $app = \Slim\slim::getInstance();
         $urlpostListeValid = $app->urlFor('route_post_listeValidation',['token'=>$token]);
-        
+
         $html = <<<END
         <form action="$urlpostListeValid" class="formulaire" method="post">
 

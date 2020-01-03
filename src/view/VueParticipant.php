@@ -50,11 +50,11 @@ class VueParticipant
 
                     $affiche .= <<<END
                     <div class='list'>
-                    
+
                     <div class='num num_liste'>$UneListe->no</div>
                     <h3><a href="$urlDetailListe">$UneListe->titre</a></h3><br>
                     <div>⌛ Expire le $UneListe->expiration</div><br><br>
-                    
+
                     </div><br>
 END;
                 }

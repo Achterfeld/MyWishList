@@ -24,7 +24,7 @@ class VueConfirmation
 
 
         <div>
-        
+
         <form action="$urlSuppression" method="post" class="formulaire ">
 
         <h1>Voulez-vous vraiment supprimer votre compte ?</h1>
@@ -37,6 +37,6 @@ class VueConfirmation
         </div>
 <body>
 END;
-        echo $html;
+        VueGenerale::renderPage($html);
     }
 }

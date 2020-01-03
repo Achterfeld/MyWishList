@@ -2,6 +2,6 @@
 
 namespace wishlist\exception;
 
-	class AuthException extends \Exception {
-		
-	}
+class AuthException extends \Exception
+{
+}

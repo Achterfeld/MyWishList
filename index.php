@@ -44,8 +44,9 @@ $app->get('/pagePerso', function () {
 //Supprimer son compte
 $app->get('/pagePerso/presuppression', function () {
 
-    $c = new VueConfirmation();
-    $c->render();
+    $c = new pagePersoControler();
+    $c->confirmerSuppr();
+
 })->name('route_pagePersoPresuppression');
 
 //Confirmation de suppression

@@ -30,7 +30,7 @@ class VueModification
             <input type="text" value="$titre" placeholder="Titre" name="titreNouvelleListe" maxlength="256"><br>
             <input type="text" value="$desc" placeholder="Description" name="descriptionNouvelleListe" maxlength="256"><br>
             Limite de validité : <input type="date" value="$exp" name="dateLimiteNouvelleListe"><br>
-            
+
             $visibilite
 
             <input type="submit" value="Modifier la liste"></input>

@@ -21,9 +21,9 @@ class notFoundControler
 
         $html = <<<END
         <div style="display: flex;">
-        <img style="width: 50vw;height : 100%" src="$urlHome/img/404.png" >
-        <h1><a href='$urlHome'  style="color:#000; text-decoration:underline"> Retour à l'accueil</a></h1>
-        
+            <img style="width: 50vw;height : 100%" src="$urlHome/img/404.png" >
+            <h1><a href='$urlHome'  style="color:#000; text-decoration:underline"> Retour à l'accueil</a></h1>
+
         </div>
 
 END;

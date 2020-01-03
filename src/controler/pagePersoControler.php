@@ -10,10 +10,16 @@ use wishlist\model\MessagesListes;
 use wishlist\view\VuePagePerso;
 use wishlist\authentification\Authentification;
 use wishlist\exception\AuthException;
-
+use wishlist\view\VueConfirmation;
 
 class pagePersoControler
 {
+
+	public function confirmerSuppr()
+	{
+		$v = new VueConfirmation();
+		$v->render();
+	}
 
 	public function getPPerso()
 	{

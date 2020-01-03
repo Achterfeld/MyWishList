@@ -43,12 +43,12 @@ class VuePagePerso
                     $reserve++;
                 }
             }
-            
-        $urlDetailListe = $app->urlFor('route_liste',['no'=>$value->no,'token_visu'=>$value->token_visu]);
-        $urlValiderListe = $app->urlFor('route_listeValider',['no'=>$value->no,'token'=>$value->token]);
-        $urlModifListe = $app->urlFor('route_get_modifListe',['no'=>$value->no,'token'=>$value->token]);
-        $urlHome = $app->urlFor('route_home');
-        $urlListeCreer = $app->urlFor('route_listeCreer');
+
+            $urlDetailListe = $app->urlFor('route_liste', ['no' => $value->no, 'token_visu' => $value->token_visu]);
+            $urlValiderListe = $app->urlFor('route_listeValider', ['no' => $value->no, 'token' => $value->token]);
+            $urlModifListe = $app->urlFor('route_get_modifListe', ['no' => $value->no, 'token' => $value->token]);
+            $urlHome = $app->urlFor('route_home');
+            $urlListeCreer = $app->urlFor('route_listeCreer');
 
             if ($value->token_visu != "") {
                 $visuListe = "<a  href='$urlDetailListe'>Liste 🔗</a>";
@@ -61,11 +61,11 @@ class VuePagePerso
             $listesTxt .= " <div class='info'>
                                 <span >Liste n°$value->no</span>
                                 <a  href='$urlModifListe'>Modification 🖉</a>
-             
+
                                 $visuListe
-             
+
                                 <label>Item(s) réservé(s) ($reserve / $compteur)<br><progress  name='prog' max='$compteur' value='$reserve'></progress></label>
-                                
+
                              </div>";
         }
 
@@ -81,7 +81,7 @@ class VuePagePerso
         $nbListes = count($listes);
 
 
-        
+
         $urlHome = $app->urlFor('route_home');
         $urlPPersoModif = $app->urlFor('route_pagePersoModifier');
         $urlPPersoSupprimer = $app->urlFor('route_pagePersoPresuppression');
@@ -126,18 +126,18 @@ $message
 
 END;
 
+        // OK validé pour echo
         echo $html;
     }
 
-    public function compteSupprimer() {
+    public function compteSupprimer()
+    {
         $header = VueGenerale::renderHeader();
 
-        $app=\Slim\Slim::getInstance();
+        $app = \Slim\Slim::getInstance();
 
         $urlHome = $app->urlFor('route_home');
-        $urlPPersoModif = $app->urlFor('route_pagePersoModifier');
-        $urlPPersoSupprimer = $app->urlFor('route_pagePersoSupprimer');
-        
+
         $html = <<<END
         $header
 <body id="connexion">
@@ -155,47 +155,56 @@ END;
         </div>
 <body>
 END;
+        //OK validé  pour echo
         echo $html;
     }
 
-    public function modification() {
-
-        $header = VueGenerale::renderHeader();
-
-        $app=\Slim\Slim::getInstance();
-
-        $urlPPersoConfirmerModif = $app->urlFor('route_pagePersoConfirmerModifier');
-
-        $html = <<<END
-        $header
-        <body>
-            <form method="post" action="$urlPPersoConfirmerModif">
-                    <h1>Modifier ses informations</h1>
+    public function modification()
+    {
 
 
-                    <input type="text" placeholder="Prenom" name="Prenom" required ><br>
-                    <input type="email" placeholder="Mail" name="Mail" required ><br>
-                    <input type="password" placeholder="Mot de passe" name="Passe1" required ><br>
-                    <input type="password" placeholder="Confirmation mot de passe" name="Passe2" required ><br>
-                    <input class="boutton" type="submit" value="Valider" required ></input>
-            </form>
-        </body>
+        if (isset($_SESSION['session']['user_id'])) {
+
+            $app = \Slim\Slim::getInstance();
+            $urlPPersoConfirmerModif = $app->urlFor('route_pagePersoConfirmerModifier');
+
+            $prenom=$_SESSION['session']['prenom'];
+            $mail=$_SESSION['session']['eMail'];
+
+            $header = VueGenerale::renderHeader();
+            $html = <<<END
+    $header
+    <body>
+        <form method="post" action="$urlPPersoConfirmerModif">
+                <h1>Modifier ses informations</h1>
+
+                <input type="text" placeholder="Prenom" name="Prenom" value='$prenom' required ><br>
+                <input type="email" placeholder="Mail" name="Mail" value='$mail' required ><br>
+                <input type="password" placeholder="Mot de passe" name="Passe1" required ><br>
+                <input type="password" placeholder="Confirmation mot de passe" name="Passe2" required ><br>
+                <input class="boutton" type="submit" value="Valider" required ></input>
+        </form>
+    </body>
 END;
-    
+        }
+
+
+        //OK validé  pour echo
         echo $html;
     }
 
-    public function confirmation() {
+    public function confirmation()
+    {
 
         $header = VueGenerale::renderHeader();
 
-        $app=\Slim\Slim::getInstance();
+        $app = \Slim\Slim::getInstance();
 
         $urlHome = $app->urlFor('route_home');
 
         $urlPPerso = $app->urlFor('route_get_pagePerso');
         $urlConnexion = $app->urlFor('route_connexion');
-        
+
         $html = <<<END
         $header
 <body id="connexion">
@@ -208,11 +217,11 @@ END;
             <br>
             <br>
             <a href="$urlConnexion" class="boutton">Se reconnecter</a>
-        
+
         </div>
 <body>
 END;
-    
+
         echo $html;
     }
 }

@@ -66,7 +66,7 @@ END;
 
 
         $htmlRender = <<<END
-        
+
         $header
         $nav
         <section id="mainContent">

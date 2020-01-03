@@ -6,7 +6,7 @@ class VueConnexion
 {
     public function render()
     {
-        
+
         $app = \Slim\Slim::getInstance();
         $urlHome = $app->urlFor('route_home');
         $urlPPerso = $app->urlFor('route_post_pagePerso');
@@ -40,7 +40,7 @@ class VueConnexion
             <a href="$urlListeCreer" class="boutton">Mode invité</a>
         </div>
 
-        
+
 <br>
 
 
@@ -55,6 +55,7 @@ class VueConnexion
 <body>
 END;
 
+        // Page spéciale ok pour echo
         echo $html;
     }
 }

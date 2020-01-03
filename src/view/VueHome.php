@@ -9,7 +9,7 @@ class VueHome
     const PB_MDP = 2;
     public function render($option = "")
     {
-        
+
         $app = \Slim\Slim::getInstance();
 
         $txt = "";
@@ -32,7 +32,7 @@ class VueHome
         $urlInscription = $app->urlFor('route_inscription');
         $urlConnexion = $app->urlFor('route_connexion');
         $urlListeCreer = $app->urlFor('route_listeCreer');
-        
+
         $header = VueGenerale::renderHeader();
         $html = <<<END
         $header
@@ -40,7 +40,7 @@ class VueHome
         <div id="topBarre">
 
 $co 
-    
+
         </div>
 
 
