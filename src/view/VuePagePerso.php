@@ -169,19 +169,16 @@ END;
             $urlPPersoConfirmerModif = $app->urlFor('route_pagePersoConfirmerModifier');
 
             $prenom = $_SESSION['session']['prenom'];
-            $mail = $_SESSION['session']['eMail'];
 
-            $header = VueGenerale::renderHeader();
             $html = <<<END
 
     <body>
-        <form method="post" action="$urlPPersoConfirmerModif">
-                <h1>Modifier ses informations</h1>
+        <form class="formulaire" method="post" action="$urlPPersoConfirmerModif">
+                <h1>Modifier ses informations :</h1><h3> Laissez la valeur par défaut pour conserver la valeur actuelle</h3>
 
-                <input type="text" placeholder="Prenom" name="Prenom" value='$prenom' required ><br>
-                <input type="email" placeholder="Mail" name="Mail" value='$mail' required ><br>
-                <input type="password" placeholder="Mot de passe" name="Passe1" required ><br>
-                <input type="password" placeholder="Confirmation mot de passe" name="Passe2" required ><br>
+                <input type="text" placeholder="Prenom" name="Prenom" value='$prenom' ><br>
+                <input type="password" placeholder="Mot de passe" name="Passe1" ><br>
+                <input type="password" placeholder="Confirmation mot de passe" name="Passe2" ><br>
                 <input class="boutton" type="submit" value="Valider" required ></input>
         </form>
     </body>
@@ -192,15 +189,28 @@ END;
         VueGenerale::renderPage($html);
     }
 
-    public function confirmation()
+    const RECONNEXION = 1;
+    const PAGE_PERSO = 2;
+
+
+    public function confirmation($txt = self::PAGE_PERSO)
     {
 
         $app = \Slim\Slim::getInstance();
 
         $urlHome = $app->urlFor('route_home');
 
-        $urlPPerso = $app->urlFor('route_get_pagePerso');
-        $urlConnexion = $app->urlFor('route_connexion');
+        switch ($txt) {
+            case self::RECONNEXION:
+                $url = $app->urlFor('route_connexion');
+                $info = "Se reconnecter";
+                break;
+
+            case self::PAGE_PERSO:
+                $url = $app->urlFor('route_get_pagePerso');
+                $info = "Retour vers la page personnelle";
+                break;
+        }
 
         $html = <<<END
 
@@ -211,12 +221,12 @@ END;
             <p>Votre compte a été modifié.</p>
             <br>
             <br>
-            <a href="$urlConnexion" class="boutton">Se reconnecter</a>
+            <a href="$url" class="boutton">$info</a>
 
         </div>
 <body>
 END;
 
-        VueGenerale::renderPage($html,VueGenerale::DarkPage);
+        VueGenerale::renderPage($html, VueGenerale::DarkPage);
     }
 }

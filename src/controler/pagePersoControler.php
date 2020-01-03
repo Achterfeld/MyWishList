@@ -91,35 +91,38 @@ class pagePersoControler
 	{
 
 		$app = new \Slim\Slim;
+		$u = User::where('user_id', '=', $_SESSION['session']['user_id'])->first();
+
+		$modif = VuePagePerso::PAGE_PERSO;
 
 		$datas = $app->request();
 
 		$prenom = $datas->post("Prenom");
-		$mail = $datas->post("Mail");
-		$pass1 = $datas->post("Passe1");
-		$pass2 = $datas->post("Passe2");
-
-
-		$prenom = filter_var($prenom, FILTER_SANITIZE_SPECIAL_CHARS);
-		$mail = filter_var($mail, FILTER_SANITIZE_SPECIAL_CHARS);
-		$pass1 = filter_var($pass1, FILTER_SANITIZE_SPECIAL_CHARS);
-		$pass2 = filter_var($pass2, FILTER_SANITIZE_SPECIAL_CHARS);
-
-
-		if ($pass1 == $pass2) {
-			$u = User::where('user_id', '=', $_SESSION['session']['user_id'])->first();
+		if ($prenom != $u->prenom) {
+			$prenom = filter_var($prenom, FILTER_SANITIZE_SPECIAL_CHARS);
 			$u->prenom = $prenom;
-			$u->mail = $mail;
-			$u->hash = password_hash($pass1, PASSWORD_DEFAULT, ['cost' => 12]);
+
+			$_SESSION['session']['prenom'] = $prenom;
 
 			$u->save();
-			Authentification::disconnect();
-
-			$v = new VuePagePerso();
-			$v->confirmation();
-		} else {
-			$v = new VuePagePerso();
-			$v->modification();
 		}
+
+		$pass1 = $datas->post("Passe1");
+		$pass2 = $datas->post("Passe2");
+		if ($pass1 != "" && $pass2 != "") {
+			$pass1 = filter_var($pass1, FILTER_SANITIZE_SPECIAL_CHARS);
+			$pass2 = filter_var($pass2, FILTER_SANITIZE_SPECIAL_CHARS);
+			if ($pass1 == $pass2) {
+				$u->hash = password_hash($pass1, PASSWORD_DEFAULT, ['cost' => 12]);
+				$u->save();
+
+				Authentification::disconnect();
+
+				$modif = VuePagePerso::RECONNEXION;
+			}
+		}
+
+		$v = new VuePagePerso();
+		$v->confirmation($modif);
 	}
 }
