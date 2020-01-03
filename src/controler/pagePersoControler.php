@@ -114,9 +114,12 @@ class pagePersoControler
 
 			$u->save();
 			Authentification::disconnect();
-		}
 
-		$v = new VuePagePerso();
-		$v->confirmation();
+			$v = new VuePagePerso();
+			$v->confirmation();
+		} else {
+			$v = new VuePagePerso();
+			$v->modification();
+		}
 	}
 }

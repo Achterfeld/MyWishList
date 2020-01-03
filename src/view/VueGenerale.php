@@ -5,6 +5,9 @@ namespace wishlist\view;
 class VueGenerale
 {
 
+    const ClassicPage = 0;
+    const DarkPage = 1;
+
     static function renderHeader()
     {
 
@@ -58,20 +61,35 @@ END;
         return $navBarre;
     }
 
-    static function renderPage($html)
+    static function renderPage($html, $p_theme=self::ClassicPage)
     {
 
         $header = self::renderHeader();
         $nav = self::renderNavBarre();
 
+        $theme ="";
+        switch ($p_theme) {
+
+            case self::DarkPage:
+                $theme="accueil";
+                break;
+            
+            default:
+                # code...
+                break;
+        }
 
         $htmlRender = <<<END
 
         $header
+        
+    <body id="$theme">
         $nav
         <section id="mainContent">
         $html
         </section>
+        
+    </body>
 
 END;
 

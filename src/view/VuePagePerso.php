@@ -168,12 +168,12 @@ END;
             $app = \Slim\Slim::getInstance();
             $urlPPersoConfirmerModif = $app->urlFor('route_pagePersoConfirmerModifier');
 
-            $prenom=$_SESSION['session']['prenom'];
-            $mail=$_SESSION['session']['eMail'];
+            $prenom = $_SESSION['session']['prenom'];
+            $mail = $_SESSION['session']['eMail'];
 
             $header = VueGenerale::renderHeader();
             $html = <<<END
-    $header
+
     <body>
         <form method="post" action="$urlPPersoConfirmerModif">
                 <h1>Modifier ses informations</h1>
@@ -189,14 +189,11 @@ END;
         }
 
 
-        //OK validé  pour echo
-        echo $html;
+        VueGenerale::renderPage($html);
     }
 
     public function confirmation()
     {
-
-        $header = VueGenerale::renderHeader();
 
         $app = \Slim\Slim::getInstance();
 
@@ -206,8 +203,6 @@ END;
         $urlConnexion = $app->urlFor('route_connexion');
 
         $html = <<<END
-        $header
-<body id="connexion">
 
     <a href="$urlHome"><img style="height:200px;width:200px" src="$urlHome/img/logo.png"></a>
 
@@ -222,6 +217,6 @@ END;
 <body>
 END;
 
-        echo $html;
+        VueGenerale::renderPage($html,VueGenerale::DarkPage);
     }
 }
