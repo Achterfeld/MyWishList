@@ -196,7 +196,7 @@ END;
             <p>Votre compte a été modifié.</p>
             <br>
             <br>
-            <a href="/myWishList/pagePerso" class="boutton">Ok</a>
+            <a href="/myWishList/" class="boutton">Ok</a>
         
         </div>
 <body>

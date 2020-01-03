@@ -106,9 +106,7 @@ class pagePersoControler
  			
  			$u->save();
 
- 			$_SESSION['session']['eMail'] = $u->mail;
-			$_SESSION['session']['prenom'] = $u->prenom;
-
+			Authentification::disconnect(); 			
 		}
 
 		$v = new VuePagePerso();
