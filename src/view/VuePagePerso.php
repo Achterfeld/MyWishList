@@ -194,8 +194,8 @@ END;
         $urlHome = $app->urlFor('route_home');
 
         $urlPPerso = $app->urlFor('route_get_pagePerso');
-        $urlPPersoSupprimer = $app->urlFor('route_pagePersoSupprimer');
-
+        $urlConnexion = $app->urlFor('route_connexion');
+        
         $html = <<<END
         $header
 <body id="connexion">
@@ -207,7 +207,7 @@ END;
             <p>Votre compte a été modifié.</p>
             <br>
             <br>
-            <a href="$urlPPerso" class="boutton">Ok</a>
+            <a href="$urlConnexion" class="boutton">Se reconnecter</a>
         
         </div>
 <body>

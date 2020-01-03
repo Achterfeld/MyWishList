@@ -107,9 +107,7 @@ class pagePersoControler
 			$u->hash = password_hash($pass1, PASSWORD_DEFAULT, ['cost' => 12]);
 
 			$u->save();
-
-			$_SESSION['session']['eMail'] = $u->mail;
-			$_SESSION['session']['prenom'] = $u->prenom;
+			Authentification::disconnect();
 		}
 
 		$v = new VuePagePerso();
