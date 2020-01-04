@@ -20,8 +20,10 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
  - Tom
 	 - Routes dans la page index
 	 - 3 - Réservation d'item
-	 - 17 - Création du compte
+	 - 11 - Rajouter une image à un item
+	 - 12 - Modifier une image d'un item
 	 - 13 - Supprimer une image d'un item
+	 - 17 - Création du compte
 	 - 18 - Gestion de la connexion
  - Matéo
 	 - Routes dans la page index
@@ -40,6 +42,7 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 	 - 8 - Ajout d'items
 	 - 9 - Modifier un item
 	 - 10 - Supprimer un item
+	 - 12 - Modifier une image d'un item
 	 - 14 - Partage d'une liste
 	 - 15 - Consultation des réservations (avant date)
 	 - 16 - Consultation des réservations (après date)
@@ -52,8 +55,8 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 
 | Créateur | Extensions 
 |-|-
-| 11 | 22
-| 12 | 23
+|  | 22
+|  | 23
 |  | 24
 |  | 25
 |  | 26
