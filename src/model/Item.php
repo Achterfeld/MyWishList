@@ -19,7 +19,15 @@ class Item extends \Illuminate\Database\Eloquent\Model
         $app = \Slim\Slim::getInstance();
         $rootUri = $app->request->getRootUri();
         $itemUrl = "";
-        $url = $rootUri . $itemUrl;
+        $img = $this->img;
+        if (substr($img, 0,4) == 'http') {
+            $url = $img;
+        }
+        else {
+            $url = $rootUri . $itemUrl."/img/".$img;
+
+        }
+
 
         $modif = "";
 
@@ -46,7 +54,7 @@ class Item extends \Illuminate\Database\Eloquent\Model
         $str = <<<END
         <div class='item'>
             <div class='itemBg'>
-                <img src="$url/img/$this->img"></img>
+                <img src="$url"></img>
             </div>
             <div class='itemContent'>
             $modif
@@ -71,7 +79,7 @@ END;
                     <div class='prix'>$this->tarif</div>
                 </div>
                 <div class='crop'>
-                    <img src='$url/img/$this->img'></img> 
+                    <img src='$url'></img> 
                 </div>
             </div>
         </div>";
