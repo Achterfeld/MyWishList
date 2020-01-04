@@ -206,7 +206,7 @@ $app->post('/liste/suppression/:no/:token', function ($no, $token) {
     $c->supprimer($no, $token);
 })->name('route_suppressionListe');
 
-$app->post('/liste/suppression/:id', function ($id) {
+$app->post('/item/suppression/:id', function ($id) {
     $c = new ItemControler();
     $c->supprimer($id);
 })->name('route_suppressionItem');

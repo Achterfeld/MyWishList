@@ -16,7 +16,7 @@ class VueCreation
         $token = strtr($token, '+/', '-_');
 
         $app = \Slim\slim::getInstance();
-        $urlpostListeValid = $app->urlFor('route_post_listeValidation',['token'=>$token]);
+        $urlpostListeValid = $app->urlFor('route_post_listeValidation', ['token' => $token]);
 
         $html = <<<END
         <form action="$urlpostListeValid" class="formulaire" method="post">
@@ -63,6 +63,7 @@ END;
         $app = \Slim\slim::getInstance();
 
         // Si le deuxième argument est vide, on utilise un item
+
         if ($arg2 == "") {
             $urlSuppression = $app->urlFor('route_suppressionItem', ['id' => $arg1]);
             $urlModification = $app->urlFor('route_post_modifItem', ['id' => $arg1]);
@@ -71,7 +72,7 @@ END;
             $urlModification = $app->urlFor('route_post_modifListe', ['token' => $arg1, 'no' => $arg2]);
         }
 
-        $txt = $app == "" ? "l'item" : "la liste";
+        $txt = $arg2 == "" ? "l'item" : "la liste";
 
         $html = <<<END
         <form action="$urlSuppression" method="post" class="formulaire redBG">
@@ -79,6 +80,7 @@ END;
         <h1>Voulez-vous vraiment supprimer $txt ?</h1>
 
             <input type="submit" value="Oui" required>
+            <br>
             <a href="$urlModification">Retour à la modification</a>
 
         </form>
