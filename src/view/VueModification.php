@@ -120,11 +120,12 @@ END;
             <h1>Modification item</h1>
             <input type="text" name="nomItem" value='$nom' placeholder="Nom" required><br>
             <input type="text" name="descriptionItem" value='$descr' placeholder="Description" maxlength="256" required><br>
-            <input type="text" name="URLImage" value='$img' placeholder="Url de l'image"><br>
+            <input type="text" name="URLImage" id="url" value='$img' placeholder="Url de l'image"><br>
             <input type="number" name="prixItem" value='$tarif' min="0.01" max="99999.99" step="any" placeholder="Prix" required><br>
             <input type="url" name="URL" value='$url' placeholder="Lien vers une page de description ? (optionnel)"><br>
 
             <input type="submit" value="Modifier l'item"></input>
+            <input onClick="document.getElementById('url').value = '';" type="submit" value="🖼️ Supprimer l'image"></input>
 
         </form>
 
