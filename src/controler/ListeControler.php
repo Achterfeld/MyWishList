@@ -95,7 +95,7 @@ class ListeControler
         $i = Item::where('id', '=', $id)->first();
 
         $i->reservation = filter_var($app->request()->post("participant"), FILTER_SANITIZE_SPECIAL_CHARS);
-        $i->reservation = substr(filter_var($app->request()->post("message"), FILTER_SANITIZE_SPECIAL_CHARS), 0, 256);
+        $i->message = substr(filter_var($app->request()->post("message"), FILTER_SANITIZE_SPECIAL_CHARS), 0, 256);
 
         $i->save();
     }
