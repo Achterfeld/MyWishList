@@ -20,7 +20,7 @@ class Item extends \Illuminate\Database\Eloquent\Model
         $rootUri = $app->request->getRootUri();
         $itemUrl = "";
         $img = $this->img;
-        if (substr($img, 0,4) == 'http') {
+        if (filter_var($img, FILTER_VALIDATE_URL)) {
             $url = $img;
         }
         else {
