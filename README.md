@@ -30,7 +30,9 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 	 - 17 - Création du compte
 	 - 18 - Gestion de la connexion
 	 - 19 - Modification du compte
+	 - 26 - Afficher la liste des créateurs
 	 - 27 - Suppression de son compte
+
  - Guillaume
 	 - Routes dans la page index
 	 - 1 - Affichage d'une liste de souhaits

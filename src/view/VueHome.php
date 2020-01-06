@@ -82,17 +82,17 @@ $co
             <br>
             <br>
             <br>
-            <a href="$urlListePublique" class="boutton"> Toutes nos listes </a>
+            <a href="$urlListePublique" class="boutton"> Toutes nos listes publiques</a>
             <br>
             <br>
             <br>
             <br>
-            <a href="$urlItems" class="boutton"> Tous nos items </a>
+            <a href="$urlItems" class="boutton"> Tous nos items</a>
             <br>
             <br>
             <br>
             <br>
-            <a href="$urlCreateurs" class="boutton"> Les créateurs </a>
+            <a href="$urlCreateurs" class="boutton"> Les créateurs de listes publiques</a>
         </div>
     </div>
 <br>

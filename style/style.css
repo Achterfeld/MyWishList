@@ -319,6 +319,7 @@ form {
 .section {
     padding: 2em;
     background: #fff3;
+    border-radius: .5em;
 }
 
 #infoCompte {

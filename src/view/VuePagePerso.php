@@ -137,6 +137,8 @@ $message
 
     <br>
     <br>
+    <br>
+
     <div class= "section">
         <h1>A participer à :</h1>
         $participations
