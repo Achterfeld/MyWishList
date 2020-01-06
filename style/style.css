@@ -22,6 +22,7 @@ body {
 #accueil {
     background: #222836;
     color: #fff;
+    overflow: hidden;
 }
 
 #navBarre {

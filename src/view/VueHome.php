@@ -69,16 +69,24 @@ $co
             <br>
             <br>
             <a href="$urlListeCreer" class="boutton">Mode invité</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="./liste" class="boutton"> Toutes nos listes </a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="./item" class="boutton"> Tous nos items </a>
+
         </div>
     </div>
-        <div>
-    <a href="./liste" > Toutes nos listes </a> 
-</div>
-
-<div>
-    <a href="./item" > Tous nos items </a>
-</div>
-
 <br>
 <body>
 END;
