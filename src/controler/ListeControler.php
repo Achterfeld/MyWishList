@@ -98,11 +98,16 @@ class ListeControler
 
     public function addRes($id)
     {
-        $app = new \Slim\Slim;
+        $app = \Slim\Slim::getInstance();
         $i = Item::where('id', '=', $id)->first();
 
         $i->reservation = filter_var($app->request()->post("participant"), FILTER_SANITIZE_SPECIAL_CHARS);
         $i->message = substr(filter_var($app->request()->post("message"), FILTER_SANITIZE_SPECIAL_CHARS), 0, 256);
+
+        if (isset($_SESSION['session']['user_id'])) {
+            $i->user_id = $_SESSION['session']['user_id'];
+        }
+
 
         $i->save();
     }

@@ -438,3 +438,7 @@ input[type="radio"] {
     top: -1.5em;
     right: 0;
 }
+
+.itemReserve{
+    margin: 1em 0;
+}

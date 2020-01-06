@@ -69,6 +69,17 @@ class VuePagePerso
                              </div>";
         }
 
+        if (isset($_SESSION['session']['user_id'])) {
+            $u = User::where('user_id', '=', $_SESSION['session']['user_id'])->first();
+            $participe = $u->aParticipe()->get();
+            $participations = "";
+            foreach ($participe as $value) {
+                
+                $urlItem = $app->urlFor('route_itemID', ['id' => $value->id]);
+                $participations .= "<div class='itemReserve'><a href='$urlItem'>$value->nom</a></div>";
+            }
+        }
+
         $navBarre = VueGenerale::renderNavBarre();
         //TODO
         //Permettre les modifs de nom d'utilisateur, de mail, de mdp
@@ -124,6 +135,12 @@ $message
     <a href="$urlListeAjoutParToken" class="boutton">Ajouter une liste par token</a>
     <a href="$urlPPersoSupprimer" class="boutton redBG">Supprimer le compte</a>
 
+    <br>
+    <br>
+    <div class= "section">
+        <h1>A participer à :</h1>
+        $participations
+    </div>
     </section>
 </body>
 
