@@ -36,7 +36,7 @@ class VueHome
         $header = VueGenerale::renderHeader();
         $html = <<<END
         $header
-<body id="accueil">
+<body id="home">
         <div id="topBarre">
 
 $co 
