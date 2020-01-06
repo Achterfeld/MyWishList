@@ -125,4 +125,19 @@ class pagePersoControler
 		$v = new VuePagePerso();
 		$v->confirmation($modif);
 	}
+
+	public function allCreateur() {
+
+		$lCreateur = array();
+
+		$lListe = Liste::where('public', '=', 1)->distinct()->get();
+
+		foreach ($lListe as $liste) {
+			$user = User::where('user_id','=',$liste->user_id)->first();
+			$lCreateur[] = $user;
+		}
+
+		$v = new VuePagePerso();
+		$v->afficherCreateur($lCreateur);
+	}
 }
