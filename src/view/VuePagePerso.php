@@ -249,4 +249,18 @@ END;
 
         VueGenerale::renderPage($html, VueGenerale::DarkPage);
     }
+
+    public function afficherCreateur($lCreateur) {
+        
+        $html = "<body>";
+        foreach(array_unique($lCreateur) as $user) {
+            $html.= "<div class = createur>";
+            $html.=$user->toString();
+            $html.= "</div>";
+        }
+
+        $html.= "</body>";
+
+        VueGenerale::renderPage($html, VueGenerale::DarkPage);        
+    }
 }

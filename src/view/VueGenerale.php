@@ -39,21 +39,21 @@ END;
 
         if (isset($_SESSION['session'])) {
             $co = "<div><a href='$urlPPerso'>" . $_SESSION['session']['prenom'] . "</a></div>
+            <div style='flex:1'></div>
             <div><a href='$urlDeconnexion' class = 'disconnect'>Se déconnecter</a>
             </div>";
         } else {
-            $co = "<div><a href='$urlConnexion' >Se connecter</a></div>";
+            $co = "
+            <div style='flex:1'></div>
+            <div>
+                <a href='$urlHome' >Page d'accueil</a>
+            </div>
+            <div><a href='$urlConnexion' >Se connecter</a></div>";
+
         }
 
         $navBarre = <<<END
         <div id="navBarre"> 
-            <div>
-                <a href="$urlHome">My Wish List</a>
-            </div>
-            <div style="flex:1"></div>
-            <div>
-                <a href="$urlHome" >Page d'accueil</a>
-            </div>
             $co
         </div><br>
 

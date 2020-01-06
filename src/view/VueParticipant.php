@@ -197,7 +197,7 @@ END;
             $content .= $txtAutre;
         }
 
-        VueGenerale::renderPage($content);
+        VueGenerale::renderPage($content, VueGenerale::DarkPage);
     }
 
     public function render($selecter)

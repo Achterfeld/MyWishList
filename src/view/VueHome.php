@@ -34,6 +34,7 @@ class VueHome
         $urlListeCreer = $app->urlFor('route_listeCreer');
         $urlItems = $app->urlFor('route_item');
         $urlListePublique = $app->urlFor('route_listePublique');
+        $urlCreateurs = $app->urlFor('route_createurs');
 
         $header = VueGenerale::renderHeader();
         $html = <<<END
@@ -80,13 +81,18 @@ $co
             <br>
             <br>
             <br>
+            <br>
             <a href="$urlListePublique" class="boutton"> Toutes nos listes </a>
             <br>
             <br>
             <br>
             <br>
             <a href="$urlItems" class="boutton"> Tous nos items </a>
-
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="$urlCreateurs" class="boutton"> Les créateurs </a>
         </div>
     </div>
 <br>

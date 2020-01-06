@@ -199,6 +199,11 @@ $app->get('/modification/item/:id', function ($id) {
     $c->modifierItem($id);
 })->name('route_modifItem');
 
+$app->get('/createurs', function() {
+    $c = new pagePersoControler();
+    $c->allCreateur();
+})->name('route_createurs');
+
 $app->post('/modification/liste/:no/:token', function ($no, $token) {
     $c = new ListeControler();
     $c->validerListe($no, $token);

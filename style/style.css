@@ -18,6 +18,17 @@ body {
     color: #000;
 }
 
+.createur {
+    border-radius: 1em;
+    border: solid;
+    border-width: 1px;
+    border-color: #fff;
+    margin-left: 40em;
+    margin-right: 40em;
+    margin-bottom: 1em;
+    padding: .5em;
+}   
+
 #accueil {
     background: #222836;
     color: #fff;
