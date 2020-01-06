@@ -86,6 +86,8 @@ class VuePagePerso
         $urlPPersoModif = $app->urlFor('route_pagePersoModifier');
         $urlPPersoSupprimer = $app->urlFor('route_pagePersoPresuppression');
 
+        $urlListeAjoutParToken = $app->urlFor('route_listeAjoutParToken');
+
         $html = <<<END
 
         $header
@@ -119,6 +121,7 @@ $message
     <br>
     <br>
     <a href="$urlListeCreer" class="boutton">Créer une liste</a>
+    <a href="$urlListeAjoutParToken" class="boutton">Ajouter une liste par token</a>
     <a href="$urlPPersoSupprimer" class="boutton redBG">Supprimer le compte</a>
 
     </section>

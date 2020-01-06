@@ -95,6 +95,16 @@ $app->get('/item/ajout/:no/:token', function ($no, $token) {
     $c->getCreation($no, $token);
 })->name('route_itemAjout');
 
+$app->get('/ajoutParToken', function () {
+    $c = new ListeControler();
+    $c->getAjout();
+})->name('route_listeAjoutParToken');
+
+$app->post('/ajoutParToken/validation', function () {
+    $c = new ListeControler();
+    $c->getAjoutParToken();
+})->name('route_listeAjoutParTokenValidation');
+
 $app->post('/validation/item', function () {
     $c = new ItemControler();
     $c->validerItem();
