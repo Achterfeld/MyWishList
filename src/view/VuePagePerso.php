@@ -186,7 +186,7 @@ END;
         }
 
 
-        VueGenerale::renderPage($html);
+        VueGenerale::renderPage($html, VueGenerale::DarkPage);
     }
 
     const RECONNEXION = 1;

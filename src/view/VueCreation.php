@@ -107,6 +107,6 @@ END;
                 break;
         }
 
-        VueGenerale::renderPage($content);
+        VueGenerale::renderPage($content, VueGenerale::DarkPage);
     }
 }
