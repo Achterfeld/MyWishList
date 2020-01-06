@@ -54,7 +54,7 @@ body {
 
 .list,
 .item {
-    margin: 0 1em;
+    margin: 1em 10em;
     background: #bbb4;
     padding: 1em;
     border-radius: 1em;
