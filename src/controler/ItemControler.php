@@ -36,6 +36,9 @@ class ItemControler
         $i->url = $url;
 
         $i->tarif = $datas->post('prixItem');
+        $this->ajoutImg($i);
+        
+
         $i->save();
 
         $this->getItem($i->id);
@@ -61,6 +64,8 @@ class ItemControler
         $i->img = filter_var($datas->post("URLImage"), FILTER_SANITIZE_SPECIAL_CHARS);
         $i->url = filter_var($datas->post("URL"), FILTER_SANITIZE_SPECIAL_CHARS);
         $i->tarif = filter_var($datas->post("prixItem"), FILTER_SANITIZE_SPECIAL_CHARS);
+        $this->ajoutImg($i);    
+
         $i->save();
     }
 
@@ -99,4 +104,34 @@ class ItemControler
         }
     }
 
+    public function ajoutImg($i) {
+        if (!empty($_FILES["image"])) {
+            $target_dir =  "./img/";
+            $target_file = $target_dir . basename($_FILES["image"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            // verifie si l'image est bien une image
+            if(isset($_POST["submit"])) {
+                $check = getimagesize($_FILES["image"]["tmp_name"]);
+                if($check !== false) {
+                    $uploadOk = 1;
+                } else {
+                    $uploadOk = 0;
+                }
+            }
+            // vérifie si le fichier existe déjà
+            if (file_exists($target_file)) {
+                $uploadOk = 0;
+            }
+            // vérifie le format
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+                $uploadOk = 0;
+            }
+            //si pas de probleme durant les vérification upload
+            if ($uploadOk != 0) {
+                move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+            }
+            $i->img = $_FILES["image"]["name"];
+        }
+    }
 }
