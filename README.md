@@ -50,6 +50,7 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 	 - 21 - Affichage des listes de souhaits publiques 
 	 - 19 - Modification du compte
 	 - 27 - Suppression de son compte
+	 - 28 - Ajout de liste à son compte
 	 
 - Fonctionnalités non traités pour le moment :
 
@@ -60,4 +61,3 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 |  | 24
 |  | 25
 |  | 26
-|  | 28
