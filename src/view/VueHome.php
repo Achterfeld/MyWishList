@@ -32,6 +32,8 @@ class VueHome
         $urlInscription = $app->urlFor('route_inscription');
         $urlConnexion = $app->urlFor('route_connexion');
         $urlListeCreer = $app->urlFor('route_listeCreer');
+        $urlItems = $app->urlFor('route_item');
+        $urlListePublique = $app->urlFor('route_listePublique');
 
         $header = VueGenerale::renderHeader();
         $html = <<<END
@@ -78,12 +80,12 @@ $co
             <br>
             <br>
             <br>
-            <a href="./liste" class="boutton"> Toutes nos listes </a>
+            <a href="$urlListePublique" class="boutton"> Toutes nos listes </a>
             <br>
             <br>
             <br>
             <br>
-            <a href="./item" class="boutton"> Tous nos items </a>
+            <a href="$urlItems" class="boutton"> Tous nos items </a>
 
         </div>
     </div>
