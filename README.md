@@ -62,5 +62,3 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 |-|-
 |  | 22
 |  | 23
-|  | 26
-|  | 
