@@ -54,7 +54,7 @@ body {
 
 .list,
 .item {
-    margin: 0 1em;
+    margin: 1em 10em;
     background: #bbb4;
     padding: 1em;
     border-radius: 1em;
@@ -313,8 +313,13 @@ form {
 #infoCompte {
     display: flex;
     text-align: start;
+    border-radius: .5em;
 }
 
+#infoListe {
+
+    border-radius: .5em;
+}
 #infoCompte ul {
     list-style: none;
 }
