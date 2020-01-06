@@ -8,6 +8,7 @@ class VueCreation
     const ITEM = 2;
     const SUPPR_LIST = 3;
     const SUPPR_ITEM = 4;
+    const AJOUT_ITEM = 5;
 
     function afficheCreationListe()
     {
@@ -56,6 +57,25 @@ END;
 END;
         return $html;
     }
+    function afficheAjoutParToken()
+    {
+        $app = \Slim\slim::getInstance();
+        $urlAjout = $app->urlFor('route_listeAjoutParTokenValidation');
+            
+        
+
+        $html = <<<END
+        <form action="$urlAjout" class="formulaire" method="post">
+
+            <h1>Ajout d'une liste par token</h1><br>
+            <p>Pour ajouter un item par token, veuillez donner son token de modification</p>
+            <input type="text" placeholder="Token de modification de votre liste" name="TokenListe"><br>
+            <input type="submit" value="Valider votre liste"></input>
+
+        </form>
+END;
+        return $html;
+    }
 
     function afficheSuppression($arg1, $arg2)
     {
@@ -75,7 +95,7 @@ END;
         $txt = $arg2 == "" ? "l'item" : "la liste";
 
         $html = <<<END
-        <form action="$urlSuppression" method="post" class="formulaire redBG">
+        <form action="$urlSuppression" method="post" class="formulaire">
 
         <h1>Voulez-vous vraiment supprimer $txt ?</h1>
 
@@ -105,8 +125,11 @@ END;
             case self::ITEM:
                 $content = $this->afficheCreationItem($token, $no);
                 break;
+            case self::AJOUT_ITEM:
+                $content = $this->afficheAjoutParToken();
+                break;
         }
 
-        VueGenerale::renderPage($content);
+        VueGenerale::renderPage($content, VueGenerale::DarkPage);
     }
 }

@@ -24,6 +24,13 @@ body {
     color: #fff;
 }
 
+#home {
+    background: #222836;
+    color: #fff;
+    overflow: hidden;
+
+}
+
 #navBarre {
     background: #222836;
     color: #fff;
@@ -47,8 +54,8 @@ body {
 
 .list,
 .item {
-    margin: 0 1em;
-    background: #22283666;
+    margin: 1em 10em;
+    background: #bbb4;
     padding: 1em;
     border-radius: 1em;
 }
@@ -119,7 +126,7 @@ li {
 }
 
 .num_liste {
-    background: #f031;
+    background: #32364f;
 }
 
 .description {
@@ -210,7 +217,7 @@ body span {
 }
 
 .deuxColonnes div:nth-of-type(1) {
-    border-right: #000 2px solid;
+    border-right: #fff 2px solid;
 }
 
 .deuxColonnes div input,
@@ -306,8 +313,13 @@ form {
 #infoCompte {
     display: flex;
     text-align: start;
+    border-radius: .5em;
 }
 
+#infoListe {
+
+    border-radius: .5em;
+}
 #infoCompte ul {
     list-style: none;
 }
@@ -425,4 +437,8 @@ input[type="radio"] {
     position: absolute;
     top: -1.5em;
     right: 0;
+}
+
+.itemReserve{
+    margin: 1em 0;
 }

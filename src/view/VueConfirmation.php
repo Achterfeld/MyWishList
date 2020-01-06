@@ -37,6 +37,6 @@ class VueConfirmation
         </div>
 <body>
 END;
-        VueGenerale::renderPage($html);
+    echo $html;
     }
 }

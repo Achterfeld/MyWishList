@@ -14,6 +14,7 @@ CREATE TABLE `item` (
   `tarif` decimal(7,2) DEFAULT NULL,
   `reservation` text,
   `message` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user_id` int(11) NOT NULL DEFAULT -1,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

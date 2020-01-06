@@ -73,7 +73,7 @@ END;
                 $reserv = !is_null($value->reservation) ? "✔️" : "❌";
             }
 
-            $urlItemReservation = $app->urlFor('route_get_itemReservation',['idItem'=>$value->id]);
+            $urlItemReservation = $app->urlFor('route_get_itemReservation', ['idItem' => $value->id]);
 
 
             $str .= "<li><a class='lienSCouleur' href='$urlItemReservation'>$value->nom $reserv</a></li> ";
@@ -86,21 +86,26 @@ END;
 
         $auteur = isset($_SESSION['session']) ? $_SESSION['session']['prenom'] : "''";
 
-        $urlAjoutMessage = $app->urlFor('route_ajoutMessage',['no'=>$this->no,'token_visu'=>$this->token_visu]);
+        $urlAjoutMessage = $app->urlFor('route_ajoutMessage', ['no' => $this->no, 'token_visu' => $this->token_visu]);
 
-        $str .= <<<END
+        $txt = "";
+        if ($this->token_visu != "") {
+            $txt = <<<END
 
-        <div style="margin: 1em;">
-            <form class="formulaire" method="post" action="$urlAjoutMessage">
-                <div>Ajouter un message :</div>
-                <input type="text" name="auteur" placeholder="Votre nom" value=$auteur><br>
-                <input type="text" name="message" placeholder="Votre message pour l'organisateur" ><br>
-                <input type="submit" value="Ajoutez votre message" ></input><br>
-            </form>
-        </div>
-
-
+            <div style="margin: 1em;">
+                <form class="formulaire" method="post" action="$urlAjoutMessage">
+                    <div>Ajouter un message :</div>
+                    <input type="text" name="auteur" placeholder="Votre nom" value=$auteur><br>
+                    <input type="text" name="message" placeholder="Votre message pour l'organisateur" ><br>
+                    <input type="submit" value="Ajoutez votre message" ></input><br>
+                </form>
+            </div>
+    
+    
 END;
+        }
+
+        $str .= $txt;
 
         $mess = $this->messages()->get();
 

@@ -62,6 +62,13 @@ class ListeControler
         $v->render(VueParticipant::LIST_VIEW_TOKEN);
     }
 
+    public function getAjout()
+    {
+
+        $v = new VueCreation();
+        $v->render(VueCreation::AJOUT_ITEM);
+    }
+
     public function insertListe($token)
     {
 
@@ -91,11 +98,16 @@ class ListeControler
 
     public function addRes($id)
     {
-        $app = new \Slim\Slim;
+        $app = \Slim\Slim::getInstance();
         $i = Item::where('id', '=', $id)->first();
 
         $i->reservation = filter_var($app->request()->post("participant"), FILTER_SANITIZE_SPECIAL_CHARS);
         $i->message = substr(filter_var($app->request()->post("message"), FILTER_SANITIZE_SPECIAL_CHARS), 0, 256);
+
+        if (isset($_SESSION['session']['user_id'])) {
+            $i->user_id = $_SESSION['session']['user_id'];
+        }
+
 
         $i->save();
     }
@@ -159,6 +171,21 @@ class ListeControler
 
             $itemUrl = $app->urlFor('route_home');
             $app->response->redirect($itemUrl, 303);
+        }
+    }
+
+    public function getAjoutParToken()
+    {
+
+        $app = \Slim\Slim::getInstance();
+        $token = $app->request->post('TokenListe');
+        $l = Liste::where("token", "=", $token)->first();
+
+        if (isset($_SESSION['session']['user_id']) && $l->user_id == -1) {
+            $l->user_id = $_SESSION['session']['user_id'];
+            $l->save();
+            $urlPPerso = $app->urlFor('route_get_pagePerso');
+            $app->response->redirect($urlPPerso,303);
         }
     }
 }

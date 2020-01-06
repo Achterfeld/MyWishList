@@ -32,11 +32,13 @@ class VueHome
         $urlInscription = $app->urlFor('route_inscription');
         $urlConnexion = $app->urlFor('route_connexion');
         $urlListeCreer = $app->urlFor('route_listeCreer');
+        $urlItems = $app->urlFor('route_item');
+        $urlListePublique = $app->urlFor('route_listePublique');
 
         $header = VueGenerale::renderHeader();
         $html = <<<END
         $header
-<body id="accueil">
+<body id="home">
         <div id="topBarre">
 
 $co 
@@ -69,16 +71,24 @@ $co
             <br>
             <br>
             <a href="$urlListeCreer" class="boutton">Mode invité</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="$urlListePublique" class="boutton"> Toutes nos listes </a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="$urlItems" class="boutton"> Tous nos items </a>
+
         </div>
     </div>
-        <div>
-    <a href="./liste" > Toutes nos listes </a> 
-</div>
-
-<div>
-    <a href="./item" > Tous nos items </a>
-</div>
-
 <br>
 <body>
 END;

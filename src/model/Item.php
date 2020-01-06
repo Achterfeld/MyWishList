@@ -13,6 +13,11 @@ class Item extends \Illuminate\Database\Eloquent\Model
         return $this->belongsTo('wishlist\model\Liste', 'liste_id');
     }
 
+    public function participe()
+    {
+        return $this->belongsTo('wishlist\model\User', 'user_id');
+    }
+
     public function __toString()
     {
 

@@ -12,4 +12,8 @@ class User extends \Illuminate\Database\Eloquent\Model
     {
         return $this->hasMany('wishlist\model\Liste', 'user_id');
     }
+
+    public function aParticipe(){
+        return $this->hasMany('wishlist\model\Item', 'user_id');    
+    }
 }

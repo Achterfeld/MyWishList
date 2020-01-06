@@ -45,7 +45,7 @@ class VueModification
 
         <br>
 
-        <form class='formulaire redBG' action="$urlListePresuppression" method="post">
+        <form class='formulaire ' action="$urlListePresuppression" method="post">
             <input type="submit" value="❌Supprimer la liste">
         </form>
 
@@ -164,6 +164,6 @@ END;
                 break;
         }
 
-        VueGenerale::renderPage($content);
+        VueGenerale::renderPage($content, VueGenerale::DarkPage);
     }
 }
