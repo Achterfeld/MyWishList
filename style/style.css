@@ -48,7 +48,7 @@ body {
 .list,
 .item {
     margin: 0 1em;
-    background: #22283666;
+    background: #bbb4;
     padding: 1em;
     border-radius: 1em;
 }
@@ -119,7 +119,7 @@ li {
 }
 
 .num_liste {
-    background: #f031;
+    background: #32364f;
 }
 
 .description {
