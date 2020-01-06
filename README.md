@@ -25,6 +25,7 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 	 - 13 - Supprimer une image d'un item
 	 - 17 - Création du compte
 	 - 18 - Gestion de la connexion
+	 - 24 - Uploader une image
  - Matéo
 	 - Routes dans la page index
 	 - 17 - Création du compte
@@ -61,5 +62,5 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 |-|-
 |  | 22
 |  | 23
-|  | 24
 |  | 26
+|  | 

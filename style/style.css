@@ -11,7 +11,6 @@
 
 body {
     padding: 1em;
-    background-color: #fff;
     text-align: center;
     vertical-align: middle;
     height: 100%;
@@ -144,6 +143,7 @@ li {
     flex: 1;
     min-width: 10em;
     text-align: left;
+    text-shadow: 0px 0px 3px black;
 }
 
 
