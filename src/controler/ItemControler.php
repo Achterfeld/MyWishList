@@ -37,7 +37,7 @@ class ItemControler
 
         $i->tarif = $datas->post('prixItem');
         $this->ajoutImg($i);
-        
+
 
         $i->save();
 
@@ -118,6 +118,10 @@ class ItemControler
                 } else {
                     $uploadOk = 0;
                 }
+            }
+            //vérifie que la taille de l'image soit inférieur à 1mo
+            if ($_FILES["image"]["size"] > 1000000) {
+                $uploadOk = 0;
             }
             // vérifie si le fichier existe déjà
             if (file_exists($target_file)) {
