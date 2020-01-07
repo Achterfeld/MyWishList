@@ -204,6 +204,16 @@ $app->get('/createurs', function() {
     $c->allCreateur();
 })->name('route_createurs');
 
+$app->get('/cagnote/:id', function($id) {
+    $c = new ItemControler();
+    $c->creerCagnote($id);
+})->name('route_cagnote');
+
+$app->post('/cagnote/:id', function($id) {
+    $c = new ItemControler();
+    $c->crediterCagnote($id);
+})->name('route_cagnote_post');
+
 $app->post('/modification/liste/:no/:token', function ($no, $token) {
     $c = new ListeControler();
     $c->validerListe($no, $token);

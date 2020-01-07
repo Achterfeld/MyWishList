@@ -138,4 +138,35 @@ class ItemControler
             $i->img = $_FILES["image"]["name"];
         }
     }
+
+    public function creerCagnote($id) {
+        
+        $item = Item::where('id','=',$id)->first();
+        
+        if ($item->cagnote == -1) {
+            $item->cagnote = 0;
+        }
+
+        $item->save();
+
+        $v = new VueModification();
+        $v->renderCagnote($item);
+    }
+
+    public function crediterCagnote($id) {
+
+        $app = \Slim\Slim::getInstance();
+        $montant = $app->request()->post('contribution');
+
+
+        $item = Item::where('id','=',$id)->first();
+        if ($item->cagnote+$montant>=$item->cagnote) { 
+            $item->cagnote += $montant;
+        }
+        $item->save();
+
+
+        $v = new VueModification();
+        $v->renderCagnote($item);   
+    }
 }

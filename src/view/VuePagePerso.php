@@ -24,20 +24,12 @@ class VuePagePerso
 
         foreach ($listes as $key => $value) {
 
-            //            echo ($key);
             $items = $value->item()->get();
 
             $compteur = count($items);
             $reserve = 0;
 
             foreach ($items as $key1 => $value1) {
-
-                //                $compteur++;
-
-                // var_dump($value->reservation);
-
-                // var_dump($value->reservation);
-                // echo($value);
 
                 if (!is_null($value1->reservation)) {
                     $reserve++;
