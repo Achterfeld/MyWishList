@@ -114,13 +114,15 @@ class pagePersoControler
 			$pass2 = filter_var($pass2, FILTER_SANITIZE_SPECIAL_CHARS);
 			if ($pass1 == $pass2) {
 				$u->hash = password_hash($pass1, PASSWORD_DEFAULT, ['cost' => 12]);
-				$u->save();
 
 				Authentification::disconnect();
 
 				$modif = VuePagePerso::RECONNEXION;
 			}
 		}
+
+		ItemControler::ajoutImg($u);
+		$u->save();
 
 		$v = new VuePagePerso();
 		$v->confirmation($modif);
