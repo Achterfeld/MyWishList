@@ -86,7 +86,8 @@ END;
         if ($this->cagnote != -1) {
             $app = \Slim\Slim::getInstance();
             $urlCagnote = $app->urlFor('route_cagnote', ['id'=>$this->id]);
-            $str .= "<a href = '$urlCagnote' class = 'bouton'>Participer à la cagnote</a>";
+            $str .= "<br><br>
+                        <a href = '$urlCagnote' class = 'bouton'>Participer à la cagnote</a>";
         }
 
         $str .= "
