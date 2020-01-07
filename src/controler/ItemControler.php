@@ -104,7 +104,7 @@ class ItemControler
         }
     }
 
-    public function ajoutImg($i) {
+    public static function ajoutImg($i) {
         if (!empty($_FILES["image"])) {
             $target_dir =  "./img/";
             $target_file = $target_dir . basename($_FILES["image"]["name"]);
