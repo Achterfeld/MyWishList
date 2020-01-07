@@ -136,7 +136,9 @@ class pagePersoControler
 
 		foreach ($lListe as $liste) {
 			$user = User::where('user_id','=',$liste->user_id)->first();
-			$lCreateur[] = $user;
+			if (!is_null($user)) {
+				$lCreateur[] = $user;
+			}
 		}
 
 		$v = new VuePagePerso();
