@@ -26,6 +26,7 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 	 - 17 - Création du compte
 	 - 18 - Gestion de la connexion
 	 - 24 - Uploader une image
+	 - 99 - Ajout photo de profil pour utilisateur possible
  - Matéo
 	 - Routes dans la page index
 	 - 17 - Création du compte
