@@ -92,6 +92,8 @@ class VuePagePerso
         $urlHome = $app->urlFor('route_home');
         $urlPPersoModif = $app->urlFor('route_pagePersoModifier');
         $urlPPersoSupprimer = $app->urlFor('route_pagePersoPresuppression');
+        $urlListePublique = $app->urlFor('route_listePublique');
+        $urlCreateurs = $app->urlFor('route_createurs');
 
         $urlListeAjoutParToken = $app->urlFor('route_listeAjoutParToken');
 
@@ -129,6 +131,8 @@ $message
     <br>
     <a href="$urlListeCreer" class="boutton">Créer une liste</a>
     <a href="$urlListeAjoutParToken" class="boutton">Ajouter une liste par token</a>
+    <a href="$urlListePublique" class="boutton">Afficher liste de souhaits publiques</a>
+    <a href="$urlCreateurs" class="boutton">Afficher liste créateur</a>
     <a href="$urlPPersoSupprimer" class="boutton redBG">Supprimer le compte</a>
 
     <br>

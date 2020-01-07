@@ -131,7 +131,7 @@ END;
         </form>
 
         <br>
-        <a href="$urlCagnote" class = "boutton"> Créer un cagnote pour cette item</a>
+        <a href="$urlCagnote" class = "boutton"> Créer un cagnote pour cet item</a>
         <br>
         <br>
 
