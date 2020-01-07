@@ -82,12 +82,22 @@ END;
 
         $str .= "
                     <div class='prix'>$this->tarif</div>
+                ";
+        if ($this->cagnote != -1) {
+            $app = \Slim\Slim::getInstance();
+            $urlCagnote = $app->urlFor('route_cagnote', ['id'=>$this->id]);
+            $str .= "<br><br>
+                        <a href = '$urlCagnote' class = 'bouton'>Participer à la cagnote</a>";
+        }
+
+        $str .= "
                 </div>
                 <div class='crop'>
                     <img src='$url'></img> 
                 </div>
             </div>
         </div>";
+
 
         return $str;
     }

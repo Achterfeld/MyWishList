@@ -31,6 +31,8 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 	 - 17 - Création du compte
 	 - 18 - Gestion de la connexion
 	 - 19 - Modification du compte
+	 - 22 - Créer une cagnotte sur un item
+	 - 23 - Participer à une cagnotte
 	 - 26 - Afficher la liste des créateurs
 	 - 27 - Suppression de son compte
 
@@ -56,9 +58,4 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 	 - 27 - Suppression de son compte
 	 - 28 - Ajout de liste à son compte
 	 
-- Fonctionnalités non traités pour le moment :
-
-| Créateur | Extensions 
-|-|-
-|  | 22
-|  | 23
+- Fonctionnalités non traités pour le moment : terminé

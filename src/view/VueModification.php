@@ -109,10 +109,10 @@ END;
                 //$urlItemPresuppression = $app->urlFor('route_presuppressionItem', ['id' => $id]);
                 $urlItemPresuppression = $app->urlFor('route_presuppressionItem', ['id' => $id]);
 
-                //#############################
 
                 $app = \Slim\slim::getInstance();
                 $urlpostValidItem = $app->urlFor('route_post_validationItem');
+                $urlCagnote = $app->urlFor('route_cagnote',['id' => $id]);
 
                 $html = <<<END
         <form action="$id" method="post" class="formulaire" enctype="multipart/form-data">
@@ -131,13 +131,15 @@ END;
         </form>
 
         <br>
+        <a href="$urlCagnote" class = "boutton"> Créer un cagnote pour cette item</a>
+        <br>
+        <br>
 
-        <form class='formulaire redBG' action="$urlItemPresuppression" method="post">
+        <form class='formulaire' action="$urlItemPresuppression" method="post">
             <input type="submit" value="❌Supprimer l'item">
         </form>
 
 END;
-                //#############################
 
             } else {
                 $app = \Slim\Slim::getInstance();
@@ -165,5 +167,33 @@ END;
         }
 
         VueGenerale::renderPage($content, VueGenerale::DarkPage);
+    }
+
+    public function renderCagnote($item) {
+
+        $reste = $item->tarif - $item->cagnote;
+        
+        $html = <<<END
+<body>
+    <div>
+        <h1> Cagnote pour l'item : </h1>
+        <h2>$item->nom : $item->tarif €</h2>
+        <p>$item->descr</p>
+        <br>
+        <br>
+        <progress  name='avancementCagnote' max='$item->tarif' value='$item->cagnote'></progress>
+        <br>
+        <br>
+        <form action ="./$item->id" method="post" class="formulaire" enctype="multipart/form-data">
+            <h1>Contribuer à la cagnote</h1>
+            <input type="number" value = "$reste" name="contribution" min="0.01" max="$reste" step="any" placeholder="Prix" required><br>
+            <input type="submit" value="Ajouter l'objet dans la liste" required></input>
+        </form>
+    </div>
+</body>
+END;
+
+        VueGenerale::renderPage($html, VueGenerale::DarkPage);
+
     }
 }
