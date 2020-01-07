@@ -91,7 +91,11 @@ class VuePagePerso
 
         $nbListes = count($listes);
 
-
+        $u = User::where('user_id', '=', $_SESSION['session']['user_id'])->first();
+        if (empty($u->img))
+            $img = "profil.png";
+        else  
+            $img = $u->img;
 
         $urlHome = $app->urlFor('route_home');
         $urlPPersoModif = $app->urlFor('route_pagePersoModifier');
@@ -109,7 +113,7 @@ $navBarre
 
 $message
 <div class="section" id="infoCompte">
-        <img id="profilPic" src="$urlHome/img/profil.png">
+        <img id="profilPic" src="$urlHome/img/$img">
         <div id="infos">
             <ul>
                 <li>
@@ -195,12 +199,13 @@ END;
             $html = <<<END
 
     <body>
-        <form class="formulaire" method="post" action="$urlPPersoConfirmerModif">
+        <form class="formulaire" method="post" action="$urlPPersoConfirmerModif" enctype="multipart/form-data">
                 <h1>Modifier ses informations :</h1><h3> Laissez la valeur par défaut pour conserver la valeur actuelle</h3>
 
                 <input type="text" placeholder="Prenom" name="Prenom" value='$prenom' ><br>
                 <input type="password" placeholder="Mot de passe" name="Passe1" ><br>
                 <input type="password" placeholder="Confirmation mot de passe" name="Passe2" ><br>
+                Choisir une photo de profil :<input type="file" name="image" id="image">
                 <input class="boutton" type="submit" value="Valider" required ></input>
         </form>
     </body>
