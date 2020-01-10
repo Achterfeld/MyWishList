@@ -129,18 +129,30 @@ $message
     </div>
     <br>
     <br>
-    <a href="$urlListeCreer" class="boutton">Créer une liste</a>
-    <a href="$urlListeAjoutParToken" class="boutton">Ajouter une liste par token</a>
-    <a href="$urlListePublique" class="boutton">Afficher liste de souhaits publiques</a>
-    <a href="$urlCreateurs" class="boutton">Afficher liste créateur</a>
-    <a href="$urlPPersoSupprimer" class="boutton redBG">Supprimer le compte</a>
+    <div id= 'listeBoutonContainer'>
+        <div class='listeBouton'>
+            <a href="$urlListeCreer" class="bouttonPPerso">Créer une liste</a>
+        </div>
+        <div class='listeBouton'>
+            <a href="$urlListeAjoutParToken" class="bouttonPPerso">Ajouter une liste par token</a>
+        </div>
+        <div class='listeBouton'>
+            <a href="$urlListePublique" class="bouttonPPerso">Afficher liste de souhaits publiques</a>
+        </div>
+        <div class='listeBouton'>
+            <a href="$urlCreateurs" class="bouttonPPerso">Afficher liste créateur</a>
+        </div>
+        <div class='listeBouton'>
+            <a href="$urlPPersoSupprimer" class="bouttonPPerso redBG">Supprimer le compte</a>
+        </div>
+    </div>
 
     <br>
     <br>
     <br>
 
     <div class= "section">
-        <h1>A participer à :</h1>
+        <h1>A participé à :</h1>
         $participations
     </div>
     </section>

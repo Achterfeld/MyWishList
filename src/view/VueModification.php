@@ -187,7 +187,7 @@ END;
         <form action ="./$item->id" method="post" class="formulaire" enctype="multipart/form-data">
             <h1>Contribuer à la cagnote</h1>
             <input type="number" value = "$reste" name="contribution" min="0.01" max="$reste" step="any" placeholder="Prix" required><br>
-            <input type="submit" value="Ajouter l'objet dans la liste" required></input>
+            <input type="submit" value="Participer" required></input>
         </form>
     </div>
 </body>

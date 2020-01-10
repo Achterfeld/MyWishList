@@ -27,7 +27,7 @@ body {
     margin-right: 40em;
     margin-bottom: 1em;
     padding: .5em;
-}   
+}
 
 #accueil {
     background: #222836;
@@ -37,8 +37,6 @@ body {
 #home {
     background: #222836;
     color: #fff;
-    overflow: hidden;
-
 }
 
 #navBarre {
@@ -186,7 +184,9 @@ a {
     text-decoration: none;
 }
 
-.boutton {
+.boutton,
+.bouttonPPerso,
+.bouttonHome {
     color: #222836;
     background: #fff;
     border-radius: 1em;
@@ -224,8 +224,9 @@ body span {
 
 .deuxColonnes div {
     padding: 2em;
-    width: 50%;
-}
+    width: 100%;
+/*    min-width: 700px;
+*/}
 
 .deuxColonnes div:nth-of-type(1) {
     border-right: #fff 2px solid;
@@ -334,6 +335,7 @@ form {
 
     border-radius: .5em;
 }
+
 #infoCompte ul {
     list-style: none;
 }
@@ -453,6 +455,27 @@ input[type="radio"] {
     right: 0;
 }
 
-.itemReserve{
+.itemReserve {
     margin: 1em 0;
+}
+
+.listeBouton {
+    margin-top: 1em;
+}
+
+#listeBoutonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bouttonPPerso {
+    display: block;
+    min-width: 250px;
+}
+
+.bouttonHome {
+    display: block;
+    max-width: 250px;
+    margin: auto;
 }

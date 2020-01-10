@@ -43,7 +43,7 @@ class ListeControler
      */
     public function getAllListe()
     {
-        $liste = Liste::where('public', '=', '1')->OrderBy('expiration')->get();
+        $liste = Liste::where([['public', '=', '1'],['token_visu','!=',""]])->OrderBy('expiration')->get();
         $v = new VueParticipant($liste);
         $v->render(VueParticipant::ALL_LIST_VIEW);
     }
