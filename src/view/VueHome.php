@@ -71,28 +71,15 @@ $co
             <h1>Pas besoin de compte ?</h1>
             <br>
             <br>
-            <a href="$urlListeCreer" class="boutton">Mode invité</a>
+            <a href="$urlListeCreer" class="bouttonHome">Mode invité</a>
             <br>
             <br>
             <br>
+            <a href="$urlListePublique" class="bouttonHome"> Toutes nos listes publiques</a>
             <br>
+            <a href="$urlItems" class="bouttonHome"> Tous nos items</a>
             <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <a href="$urlListePublique" class="boutton"> Toutes nos listes publiques</a>
-            <br>
-            <br>
-            <br>
-            <br>
-            <a href="$urlItems" class="boutton"> Tous nos items</a>
-            <br>
-            <br>
-            <br>
-            <br>
-            <a href="$urlCreateurs" class="boutton"> Les créateurs de listes publiques</a>
+            <a href="$urlCreateurs" class="bouttonHome"> Les créateurs de listes publiques</a>
         </div>
     </div>
 <br>
