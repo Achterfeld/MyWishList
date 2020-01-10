@@ -13,7 +13,11 @@ use wishlist\view\VuePagePerso;
 
 class ListeControler
 {
-
+    /**
+     * Fonction permettant de rendre la vue d'un item de la liste. 
+     *
+     * @param int $id Id de l'item de la liste souhaité.
+     */
     public function getItem($id)
     {
         $i = Item::where('id', '=', $id)->first();
@@ -21,6 +25,11 @@ class ListeControler
         $v->render(VueParticipant::ITEM_VIEW);
     }
 
+    /**
+     * Fonction permettant de rendre la vue d'un item de la liste pour la reservation. 
+     *
+     * @param int $id Id de l'item de la liste souhaité.
+     */
     public function getItemListe($idItem)
     {
         $i = Item::where('id', '=', $idItem)->first();
@@ -28,6 +37,10 @@ class ListeControler
         $v->afficheItemListe($i);
     }
 
+    /**
+     * Fonction permettant de rendre la vue de toute les listes. 
+     *
+     */
     public function getAllListe()
     {
         $liste = Liste::where('public', '=', '1')->OrderBy('expiration')->get();
@@ -35,6 +48,10 @@ class ListeControler
         $v->render(VueParticipant::ALL_LIST_VIEW);
     }
 
+    /**
+     * Fonction permettant de rendre la vue de toute les items. 
+     *
+     */
     public function getAllItem()
     {
         $liste = Item::get();
@@ -42,6 +59,13 @@ class ListeControler
         $v->render(VueParticipant::ALL_ITEM_VIEW);
     }
 
+    /**
+     * Fonction permettant de rendre la vue de la liste demandée. 
+     * 
+     * @param int $no Numéro de la liste.
+     * @param string $token_visu Token de la liste.
+     * 
+     */
     public function getListe($no, $token_visu)
     {
         $l = Liste::where([['no', '=', $no], ['token_visu', '=', $token_visu]])->first();
@@ -49,12 +73,21 @@ class ListeControler
         $v->render(VueParticipant::LIST_VIEW);
     }
 
+    /**
+     * Fonction permettant de rendre la vue de création de liste. 
+     *
+     */
     public function getCreation()
     {
         $v = new VueCreation();
         $v->render(VueCreation::LIST);
     }
 
+    /**
+     * Fonction permettant de rendre un résumé de ce que contient la liste. 
+     *
+     * @param string $token Token de la liste.
+     */
     public function getResumeListe($token)
     {
         $l = Liste::where('token', '=', $token)->first();
@@ -62,6 +95,10 @@ class ListeControler
         $v->render(VueParticipant::LIST_VIEW_TOKEN);
     }
 
+    /**
+     * Fonction permettant de rendre la vue d'ajout d'item dans une liste. 
+     *
+     */
     public function getAjout()
     {
 
@@ -69,6 +106,11 @@ class ListeControler
         $v->render(VueCreation::AJOUT_ITEM);
     }
 
+    /**
+     * Fonction permettant d'inserérer une nouvelle liste. 
+     *
+     * @param string $token Token de la liste.
+     */
     public function insertListe($token)
     {
 
@@ -96,6 +138,13 @@ class ListeControler
         $l->save();
     }
 
+    /**
+     * Fonction permettant d'ajouter une réservation à un item. 
+     * 
+     * La fonction filtre les deux données de réservation du post, et de les ajouter à la base de données dans le tuple de l'item en question. 
+     *
+     * @param int $id Id de l'item en question.
+     */
     public function addRes($id)
     {
         $app = \Slim\Slim::getInstance();
@@ -112,16 +161,31 @@ class ListeControler
         $i->save();
     }
 
+    /**
+     * Fonction permettant de rendre la vue de modification de liste. 
+     *
+     *
+     * @param int $no Numéro de la liste.
+     * @param string $token Token de la liste.
+     */
     public function modifierListe($no, $token)
     {
 
-        //        $app = new \Slim\Slim;
         $l = Liste::where([['no', '=', $no], ['token', '=', $token]])->first();
 
         $v = new VueModification();
         $v->render(VueModification::LIST, $l);
     }
 
+
+    /**
+     * Fonction permettant de mettre à jour une liste. 
+     *
+     * La fonction permet de mettre à jour une liste choisie, avec les données filtrés récupérées dans le post.
+     *
+     * @param int $no Numéro de la liste.
+     * @param string $token Token de la liste.
+     */
     public function validerListe($no, $token)
     {
 
@@ -137,6 +201,14 @@ class ListeControler
         $l->save();
     }
 
+    /**
+     * Fonction permettant de valider une liste. 
+     *
+     * La fonction permet de valider une liste choisie.
+     *
+     * @param int $no Numéro de la liste.
+     * @param string $token Token de la liste.
+     */
     public function confirmerListe($no, $token)
     {
         $l = Liste::where([['no', '=', $no], ['token', '=', $token]])->first();
@@ -149,6 +221,12 @@ class ListeControler
         $l->save();
     }
 
+    /**
+     * Fonction permettant de rendre la vue de confirmation de suppression de la liste. 
+     *
+     * @param int $no Numéro de la liste.
+     * @param string $token Token de la liste.
+     */
     public function confirmerSupprListe($no, $token)
     {
         $v = new VueCreation();

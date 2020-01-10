@@ -12,6 +12,18 @@ class Authentification
 	const Pb_MDP = 1;
 	const Pb_Mail = 2;
 
+	/**
+	 * Fonction permettant de créer un utilisateur.
+	 *
+	 * La fonction est en static car elle est utilisé dans plusieurs classes.
+	 * Cette fonction permet de créer un nouvel utilisateur. Les paramètres sont filtrer par php pour éviter tous les problèmes.
+	 * @param string $prenom Le prenom de l'utilisateur.
+	 * @param string $password Le password de l'utilisateur.
+	 * @param string $password2 Une nouvelle fois le password de l'utilisateur pour pouvoir vérifier qu'il n'y a pas d'erreur. 
+	 * @param string $mail L'email de l'utilisateur.
+	 * @return int Retourne un code permettant d'identifier si il y a un problème ou non.
+	 */
+
 	public static function createUser($prenom, $password, $password2, $mail)
 	{
 
@@ -44,6 +56,13 @@ class Authentification
 		}
 	}
 
+
+	/**
+	 * La fonction permet de charger un profil.
+	 *
+	 * La fonction est en static car elle est utilisé dans plusieurs classes.
+	 * @param int $user_id L'identifiant de l'utilisateur.
+	 */
 	public static function loadProfile($user_id)
 	{
 		$u = User::where('user_id', '=', $user_id)->first();
@@ -62,6 +81,13 @@ class Authentification
 		setcookie("user_id", $u->user_id, time() + 60 * 60 * 24 * 2, "/");
 	}
 
+	/**
+	 * La fonction permet de s'authentifier.
+	 * 
+	 * La fonction est en static car elle est utlisié dans plusieurs classes. 
+	 * @param string $mail Email de l'utilisateur.
+	 * @param string $password Mot de passe de l'utilisateur.
+	 */
 	public static function authenticate($mail, $password)
 	{
 
@@ -80,6 +106,13 @@ class Authentification
 		}
 	}
 
+
+	/**
+	 * La fonction permet de verifier les droits.
+	 * 
+	 * La fonction est en static car elle est utlisié dans plusieurs classes. 
+	 * @param int $r Droit à vérifier.
+	 */
 	public static  function checkAccesRights($r)
 	{
 		if ($_SESSION['session']['niveauDeDroit'] < $r) {
@@ -88,6 +121,11 @@ class Authentification
 		}
 	}
 
+	/**
+	 * La fonction permet de se déconnecter.
+	 * 
+	 * La fonction est en static car elle est utlisié dans plusieurs classes. 
+	 */
 	public static function disconnect()
 	{
 		if (isset($_SESSION['session'])) {

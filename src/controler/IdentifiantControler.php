@@ -12,7 +12,9 @@ use wishlist\view\VueHome;
 
 class IdentifiantControler
 {
-
+    /**
+     * Cette fonction permet de rendre la page de déconnexion.
+     */
     public function pageDeconnexion()
     {
 
@@ -21,6 +23,13 @@ class IdentifiantControler
         $v->render();
     }
 
+    /**
+     * Cette fonction permet d'insérer un user dans la base de données.
+     * 
+     * Récupère dans le tableau post le prénom, le mot de passe 1, le mot de passe 2, et le mail. Une fois les données récupérées il utilise la fonction createUser de Anthentification. Si tout se passe bien la page de connexion est affichée, dans le cas contraire une erreur est affichée.
+     * 
+     *
+     */
     public function insertUser()
     {
         $app = new \Slim\Slim;
@@ -30,6 +39,7 @@ class IdentifiantControler
         $p1 = $datas->post("Passe1");
         $p2 = $datas->post("Passe2");
         $mail = $datas->post("Mail");
+
         $creationOK = Authentification::createUser($prenom, $p1, $p2, $mail);
         if ($creationOK == Authentification::Insertion_OK) {
             $this->getConnexion();
@@ -47,6 +57,9 @@ class IdentifiantControler
         }
     }
 
+    /**
+     * Fonction permettant de rendre la vue de connexion.
+     */
     public function getConnexion()
     {
         $v = new VueConnexion();

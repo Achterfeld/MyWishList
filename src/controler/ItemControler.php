@@ -14,12 +14,23 @@ use wishlist\view\VuePagePerso;
 class ItemControler
 {
 
+    /**
+     * Fonction permettant de rendre la vue création d'un item grace au token de la liste et son numéro d'item.  
+     * 
+     * @param int $no Numéro de l'item.
+     * @param string $token Token de la liste 
+     */
     public function getCreation($no, $token)
     {
         $v = new VueCreation();
         $v->render(VueCreation::ITEM, $token, $no);
     }
 
+    /**
+     * Fonction permettant de valider un item. 
+     *
+     * La fonction récupère dans le tableau post les informations de l'item, les filtres et les insère dans un nouveau tuple.
+     */
     public function validerItem()
     {
 
@@ -44,6 +55,11 @@ class ItemControler
         $this->getItem($i->id);
     }
 
+    /**
+     * Fonction permettant de rendre un seul item.
+     *
+     * @param int $id Id de l'item à rendre.
+     */
     public function getItem($id)
     {
         $i = Item::where('id', '=', $id)->first();
@@ -51,6 +67,13 @@ class ItemControler
         $v->render(VueParticipant::ITEM_VIEW);
     }
 
+    /**
+     * Fonction permettant de valider la modification d'item.
+     * 
+     * La fonction récupère les nouvelles donées et met à jour l'item en question. 
+     * 
+     * @param int $id Id de l'item à modifer. 
+     */
     public function validationModifierItem($id)
     {
 
@@ -69,6 +92,11 @@ class ItemControler
         $i->save();
     }
 
+    /**
+     * Fonction permettant d'afficher la vue de modification d'item. 
+     *
+     * @param int $id Id de l'item à modifier. 
+     */
     public function modifierItem($id)
     {
 
@@ -79,12 +107,23 @@ class ItemControler
         $v->render(VueModification::ITEM, $i);
     }
 
+    /**
+     * Fonction permettant d'afficher la vue de suppression d'item. 
+     *
+     * @param int $id Id de l'item à modifier. 
+     */
     public function confirmerSupprItem($id)
     {
         $v = new VueCreation();
         $v->render(VueCreation::SUPPR_ITEM, $id);
     }
 
+    /**
+     * Fonction permettant de supprimer un item.
+     * 
+     * La fonction permet de supprimer un item de la base de données à partir de son id. 
+     * @param int $id Id de l'item à supprimer.
+     */
     public function supprimer($id)
     {
         $i = Item::where('id', '=', $id);
@@ -104,6 +143,13 @@ class ItemControler
         }
     }
 
+    /**
+     * Fonction permettant l'ajout d'image. 
+     *
+     * La fonction upload une image dans le dossier img du site. Puis l'ajoute à l'objet en paramètre. 
+     *
+     * @param int $i objet auquel on veut ajouter une image.
+     */
     public static function ajoutImg($i) {
         if (!empty($_FILES["image"])) {
             $target_dir =  "./img/";
@@ -139,6 +185,12 @@ class ItemControler
         }
     }
 
+    /**
+     * Fonction permettant de créer une cagnote sur un item puis d'afficher la vue. 
+     *
+     * @param int $id Id de l'item sur lequel on veut créer une cagnote participative. 
+     *
+     */
     public function creerCagnote($id) {
         
         $item = Item::where('id','=',$id)->first();
@@ -153,6 +205,11 @@ class ItemControler
         $v->renderCagnote($item);
     }
 
+    /**
+     * Fonction permettant de créditer une cagnote.
+     * 
+     * @param int $id Id de l'item dont la cagnote doit être créditée.
+     */
     public function crediterCagnote($id) {
 
         $app = \Slim\Slim::getInstance();
