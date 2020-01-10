@@ -1,4 +1,5 @@
 
+
 # My Wish List
 
 Projet de programmation web en Php
@@ -12,6 +13,17 @@ Projet de programmation web en Php
 ## URL vers webetu :
 
 [Lien vers myWishList](https://webetu.iutnc.univ-lorraine.fr/www/keller73u/myWishList)
+
+
+## Comptes de test
+
+| Username |  email | Password |
+|--|--|--|
+| Professeur | p@gmail.com | prof|
+| Mateo | m@gmail.com| matéo |
+| Tom | t@gmail.com| tom|
+| Guillaume | g@gmail.com| guillaume|
+
 
 ## Liste des fonctionnalités
 
@@ -27,6 +39,7 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 	 - 18 - Gestion de la connexion
 	 - 24 - Uploader une image
 	 - 99 - Ajout photo de profil pour utilisateur possible
+	 - 99 - Rédaction de la documentation (tuto dans le readme)
  - Matéo
 	 - Routes dans la page index
 	 - 17 - Création du compte
@@ -59,27 +72,29 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 	 - 27 - Suppression de son compte
 	 - 28 - Ajout de liste à son compte
 	 
+- Les fonctionnalités numérotées 99 sont des extensions additionnelles
 - Fonctionnalités non traités pour le moment : terminé
+
 
 # Tuto accès fonctionnalités
  - Créer une liste :
  	 - Cas 1 : la personne n'a pas de compte : 
  	 	 - Cliquer sur "Mode invité" puis créer la liste
- 	 	 - Completer de formulaire et valider 
+ 	 	 - Compléter de formulaire et valider 
  	 - Cas 2 : la personne a un compte : 
  	 	 - Se connecter 
  	 	 - Cliquer sur le bouton "Créer une liste" sur la page personnelle 
- 	 	 - Completer de formulaire et valider 
+ 	 	 - Compléter de formulaire et valider 
  - Ajouter un item à une liste 
  	 - Cas 1 : la personne a un compte et est connecté 
  	 	 - Aller sur sa page personnelle 
  	 	 - Dans la liste des listes, cliquer sur "Modification"
  	 	 - Puis dans la modification de la liste cliquer sur "Ajouter un item dans la liste"
- 	 	 - Completer le formulaire et valider
+ 	 	 - Compléter le formulaire et valider
  	 - Cas 2 : la personne est en mode invité 
  	 	 - Après avoir créé sa liste, utiliser le lien de modification 
  	 	 - Cliquer sur "Ajouter un item dans la liste"
- 	 	 - Completer le formulaire et valider
+ 	 	 - Compléter le formulaire et valider
  - Réserver un cadeau 
  	 - Cliquer sur la liste 
  	 - Cliquer sur l'item désiré 
@@ -134,7 +149,7 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
  	 	 - Valider, bouton "Modifier l'item"
  - Afficher la liste des créateurs
  	 - Cas 1 : la personne n'a pas de compte 
- 	 	 - Sur la page d'acceuil cliquer sur le bouton "Les créateurs de listes publiques"
+ 	 	 - Sur la page d’accueil cliquer sur le bouton "Les créateurs de listes publiques"
  	 - Cas 2 : la personne a un compte 
  	 	 - Sur la page personnelle cliquer sur le bouton "Les créateurs de listes publiques"
  - Supprimer son compte
