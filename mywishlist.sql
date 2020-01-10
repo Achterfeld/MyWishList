@@ -3,6 +3,15 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 -- SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
+
+
+
+
+
+
+
+-- ITEM
+
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -45,6 +54,20 @@ INSERT INTO `item` ( `liste_id`, `nom`, `descr`, `img`, `url`, `tarif`,`reservat
 (	1,	'Fort Aventure',	'Découvrez Fort Aventure à Bainville-sur-Madon, un site Accropierre unique en Lorraine ! Des Parcours Acrobatiques pour petits et grands, Jeu Mission Aventure, Crypte de Crapahute, Tyrolienne, Saut à l\'élastique inversé, Toboggan géant... et bien plus encore.',	'fort.jpg',	'',	25.00,'Tom','Je prends'),
 (	2,	'Voila',	'Petite description',	'',	'',	10.00,'Matéo','cool');
 
+INSERT INTO `item` ( `liste_id`, `nom`, `descr`, `img`, `url`, `tarif`) VALUES
+(	7,	'Bob',	'L\'éponge',	'banbob.jpg',	'',	20.00),
+(	7,	'Cd Hit parade 2020',	'Pour du bon son',	'',	'',	10.00),
+(	8,	'Coca',	'Une bouteille ou deux',	'coca-cola.jpg',	'https://www.cocacola.fr/fr/home/',	4.00),
+(	8,	'Cable réseau',	'Pour aller encore plus vite',	'',	'https://www.fnac.com/Quel-role-joue-le-cable-reseau-dans-votre-debit-Internet/cp35214/w-4',	2.00);
+
+
+
+
+
+
+
+
+-- LISTES
 
 DROP TABLE IF EXISTS `liste`;
 CREATE TABLE `liste` (
@@ -70,7 +93,19 @@ INSERT INTO `liste` (`user_id`, `titre`, `description`, `expiration`, `token`,`t
 (1,	'Nouvelle liste',	'Lorem Ipsum',	'2020-06-30',	'Waw','Waw_visu','1');
 
 INSERT INTO `liste` (`user_id`, `titre`, `description`, `expiration`, `token`,`public`) VALUES
+(4,	'Nouvel an',	'Bonnée année !',	'2020-01-31',	'GoodListe','1'),
+(3,	'Pour fêter notre S3',	'Petite soirée de code',	'2020-02-20',	'GrosseFête','1'),
 (1,	'Coucou',	'Lorem Ipsum',	'2019-12-12',	'sacréToken','1');
+
+
+
+
+
+
+
+
+
+-- USER
 
 
 DROP TABLE IF EXISTS `user`;
@@ -96,6 +131,12 @@ INSERT INTO `user` (`prenom`, `mail`, `hash`) VALUES
 ('Tom','t@gmail.com',"$2y$12$m3.pveCaREtFA4n2TS1Q6e0kuUjQh0S1QjED/CMeQ2f.5tvhY0Vbi");
 
 
+
+
+
+
+
+-- MessagesListes
 
 DROP TABLE IF EXISTS `messagesListes`;
 CREATE TABLE `messagesListes` (
