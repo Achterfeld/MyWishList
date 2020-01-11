@@ -73,7 +73,7 @@ class VuePagePerso
             $participe = $u->aParticipe()->get();
             $participations = "";
             foreach ($participe as $value) {
-                
+
                 $urlItem = $app->urlFor('route_itemID', ['id' => $value->id]);
                 $participations .= "<div class='itemReserve'><a href='$urlItem'>$value->nom</a></div>";
             }
@@ -93,7 +93,7 @@ class VuePagePerso
         $u = User::where('user_id', '=', $_SESSION['session']['user_id'])->first();
         if (empty($u->img))
             $img = "profil.png";
-        else  
+        else
             $img = $u->img;
 
         $urlHome = $app->urlFor('route_home');
@@ -101,6 +101,7 @@ class VuePagePerso
         $urlPPersoSupprimer = $app->urlFor('route_pagePersoPresuppression');
         $urlListePublique = $app->urlFor('route_listePublique');
         $urlCreateurs = $app->urlFor('route_createurs');
+        $urlItems = $app->urlFor('route_item');
 
         $urlListeAjoutParToken = $app->urlFor('route_listeAjoutParToken');
 
@@ -144,10 +145,13 @@ $message
             <a href="$urlListeAjoutParToken" class="bouttonPPerso">Ajouter une liste par token</a>
         </div>
         <div class='listeBouton'>
-            <a href="$urlListePublique" class="bouttonPPerso">Afficher liste de souhaits publiques</a>
+            <a href="$urlItems" class="bouttonPPerso">Voir tous les items</a>
         </div>
         <div class='listeBouton'>
-            <a href="$urlCreateurs" class="bouttonPPerso">Afficher liste créateur</a>
+            <a href="$urlListePublique" class="bouttonPPerso">Listes de souhaits publiques</a>
+        </div>
+        <div class='listeBouton'>
+            <a href="$urlCreateurs" class="bouttonPPerso">Liste des créateurs</a>
         </div>
         <div class='listeBouton'>
             <a href="$urlPPersoSupprimer" class="bouttonPPerso redBG">Supprimer le compte</a>
@@ -171,7 +175,7 @@ END;
         echo $html;
     }
 
-            
+
     /**
      * Fonction permettant de rendre la vue de suppression de compte. 
      *
@@ -244,7 +248,7 @@ END;
     const RECONNEXION = 1;
     const PAGE_PERSO = 2;
 
-        
+
     /**
      * Fonction permettant de rendre la vue de confirmation de modification.
      *
@@ -287,24 +291,28 @@ END;
 
         VueGenerale::renderPage($html, VueGenerale::DarkPage);
     }
-        
+
     /**
      * Fonction permettant de rendre la vue des créateurs.
      *
      * @param $lCreateur Utilisateur[] Liste des créateurs.
      *
      */
-    public function afficherCreateur($lCreateur) {
-        
-        $html = "<body>";
-        foreach(array_unique($lCreateur) as $user) {
-            $html.= "<div class = createur>";
-            $html.=$user->toString();
-            $html.= "</div>";
+    public function afficherCreateur($lCreateur)
+    {
+
+        $html = "<div id='listeCreateur'>";
+        foreach (array_unique($lCreateur) as $user) {
+            $userName = $user->toString();
+
+            $html .=
+                "<div class = 'createur'>
+                $userName
+            </div>";
         }
 
-        $html.= "</body>";
+        $html .= "</div>";
 
-        VueGenerale::renderPage($html, VueGenerale::DarkPage);        
+        VueGenerale::renderPage($html, VueGenerale::DarkPage);
     }
 }
