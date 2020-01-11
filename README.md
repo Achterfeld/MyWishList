@@ -39,7 +39,7 @@ Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 	 - 18 - Gestion de la connexion
 	 - 24 - Uploader une image
 	 - 99 - Ajout photo de profil pour utilisateur possible
-	 - 99 - Rédaction de la documentation (tuto dans le readme)
+	 - 99 - Rédaction de la documentation : tuto dans le readme ainsi que la phpdoc
  - Matéo
 	 - Routes dans la page index
 	 - 17 - Création du compte
