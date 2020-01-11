@@ -8,16 +8,30 @@ class Item extends \Illuminate\Database\Eloquent\Model
     protected $primaryKey = 'id';
     public $timestamps = false;
 
+    /**
+     * Fonction permettant de retourner la liste dans lequel est l'item.
+     *
+     * @return Liste La liste où est cet item.
+     */
     public function liste()
     {
         return $this->belongsTo('wishlist\model\Liste', 'liste_id');
     }
 
+    /**
+     * Fonction permettant de retourner l'utilisateur qui possède cet item dans sa liste.
+     *
+     * @return User L'utilisateur qui possède cet item.
+     */
     public function participe()
     {
         return $this->belongsTo('wishlist\model\User', 'user_id');
     }
 
+    /**
+     * Fonction permettant de rendre une vue pour l'item.
+     *
+     */
     public function __toString()
     {
 

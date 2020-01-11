@@ -7,7 +7,14 @@ use wishlist\model\MessagesListes;
 
 class MessagesControler
 {
-
+    /**
+     * Fonction permettant d'ajouter des messages aux listes. 
+     *
+     * La fonction permet d'ajouter des messages aux listes grâce au numéro de la liste en question?.
+     * La fonction filtre les données récupérées dans le tableau post.
+     *
+     * @param int $no Numéro de la liste.
+     */
     public function ajoutMessage($no)
     {
 

@@ -233,6 +233,12 @@ class ListeControler
         $v->render(VueCreation::SUPPR_LIST, $token, $no);
     }
 
+    /**
+     * Fonction permettant de supprimer une liste liste. 
+     *
+     * @param int $no Numéro de la liste.
+     * @param string $token Token de la liste.
+     */
     public function supprimer($no, $token)
     {
         $l = Liste::where([['no', '=', $no], ['token', '=', $token]]);
@@ -252,6 +258,12 @@ class ListeControler
         }
     }
 
+    /**
+     * Fonction permettant d'ajouter une liste grâce à son token. 
+     *
+     * La fonction permet d'ajouter une liste à un utilisateur grâce à son token (celui de la liste).
+     *
+     */
     public function getAjoutParToken()
     {
 

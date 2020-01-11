@@ -12,7 +12,10 @@ use wishlist\view\VueHome;
 
 class notFoundControler
 {
-
+    /**
+     * Fonction permettant de rendre la page d'erreur correspondant à une page non trouvé. 
+     *
+     */
     public function get404()
     {
 

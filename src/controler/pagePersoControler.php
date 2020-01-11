@@ -15,12 +15,20 @@ use wishlist\view\VueConfirmation;
 class pagePersoControler
 {
 
+    /**
+     * Fonction permettant de rendre la page de confirmation de suppression. 
+     *
+     */
 	public function confirmerSuppr()
 	{
 		$v = new VueConfirmation();
 		$v->render();
 	}
 
+    /**
+     * Fonction permettant de rendre la page personnelle de l'utilisateur. 
+     *
+     */
 	public function getPPerso()
 	{
 
@@ -35,30 +43,40 @@ class pagePersoControler
 		}
 	}
 
+    /**
+     * Fonction permettant de rendre la page personnelle de l'utilisateur si l'authentification est ok. 
+     *
+     */
 	public function connexion()
 	{
 		try {
 			$app = new \Slim\Slim;
 			$datas = $app->request();
 
-			$mail = $datas->post("Mail");
-			$pass = $datas->post("Passe");
+			$mail = filter_var($datas->post("Mail"),FILTER_SANITIZE_SPECIAL_CHARS);
+			$pass = filter_var($datas->post("Passe"),FILTER_SANITIZE_SPECIAL_CHARS);
 
 
 			Authentification::authenticate($mail, $pass);
 
-			//			$u = User::where('mail', '=', $mail)->first();
-			//			if (!is_null($u)) {
-			//Déjà fait par authenticate
-			//				Authentification::loadProfile($u->user_id);
 			$this->getPPerso();
-			//			}
 		} catch (AuthException $ae) {
 
 			echo "Email ou mot de passe invalide<br>";
 		}
 	}
 
+    /**
+     * Fonction permettant de supprimer un compte.
+     * 
+     * La fonction permet de supprimer un compte, ainsi que tout ce qui lui est relié. 
+     * Les items sont supprimés.
+     * Les message sont supprimés.
+     * Les listes sont supprimées.
+     * Pour finir l'utilisateur est supprimé.
+     * On fini par rendre la page de confirmation de suppression de compte. 
+     *
+     */
 	public function supprimerCompte()
 	{
 
@@ -87,6 +105,16 @@ class pagePersoControler
 		$v->compteSupprimer();
 	}
 
+    /**
+     * Fonction permettant de mettre à jour le profil de l'utilisateur. 
+     *
+     * La fonction commence par récupérer l'utilisateur connecté.
+     * Si le nom d'utilisateur change alors le tuple est mis à jour.
+     * Si le mot de passe change alors le tuple est mis à jour.
+     * Si une photo est uploadé alors le tuple est mis à jour.
+     * La page de confirmation de modification est rendue.
+     *
+     */
 	public function modifProfile()
 	{
 
@@ -128,6 +156,15 @@ class pagePersoControler
 		$v->confirmation($modif);
 	}
 
+
+    /**
+     * Fonction permettant d'afficher tous les créateurs (ayant au moins 1 liste en publique). 
+     *
+     * La fonction commence par récupérer les utilisateurs ayant une liste en publique.
+     * Elle créée une liste de tous ces utilisateurs.
+     * Elle rend la liste des créateurs.
+     *
+     */
 	public function allCreateur() {
 
 		$lCreateur = array();

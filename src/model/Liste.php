@@ -8,22 +8,41 @@ class Liste extends \Illuminate\Database\Eloquent\Model
     protected $primaryKey = 'no';
     public $timestamps = false;
 
+    /**
+     * Fonction permettant de retourner une liste des items contenus dans la liste.
+     *
+     * @return Item[] La liste des items de la liste.
+     */
     public function item()
     {
         return $this->hasMany('wishlist\model\Item', 'liste_id');
     }
 
+    /**
+     * Fonction permettant de retourner une de tous les messages de la liste.
+     *
+     * @return MessagesListes[] La liste des messages de la liste.
+     */
     public function messages()
     {
         return $this->hasMany('wishlist\model\MessagesListes', 'liste_id');
     }
 
+    /**
+     * Fonction permettant de retourner l'utilisateur ayant créé cette liste.
+     *
+     * @return User Utilisateur ayant créé la liste.
+     */
     public function possede()
     {
         return $this->belongsTo('wishlist\model\User', 'user_id');
     }
 
 
+    /**
+     * Fonction permettant de rendre une vue pour la liste.
+     *
+     */
     public function __toString()
     {
 
