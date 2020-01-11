@@ -4,6 +4,11 @@ namespace wishlist\view;
 
 class VueDeconnexion
 {
+    
+    /**
+     * Fonction permettant de rendre la vue déconnexion.
+     *
+     */
     public function render()
     {
         $header = VueGenerale::renderHeader();

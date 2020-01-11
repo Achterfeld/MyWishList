@@ -10,6 +10,11 @@ class VueCreation
     const SUPPR_ITEM = 4;
     const AJOUT_ITEM = 5;
 
+    /**
+     * Fonction permettant d'afficher la création d'une liste.
+     *
+     * @return $hmtl String Retourne l'html
+     */
     function afficheCreationListe()
     {
 
@@ -34,6 +39,14 @@ END;
         return $html;
     }
 
+    /**
+     * Fonction permettant d'afficher la création d'item pour une liste.
+     *
+     * @param $token String Token de la liste.
+     * @param $no int Numéro de la liste.
+     *
+     * @return $hmtl String Retourne l'html
+     */
     function afficheCreationItem($token, $no)
     {
 
@@ -57,6 +70,12 @@ END;
 END;
         return $html;
     }
+
+    /**
+     * Fonction permettant d'afficher l'ajout par token.
+     *
+     * @return $hmtl String Retourne l'html
+     */
     function afficheAjoutParToken()
     {
         $app = \Slim\slim::getInstance();
@@ -77,6 +96,14 @@ END;
         return $html;
     }
 
+    /**
+     * Fonction permettant de rendre la suppression.
+     *
+     * @param $arg1 String Argument 1 pour l'affichage
+     * @param $arg2 String Argument 2 pour l'affichage
+     *
+     * @return $hmtl String Retourne l'html
+     */
     function afficheSuppression($arg1, $arg2)
     {
 
@@ -109,6 +136,10 @@ END;
         return $html;
     }
 
+    /**
+     * Fonction permettant de rendre la vue création.
+     *
+     */
     function render($selecter, $token = "", $no = "")
     {
         switch ($selecter) {

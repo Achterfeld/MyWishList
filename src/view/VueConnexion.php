@@ -4,6 +4,11 @@ namespace wishlist\view;
 
 class VueConnexion
 {
+    
+    /**
+     * Fonction permettant de rendre la vue confirmation.
+     *
+     */
     public function render()
     {
 
