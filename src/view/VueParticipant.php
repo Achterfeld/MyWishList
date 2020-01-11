@@ -21,6 +21,11 @@ class VueParticipant
         $this->objet = $l;
     }
 
+    /**
+     * Fonction permettant d'afficher une liste des listes.
+     *
+     * @return $affiche String Retourne le html.
+     */
     private function afficheListeListe()
     {
 
@@ -65,6 +70,11 @@ END;
         return $affiche;
     }
 
+    /**
+     * Fonction permettant d'afficher une liste des items.
+     *
+     * @return $affiche String Retourne le html.
+     */
     private function afficheListeItems()
     {
         $affiche = "<section>";
@@ -76,6 +86,13 @@ END;
         return $affiche;
     }
 
+    /**
+     * Fonction permettant d'afficher une liste grâce à son token.
+     *
+     * @param $affToken String Token de la liste à afficher.
+     *
+     * @return $affiche String Retourne le html.
+     */
     private function afficheListe($affToken = false)
     {
         $app = \Slim\Slim::getInstance();
@@ -133,15 +150,24 @@ END;
         return $affiche;
     }
 
+    /**
+     * Fonction permettant d'afficher un item.
+     *
+     * @return String Retourne le html.
+     */
     private function afficheItem()
     {
         return "<section>$this->objet</section>";
     }
 
-    function afficheItemListe($i)
+    /**
+     * Fonction permettant d'afficher un item d'une liste grâce à son id.
+     *
+     * @param $i int Id de l'item souhaité.
+     *
+     */
+    public function afficheItemListe($i)
     {
-
-
         $reserv = $i->reservation;
         $idItem = $i->id;
 
@@ -200,6 +226,12 @@ END;
         VueGenerale::renderPage($content, VueGenerale::DarkPage);
     }
 
+    /**
+     * Fonction permettant d'afficher les vues.
+     *
+     * @param $selector int Selecteur pour choisir la bonne chose à afficher.
+     *
+     */
     public function render($selecter)
     {
 

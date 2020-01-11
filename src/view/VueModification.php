@@ -9,6 +9,15 @@ class VueModification
     const LIST = 1;
     const ITEM = 2;
 
+    
+    /**
+     * Fonction permettant de rendre la vue de modification de liste.
+     *
+     * @param $modif Liste Liste a modifier. 
+     *
+     * @return $html String Retourne le html de modification de liste.
+     *
+     */
     function afficheModificationListe($modif)
     {
         $no = $modif->no;
@@ -52,7 +61,15 @@ class VueModification
 END;
         return $html;
     }
-
+    
+    /**
+     * Fonction permettant de rendre la vue de liste.
+     *
+     * @param $liste Liste Liste a rendre visible. 
+     *
+     * @return $txt String Retourne le html de modification de liste.
+     *
+     */
     function genererVisibilite($liste)
     {
 
@@ -72,11 +89,18 @@ END;
         </div>
 END;
 
-        //TODO Ajout de la visibilité dans le controleur
 
         return $txt;
     }
-
+    
+    /**
+     * Fonction permettant de rendre la vue de modification d'item.
+     *
+     * @param $modif Item Item a modifier. 
+     *
+     * @return $html String Retourne le html de modification d'item.
+     *
+     */
     function afficheModificationItem($modif)
     {
         $reservation = $modif->reservation;
@@ -154,6 +178,14 @@ END;
         return $html;
     }
 
+        
+    /**
+     * Fonction permettant de rendre la vue de modification de liste.
+     *
+     * @param $selecter int Permet de choisir un des 2 affichages.
+     * @param $modif Liste Liste a modifier. 
+     *
+     */
     function render($selecter, $modif)
     {
         switch ($selecter) {
@@ -169,6 +201,13 @@ END;
         VueGenerale::renderPage($content, VueGenerale::DarkPage);
     }
 
+            
+    /**
+     * Fonction permettant de rendre la vue de la cagnotte.
+     *
+     * @param $item Item L'item.
+     *
+     */
     public function renderCagnote($item) {
 
         $reste = $item->tarif - $item->cagnote;

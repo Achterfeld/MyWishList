@@ -8,7 +8,13 @@ class VueGenerale
     const ClassicPage = 0;
     const DarkPage = 1;
 
-    static function renderHeader()
+    /**
+     * Fonction permettant de rendre le header pour chaque page.
+     *
+     * @return $navBarre String Retourne le html de la barre de navigation.
+     *
+     */
+    public static function renderHeader()
     {
 
         $app = \Slim\Slim::getInstance();
@@ -28,7 +34,14 @@ END;
         return $header;
     }
 
-    static function renderNavBarre()
+
+    /**
+     * Fonction permettant de rendre la barre de navigation pour chaque page.
+     *
+     * @return $navBarre String Retourne le html de la barre de navigation.
+     *
+     */
+    public static function renderNavBarre()
     {
 
         $app = \Slim\Slim::getInstance();
@@ -61,7 +74,14 @@ END;
         return $navBarre;
     }
 
-    static function renderPage($html, $p_theme=self::ClassicPage)
+    
+    /**
+     * Fonction permettant de rendre la page html.
+     *
+     * @return $navBarre String Retourne le html de la barre de navigation.
+     *
+     */
+    public static function renderPage($html, $p_theme=self::ClassicPage)
     {
 
         $header = self::renderHeader();

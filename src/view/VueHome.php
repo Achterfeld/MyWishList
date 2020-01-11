@@ -7,6 +7,14 @@ class VueHome
 
     const PB_MAIL = 1;
     const PB_MDP = 2;
+
+
+    /**
+     * Fonction permettant de rendre la page home.
+     *
+     * @param $option int Option permettant de savoir si nous avons une erreur à rendre.
+     *
+     */
     public function render($option = "")
     {
 

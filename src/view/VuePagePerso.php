@@ -7,6 +7,13 @@ use wishList\model\User;
 class VuePagePerso
 {
 
+    /**
+     * Fonction permettant de rendre la vue de page personnelle.
+     *
+     * @param $u Utilisateur Utilisateur connecté.
+     * @param $message String Message de la liste. 
+     *
+     */
     public function render($u, $message = "")
     {
 
@@ -164,6 +171,11 @@ END;
         echo $html;
     }
 
+            
+    /**
+     * Fonction permettant de rendre la vue de suppression de compte. 
+     *
+     */
     public function compteSupprimer()
     {
         $header = VueGenerale::renderHeader();
@@ -193,6 +205,11 @@ END;
         echo $html;
     }
 
+
+    /**
+     * Fonction permettant de rendre la vue de modification d'utilisateur.
+     *
+     */
     public function modification()
     {
 
@@ -227,7 +244,13 @@ END;
     const RECONNEXION = 1;
     const PAGE_PERSO = 2;
 
-
+        
+    /**
+     * Fonction permettant de rendre la vue de confirmation de modification.
+     *
+     * @param $txt int Permet de choisir une option.
+     *
+     */
     public function confirmation($txt = self::PAGE_PERSO)
     {
 
@@ -264,7 +287,13 @@ END;
 
         VueGenerale::renderPage($html, VueGenerale::DarkPage);
     }
-
+        
+    /**
+     * Fonction permettant de rendre la vue des créateurs.
+     *
+     * @param $lCreateur Utilisateur[] Liste des créateurs.
+     *
+     */
     public function afficherCreateur($lCreateur) {
         
         $html = "<body>";
