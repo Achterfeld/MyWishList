@@ -48,8 +48,8 @@ class VueModification
 
         <br>
 
-        <form class='formulaire'>
-            <a href="$urlItemAjout"> <h1>+</h1>Ajouter un item dans la liste</a>
+        <form class='formulaire' action="$urlItemAjout method="get">
+            <input type="submit" value = "➕ Ajouter un item dans la liste">
         </form>
 
         <br>

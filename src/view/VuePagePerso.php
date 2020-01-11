@@ -55,7 +55,19 @@ class VuePagePerso
                 $visuListe = "<a  href='$urlValiderListe'>Valider la liste ✅</a>";
             }
 
-
+            if ($compteur == 0) {
+                $description = "<a href='$urlModifListe'>Aucun item dans cette liste, ajoutez en ici</a>";
+                $label = 
+                "<label>
+                    $description
+                </label>";
+            } else {
+                $itReserv = $reserve > 1 ? "Items réservés" : "Item réservé";
+                $label =
+                    "<label>$itReserv ($reserve / $compteur)<br>
+                    <progress  name='prog' max='$compteur' value='$reserve'></progress>
+                </label>";
+            }
 
             $listesTxt .= " <div class='info'>
                                 <span >Liste n°$value->no</span>
@@ -63,7 +75,7 @@ class VuePagePerso
 
                                 $visuListe
 
-                                <label>Item(s) réservé(s) ($reserve / $compteur)<br><progress  name='prog' max='$compteur' value='$reserve'></progress></label>
+                                $label
 
                              </div>";
         }

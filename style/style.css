@@ -496,3 +496,7 @@ input[type="radio"] {
     max-width: 250px;
     margin: auto;
 }
+
+.noDisplay{
+    display: none;
+}
