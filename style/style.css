@@ -4,7 +4,7 @@
 }*/
 
 :root {
-    --whiteBG: #fff;
+    --whiteBG: #fff2;
     --blackBG: #222836;
     --whiteText: #fff;
     --blackText: #000;
@@ -179,7 +179,7 @@ a {
 .bouttonPPerso,
 .bouttonHome {
     color: var(--blackBG);
-    background: var(--whiteBG);
+    background: #fff;
     border-radius: var(--borderRadiusDefault);
     padding: 1em 2em;
     margin-top: 3em;
@@ -193,7 +193,7 @@ a {
 }
 
 .boutton:hover {
-    background: var(--whiteBG)2;
+    background: var(--whiteBG);
     color: var(--whiteText);
     transition: 0.5s;
 }
@@ -230,7 +230,7 @@ body span {
 div input,
 form input {
     padding: 1em;
-    background: var(--whiteBG)2;
+    background: var(--whiteBG);
     color: var(--whiteText);
     border: 0;
     border-bottom: 1px solid var(--blackBorder);
@@ -310,7 +310,7 @@ form {
 
 .section {
     padding: 2em;
-    background: var(--whiteBG)3;
+    background: var(--whiteBG);
     border-radius: .5em;
 }
 
@@ -428,7 +428,7 @@ input[type="radio"] {
 }
 
 .messageListe {
-    background: var(--whiteBG)2;
+    background: var(--whiteBG);
     padding: 1em 0;
     margin: 1em;
 }
