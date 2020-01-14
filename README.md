@@ -3,8 +3,11 @@
 # My Wish List
 
 Projet de programmation web en Php
+
 @IUT Nancy Charlemagne
+
 2019-2020
+
 
  - Georgelin Tom
  - Achterfeld Matéo
@@ -26,6 +29,8 @@ Projet de programmation web en Php
 
 
 ## Liste des fonctionnalités
+
+Site utilisable sur mobile également (travail avec le pattern flex / responsive)
 
 Cf liste disponible en ligne ( `doc/sujetDetaillé.pdf` )
 
