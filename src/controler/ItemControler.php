@@ -84,10 +84,13 @@ class ItemControler
 
         $i->nom = filter_var($datas->post("nomItem"), FILTER_SANITIZE_SPECIAL_CHARS);
         $i->descr = substr(filter_var($datas->post("descriptionItem"), FILTER_SANITIZE_SPECIAL_CHARS), 0, 256);
-        $i->img = filter_var($datas->post("URLImage"), FILTER_SANITIZE_SPECIAL_CHARS);
+        if($i->img != $datas->post("URLImage")) {
+            $i->img = filter_var($datas->post("URLImage"), FILTER_SANITIZE_SPECIAL_CHARS);
+        } else {
+            $this->ajoutImg($i);
+        }
         $i->url = filter_var($datas->post("URL"), FILTER_SANITIZE_SPECIAL_CHARS);
         $i->tarif = filter_var($datas->post("prixItem"), FILTER_SANITIZE_SPECIAL_CHARS);
-        $this->ajoutImg($i);    
 
         $i->save();
     }
