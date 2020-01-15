@@ -74,7 +74,6 @@ END;
         return $navBarre;
     }
 
-    
     /**
      * Fonction permettant de rendre la page html.
      *
