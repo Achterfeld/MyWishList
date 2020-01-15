@@ -48,8 +48,8 @@ class VueModification
 
         <br>
 
-        <form class='formulaire'>
-            <a href="$urlItemAjout"> <h1>+</h1>Ajouter un item dans la liste</a>
+        <form class='formulaire' action="$urlItemAjout method="get">
+            <input type="submit" value = "➕ Ajouter un item dans la liste">
         </form>
 
         <br>
@@ -215,14 +215,15 @@ END;
         $html = <<<END
 <body>
     <div>
-        <h1> Cagnote pour l'item : </h1>
-        <h2>$item->nom : $item->tarif €</h2>
-        <p>$item->descr</p>
-        <br>
-        <br>
-        <progress  name='avancementCagnote' max='$item->tarif' value='$item->cagnote'></progress>
-        <br>
-        <br>
+        <div>
+            <h1> Cagnote pour l'item : </h1>
+            <h2>$item->nom : $item->tarif €</h2>
+            <p>$item->descr</p>
+            <br>
+            <br>
+            <progress  name='avancementCagnote' max='$item->tarif' value='$item->cagnote'></progress>
+            <br>
+        </div>
         <form action ="./$item->id" method="post" class="formulaire" enctype="multipart/form-data">
             <h1>Contribuer à la cagnote</h1>
             <input type="number" value = "$reste" name="contribution" min="0.01" max="$reste" step="any" placeholder="Prix" required><br>

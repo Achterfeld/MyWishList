@@ -56,8 +56,8 @@ END;
         <form action="$urlpostValidItem" method="post" class="formulaire" enctype="multipart/form-data">
 
             <h1>Ajout d'un item</h1>
-            <input type="text" name="tokenListe" value=$token required readonly><br>
-            <input type="text" name="noListe" value=$no required readonly><br>
+            <input type="text" name="tokenListe" value=$token required readonly class="noDisplay"><br>
+            <input type="text" name="noListe" value=$no required readonly class="noDisplay"><br>
             <input type="text" name="nomItem" placeholder="Nom" required><br>
             <input type="text" name="descriptionItem" placeholder="Description" required><br>
             <input type="number" name="prixItem" min="0.01" max="99999.99" step="any" placeholder="Prix" required><br>

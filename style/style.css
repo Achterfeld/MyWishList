@@ -3,6 +3,18 @@
     src: url("../font/VarelaRound-Regular.ttf");
 }*/
 
+:root {
+    --whiteBG: #fff2;
+    --blackBG: #222836;
+    --whiteText: #fff;
+    --blackText: #000;
+    --whiteBorder: #fff;
+    --blackBorder: #000;
+    --borderRadiusDefault: 1em;
+    --fillWidth: 100%;
+    --fillHeight: 100%;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -13,35 +25,37 @@ body {
     padding: 1em;
     text-align: center;
     vertical-align: middle;
-    height: 100%;
+    height: var(--fillHeight);
     overflow-x: hidden;
-    color: #000;
+    color: var(--blackText);
 }
 
 .createur {
-    border-radius: 1em;
-    border: solid;
-    border-width: 1px;
-    border-color: #fff;
-    margin-left: 40em;
-    margin-right: 40em;
-    margin-bottom: 1em;
+    border-radius: var(--borderRadiusDefault);
+    margin: 1em auto;
     padding: .5em;
+    border: 1px solid var(--whiteText);
+    width: var(--fillWidth);
+}
+
+#listeCreateur {
+    width: 15em;
+    margin: auto;
 }
 
 #accueil {
-    background: #222836;
-    color: #fff;
+    background: var(--blackBG);
+    color: var(--whiteText);
 }
 
 #home {
-    background: #222836;
-    color: #fff;
+    background: var(--blackBG);
+    color: var(--whiteText);
 }
 
 #navBarre {
-    background: #222836;
-    color: #fff;
+    background: var(--blackBG);
+    color: var(--whiteText);
     width: calc(100% - 2em);
     margin: -1em -1em 0 -1em;
     padding: 2em;
@@ -56,31 +70,32 @@ body {
 }
 
 #navBarre a {
-    color: #fff;
+    color: var(--whiteText);
     text-decoration: none;
 }
 
 .list,
 .item {
-    margin: 1em 10em;
     background: #bbb4;
     padding: 1em;
-    border-radius: 1em;
+    border-radius: var(--borderRadiusDefault);
+    min-width: 350px;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
 }
 
 .item {
     display: flex;
     flex-wrap: wrap;
-    backdrop-filter: blur(100px);
-    -webkit-backdrop-filter: blur(10px);
-    height: 50%;
+    height: 70%;
 }
 
 .itemContent {
-    transform: translateY(-100%);
     display: flex;
     height: 85%;
-    width: 100%;
+    width: var(--fillWidth);
+    transform: translateY(-75%);
 }
 
 li {
@@ -93,20 +108,20 @@ li {
     display: block;
     max-height: 15em;
     object-fit: cover;
-    border-radius: 1em;
+    border-radius: var(--borderRadiusDefault);
 }
 
 .itemBg img {
-    height: 100%;
-    width: 100%;
+    height: var(--fillHeight);
+    width: var(--fillWidth);
     display: block;
     object-fit: cover;
-    border-radius: 1em;
+    border-radius: var(--borderRadiusDefault);
 }
 
 .itemBg {
-    width: 100%;
-    height: 100%;
+    width: var(--fillWidth);
+    height: var(--fillHeight);
     filter: blur(1em);
     mix-blend-mode: overlay;
 }
@@ -119,7 +134,6 @@ li {
 
 .num {
     float: left;
-    height: inherit;
     font-size: 2em;
     width: 2em;
     height: 1em;
@@ -137,37 +151,18 @@ li {
     background: #32364f;
 }
 
+.num_liste,
+.num_item {
+    text-shadow: 3px 3px 5px var(--blackText);
+    box-shadow: 3px 3px 7px #0008;
+}
+
 .description {
     flex: 1;
     min-width: 10em;
     text-align: left;
-    text-shadow: 0px 0px 3px black;
+    text-shadow: 0 0 3px black;
 }
-
-
-/*
-input {
-    padding: 5px;
-    background: #0002
-}
-
-input[type="number"] {
-    width: 60px;
-}
-
-input[type="submit"] {
-    width: 100%;
-    margin-top: 5px;
-}
-
-input[type="text"],
-input[type="date"],
-input[type="number"] {
-    width: 100%;
-    background: #0000;
-    border: 0;
-    border-bottom: 1px solid #0002;
-}*/
 
 #formulaires {
     display: flex;
@@ -175,25 +170,22 @@ input[type="number"] {
     text-align: center;
 }
 
-
-/*Debut du deuxieme CSS
-*/
-
 a {
-    color: white;
+    color: var(--whiteText);
     text-decoration: none;
 }
 
 .boutton,
 .bouttonPPerso,
 .bouttonHome {
-    color: #222836;
+    color: var(--blackBG);
     background: #fff;
-    border-radius: 1em;
+    border-radius: var(--borderRadiusDefault);
     padding: 1em 2em;
     margin-top: 3em;
-    border: #fff 2px solid;
+    border: var(--whiteBorder) 2px solid;
     margin: 0 1em;
+    display: inline-block;
 }
 
 .bouttonDisabled {
@@ -201,8 +193,8 @@ a {
 }
 
 .boutton:hover {
-    background: #fff2;
-    color: #fff;
+    background: var(--whiteBG);
+    color: var(--whiteText);
     transition: 0.5s;
 }
 
@@ -219,31 +211,33 @@ body span {
 
 .deuxColonnes {
     display: flex;
-    width: 100%;
+    width: var(--fillWidth);
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .deuxColonnes div {
     padding: 2em;
-    width: 100%;
-/*    min-width: 700px;
-*/}
+    width: calc(45% - 2em);
+    min-width: 300px;
+}
 
 .deuxColonnes div:nth-of-type(1) {
-    border-right: #fff 2px solid;
+    border-right: var(--whiteBorder) 2px solid;
 }
 
 .deuxColonnes div input,
 div input,
 form input {
     padding: 1em;
-    background: #fff2;
-    color: #fff;
+    background: var(--whiteBG);
+    color: var(--whiteText);
     border: 0;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid var(--blackBorder);
     font-size: large;
     width: 90%;
     margin: 0.5em;
-    border-radius: 1em;
+    border-radius: var(--borderRadiusDefault);
 }
 
 #topBarre {
@@ -252,18 +246,13 @@ form input {
     right: 0;
     top: 0;
     height: 3em;
-    vertical-align: middle;
     justify-content: right;
     display: flex;
     align-items: center;
 }
 
-#topBarre img {
-    margin: right;
-}
-
 #topBarre a {
-    color: #fff;
+    color: var(--whiteText);
 }
 
 .small {
@@ -284,44 +273,44 @@ a.boutton.small {
 }
 
 form {
-    background: #222836;
+    background: var(--blackBG);
     padding: 1em;
 }
 
 #token {
-    background: #222836;
+    background: var(--blackBG);
     padding: 1em;
-    color: #fff;
+    color: var(--whiteText);
     margin: 1em;
 }
 
 .fBlanc {
-    color: #000;
+    color: var(--blackText);
     text-decoration: underline;
 }
 
 .lienSCouleur {
-    color: #000;
+    color: var(--blackText);
     text-decoration: none;
 }
 
 #connexion {
-    background: #222836;
-    color: #fff;
+    background: var(--blackBG);
+    color: var(--whiteText);
     padding-left: 30%;
     padding-right: 30%;
 }
 
 #profilPic {
     width: 10vw;
-    height: 100%;
+    height: var(--fillHeight);
     overflow: hidden;
     border-radius: 5vw;
 }
 
 .section {
     padding: 2em;
-    background: #fff3;
+    background: var(--whiteBG);
     border-radius: .5em;
 }
 
@@ -342,10 +331,12 @@ form {
 
 #infoListe div {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .info * {
-    margin: auto 20px;
+    margin: 0.4em 2em;
 }
 
 .info *:nth-child(4n) {
@@ -370,6 +361,7 @@ progress.info {
 
 #infoListe progress {
     margin: 2px 0;
+    width: var(--fillWidth);
 }
 
 .info a:nth-of-type(2) {
@@ -404,7 +396,8 @@ input[type="radio"] {
 }
 
 .formulaire {
-    color: #fff;
+    color: var(--whiteText);
+    min-width: 350px;
 }
 
 .public {
@@ -419,6 +412,7 @@ input[type="radio"] {
 .priv {
     padding: 2px 10px;
     border-radius: 5px;
+    display: inline-block;
 }
 
 .redBG {
@@ -429,12 +423,12 @@ input[type="radio"] {
     padding: 1em;
     margin-bottom: 1em;
     background: #557;
-    border-radius: 1em;
+    border-radius: var(--borderRadiusDefault);
     border: 0.1em solid #f00;
 }
 
 .messageListe {
-    background: #22283666;
+    background: var(--whiteBG);
     padding: 1em 0;
     margin: 1em;
 }
@@ -469,13 +463,16 @@ input[type="radio"] {
     justify-content: center;
 }
 
+.bouttonHome,
 .bouttonPPerso {
     display: block;
-    min-width: 250px;
+    max-width: 250px;
 }
 
 .bouttonHome {
-    display: block;
-    max-width: 250px;
     margin: auto;
+}
+
+.noDisplay {
+    display: none;
 }
