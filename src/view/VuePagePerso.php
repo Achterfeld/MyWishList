@@ -71,7 +71,7 @@ class VuePagePerso
 
             $listesTxt .= " <div class='info'>
                                 <span >Liste n°$value->no</span>
-                                <a  href='$urlModifListe'>Modification 🖉</a>
+                                <a  href='$urlModifListe'>Modification 🖊️</a>
 
                                 $visuListe
 
@@ -131,11 +131,11 @@ $message
         <div id="infos">
             <ul>
                 <li>
-                    <h1>$u->prenom <a href="$urlPPersoModif"> 🖉</a></h1>
+                    <h1>$u->prenom <a href="$urlPPersoModif"> 🖊️</a></h1>
                 </li>
-                <li>Mail : <span>$u->mail<a href="$urlPPersoModif"> 🖉</a></span></li>
+                <li>Mail : <span>$u->mail<a href="$urlPPersoModif"> 🖊️</a></span></li>
                 <li>Nombre de listes : <span>$nbListes<a href="$urlPPersoModif"></a></span></li>
-                <li>Mot de passe : <span>******* <a href="$urlPPersoModif"> 🖉</a></span></li>
+                <li>Mot de passe : <span>******* <a href="$urlPPersoModif"> 🖊️</a></span></li>
             </ul>
         </div>
     </div>

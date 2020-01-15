@@ -66,7 +66,7 @@ class Item extends \Illuminate\Database\Eloquent\Model
             if ($_SESSION['session']['user_id'] == $userID) {
 
                 $urlModif = $app->urlFor('route_modifItem', ['id' => $this->id]);
-                $modif = "<a href='$urlModif' class='lienSCouleur' id='modifListe'>🖉</a>";
+                $modif = "<a href='$urlModif' class='lienSCouleur' id='modifListe'>🖊️</a>";
             }
         }
 

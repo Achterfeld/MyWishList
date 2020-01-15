@@ -93,7 +93,7 @@ INSERT INTO `liste` (`user_id`, `titre`, `description`, `expiration`, `token`,`t
 (1,	'Nouvelle liste',	'Lorem Ipsum',	'2020-06-30',	'Waw','Waw_visu','1');
 
 INSERT INTO `liste` (`user_id`, `titre`, `description`, `expiration`, `token`,`public`) VALUES
-(4,	'Nouvel an',	'Bonnée année !',	'2020-01-31',	'GoodListe','1'),
+(4,	'Nouvel an',	'Bonne année !',	'2020-01-31',	'GoodListe','1'),
 (3,	'Pour fêter notre S3',	'Petite soirée de code',	'2020-02-20',	'GrosseFête','1'),
 (1,	'Coucou',	'Lorem Ipsum',	'2019-12-12',	'sacréToken','1');
 
