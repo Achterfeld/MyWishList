@@ -48,6 +48,7 @@ class VuePagePerso
             $urlModifListe = $app->urlFor('route_get_modifListe', ['no' => $value->no, 'token' => $value->token]);
             $urlHome = $app->urlFor('route_home');
             $urlListeCreer = $app->urlFor('route_listeCreer');
+            $urlProfilModification = $app->urlFor('route_pagePersoConfirmerModifier');
 
             if ($value->token_visu != "") {
                 $visuListe = "<a  href='$urlDetailListe'>Liste 🔗</a>";
@@ -126,8 +127,10 @@ $navBarre
 <section id="mainContent">
 
 $message
+
 <div class="section" id="infoCompte">
         <img id="profilPic" src="$urlHome/img/$img">
+         <div id="pp">🖊️</div> 
         <div id="infos">
             <ul>
                 <li>
@@ -180,7 +183,17 @@ $message
     </div>
     </section>
 </body>
+<script>
+document.getElementById("pp").addEventListener('click', function(e) {
+	let div = document.querySelector('#infoCompte');
+	
+	let form = '<form enctype="multipart/form-data" action="$urlProfilModification" method="POST"><input name="fileToUpload"type="file"/><br/><input type="submit" value="Upload" /></form>';
 
+	div.insertAdjacentHTML('afterend', form);
+	console.log('test');
+});
+
+</script>
 END;
 
         // OK validé pour echo

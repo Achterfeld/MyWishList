@@ -476,3 +476,10 @@ input[type="radio"] {
 .noDisplay {
     display: none;
 }
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
