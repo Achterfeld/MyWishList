@@ -28,6 +28,7 @@ class VuePagePerso
 
         $listesTxt = "";
 
+        $urlProfilModification = $app->urlFor('route_pagePersoConfirmerModifier');
 
         foreach ($listes as $key => $value) {
 
@@ -48,7 +49,6 @@ class VuePagePerso
             $urlModifListe = $app->urlFor('route_get_modifListe', ['no' => $value->no, 'token' => $value->token]);
             $urlHome = $app->urlFor('route_home');
             $urlListeCreer = $app->urlFor('route_listeCreer');
-            $urlProfilModification = $app->urlFor('route_pagePersoConfirmerModifier');
 
             if ($value->token_visu != "") {
                 $visuListe = "<a  href='$urlDetailListe'>Liste 🔗</a>";
@@ -280,7 +280,7 @@ END;
      * @param $txt int Permet de choisir une option.
      *
      */
-    public function confirmation($txt = self::PAGE_PERSO)
+    public function confirmation($txt = self::PAGE_PERSO, $test)
     {
 
         $app = \Slim\Slim::getInstance();
@@ -307,6 +307,7 @@ END;
         <div>
             <p>Votre compte a été modifié.</p>
             <br>
+            $test
             <br>
             <a href="$url" class="boutton">$info</a>
 

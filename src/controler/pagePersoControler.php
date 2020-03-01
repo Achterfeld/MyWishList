@@ -162,6 +162,8 @@ class pagePersoControler
 		// if everything is ok, try to upload file
 		} else {
 		    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+			    $u->img = $target_file;
+			    $u->save();
 		        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 		    } else {
 		        echo "Sorry, there was an error uploading your file.";
@@ -196,7 +198,7 @@ class pagePersoControler
 		$u->save();
 
 		$v = new VuePagePerso();
-		$v->confirmation($modif);
+		$v->confirmation($modif, $uploadOk);
 	}
 
 
