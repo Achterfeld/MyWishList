@@ -78,11 +78,31 @@ END;
     private function afficheListeItems()
     {
         $affiche = "<section>";
-        foreach ($this->objet as $UneListe) {
-            $affiche .= "$UneListe<br>";
+        $affiche .= <<<END
+        <script src="/myWishList/src/js/scroll.js"></script>
+END;
+
+        $i = 0;
+
+        if (isset($_SESSION['session'])) {
+            $_SESSION['i'] = $i;
         }
+
+        foreach ($this->objet as $UneListe) {
+            if ($i<3) {
+                $affiche .= "$UneListe<br>";
+                $i++;
+            }
+            
+        }
+
+        $_SESSION['i'] = $i;
+
         $affiche .= "</section>";
 
+        $affiche .= <<<END
+        <button class="bouton" onclick="voirPlus($i)">Voir plus</button>
+END;
         return $affiche;
     }
 
